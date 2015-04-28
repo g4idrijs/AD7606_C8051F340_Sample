@@ -1,0 +1,7 @@
+"STARTUP.obj",
+"C8051F340_AD7606.obj",
+"delay24M.obj",
+"USB_MAIN.obj",
+".\USBX_F34X.LIB" 
+TO "AD7606_Sample" 
+RAMSIZE(256) 

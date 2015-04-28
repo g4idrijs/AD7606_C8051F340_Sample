@@ -1,0 +1,101 @@
+//*******************************************************************************
+// (c) 2005 Silicon Laboratories, Inc.
+// http://www.silabs.com/mcu
+//-------------------------------------------------------------------------------
+// Filename  : USBX_F34X_LIB.txt
+// Project   : USBXpress Firmware Library
+// Target    : C8051F340/1/2/3/4/5/6/7
+// Tool Chain: Keil
+// Version   : 3.0
+// Build Date: 06JUL2006
+//-------------------------------------------------------------------------------
+// Revision History:
+// =Rev3.0 (PKC-20APR2006)
+//  -Added new library for 'F34X devices.
+// =Rev2.4 (PKC-24JAN2006)
+//  -Original Revision
+//-------------------------------------------------------------------------------
+// Description:
+//  Contains a list of all global variables and functions in the library. Also
+//  lists the devices that are compatible with this library (see above). 
+//  See AN169 Appendix C for more technical details about this library.
+//*******************************************************************************
+
+LIB51 LIBRARY MANAGER V4.24
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2002
+LIBRARY: USBX_F34X.LIB
+   USB_API
+      USBXCORE_TMPVENDUSBAPI
+      USBXCORE_EP_STATUS
+      USBXCORE_DATASIZE
+      USBXCORE_DATASENT
+      USBXCORE_SETUP
+      USBXCORE_CONFIGDESCCOPY
+      USBXCORE_WVALUE
+      USBXCORE_BW_BYTESWRITTEN
+      USBXCORE_DEVICEDESCCOPY
+      USBXCORE_STRINGDESCTABLE
+      USBXCORE_I
+      USBXCORE_API_INTVALUE
+      USBXCORE_WLENGTH
+      USBXCORE_RESERVED_FUTUREUSE
+      USBXCORE_TMPBLOCKWRITE
+      USBXCORE_USB_STATE
+      USBXCORE_BUSB
+      USBXCORE_API_COUNT
+      USBXCORE_API_EA
+      USBXCORE_TMPBLOCKREAD
+      USBXCORE_RESERVED_EP2_SPACE
+      USBXCORE_RESERVED_EP0_SPACE
+      USBXCORE_TMPHANDLESETUP
+      USBXCORE_INDEXCOPY
+      USBXCORE_DATAPTR
+      USBXCORE_USB0ADRCOPY
+      USBXCORE_TMPUSBISR
+      USBXCORE_ZERO_PACKET
+      USBXCORE_ONES_PACKET
+      USBXCORE_STRING0DESC
+      USBXCORE_CONFIGDESC
+      USBXCORE_DEVICEDESC
+      USBXCORE_USB_ISR
+      USBXCORE_SET_SOP
+      USBXCORE_GET_INTERFACE
+      USBXCORE_SET_CONFIGURATION
+      USBXCORE_GET_CONFIGURATION
+      USBXCORE_GET_DESCRIPTOR
+      USBXCORE_SET_ADDRESS
+      USBXCORE_SET_FEATURE
+      USBXCORE_VENDOR_USB_API
+      USBXCORE_CLEAR_FEATURE
+      USBXCORE_GET_STATUS
+      USBXCORE_FORCE_STALL
+      USBXCORE_HANDLE_SETUP
+      USBXCORE_USB_RESET
+      ?_USB_INIT?BYTE
+      _USB_INIT
+   USB_CLOCK_START
+      USB_CLOCK_START
+   USB_CLOCK_RECOVERY
+      USBXCORE_CLKREC
+   USB_SUSPEND
+      USB_SUSPEND
+   USB_DISABLE
+      USB_DISABLE
+   GET_INTERRUPT_SOURCE
+      GET_INTERRUPT_SOURCE
+   USB_GET_LIBRARY_VERSION
+      USB_GET_LIBRARY_VERSION
+   BLOCK_READ
+      _BLOCK_READ
+   BLOCK_WRITE
+      _BLOCK_WRITE
+   USB_INT_ENABLE
+      USB_INT_ENABLE
+   USB_INT_DISABLE
+      USB_INT_DISABLE
+   USB_JUMP_ISR
+      USBXCORE_JUMP_ISR
+
+// ============================================================================
+// *** END OF FILE ***
+// ============================================================================
