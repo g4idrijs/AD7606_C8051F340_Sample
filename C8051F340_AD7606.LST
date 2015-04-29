@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   C8051F340_AD7606                                                      04/29/2015 11:36:29 PAGE 1   
+C51 COMPILER V9.01   C8051F340_AD7606                                                      04/29/2015 23:52:47 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE C8051F340_AD7606
@@ -11,76 +11,82 @@ line level    source
    2          #include "C8051F340_AD7606.h"
    3          #include "delay24M.h"
    4          #include <intrins.h>
-   5          sbit AD7606_CS=P0^0;
-   6          sbit AD7606_RD=P0^1;
-   7          sbit AD7606_CONVSTA=P0^2;
-   8          sbit AD7606_BUSY=P0^3;
-   9          sbit AD7606_REST=P0^4;
-  10          sbit INT=P0^5;
-  11          int byte_num;
-  12          unsigned char H_Data,L_Data;
-  13          unsigned char Data[16];
-  14          
-  15          unsigned char j, k;
-  16          unsigned short int TempA, TempB;
-  17          unsigned char Busy;
-  18          
-  19          void AD7606_Init()
-  20          {       
-  21   1              delay1ms();
-  22   1              AD7606_REST=0;
-  23   1              AD7606_CS=1;
-  24   1              AD7606_CONVSTA=1;
-  25   1              AD7606_RD=1;
-  26   1              delay1ms();
-  27   1              AD7606_REST=1;
-  28   1              delay1us();
-  29   1              AD7606_REST=0;
-  30   1              delay1us();
+   5          sbit CS=P0^0;
+   6          sbit RD=P0^1;
+   7          sbit CONVSTA=P0^2;
+   8          sbit BUSY=P0^3;
+   9          sbit REST=P0^7;
+  10          unsigned char H_Data,L_Data;
+  11          unsigned char Data[2];
+  12          
+  13          unsigned char j, k;
+  14          unsigned char TempA, TempB;
+  15          unsigned char Busy;
+  16          
+  17          void AD7606_Init()
+  18          {       
+  19   1              delay1ms();
+  20   1              REST=0;
+  21   1              CS=1;
+  22   1              CONVSTA=1;
+  23   1              RD=1;
+  24   1              delay1ms();
+  25   1              REST=1;
+  26   1              //delay10us();
+  27   1              delay1ms();
+  28   1              REST=0;
+  29   1              //delay10us();
+  30   1              delay1ms();
   31   1              
   32   1      }
   33          void AD7606_Read()
   34          {
-  35   1              AD7606_CONVSTA=0;
-  36   1              delay1us();
-  37   1              byte_num=0;
-  38   1              AD7606_CONVSTA=1;
-  39   1              delay1us();
-  40   1      
-  41   1              Busy=AD7606_BUSY;
-  42   1      
-  43   1              while(Busy==1)
-  44   1              {
-  45   2                      delay1us();
-  46   2                      Busy=AD7606_BUSY;
-  47   2              }
-  48   1      
-  49   1              AD7606_CS = 0;
-  50   1              for(j=0; j<8; j++)
-  51   1              {
-  52   2                      TempA=0;
-  53   2                      TempB=0;
-  54   2                      
-  55   2                      AD7606_RD=0;
-C51 COMPILER V9.01   C8051F340_AD7606                                                      04/29/2015 11:36:29 PAGE 2   
+  35   1              CONVSTA=0;
+  36   1              delay10us();
+  37   1              CONVSTA=1;
+  38   1              delay10us();
+  39   1      
+  40   1              Busy=BUSY;
+  41   1      
+  42   1              while(Busy==1)
+  43   1              {
+  44   2                      delay10us();
+  45   2                      Busy=BUSY;
+  46   2              }
+  47   1      
+  48   1              CS = 0;
+  49   1              for(j=0; j<1; j++)
+  50   1              {
+  51   2                      TempA=0;
+  52   2                      TempB=0;
+  53   2                      for(k=0; k<16; k++)
+  54   2                      {
+  55   3                      RD=0;
+C51 COMPILER V9.01   C8051F340_AD7606                                                      04/29/2015 23:52:47 PAGE 2   
 
-  56   2                      TempA= P3;
-  57   2                      TempB= P1;
-  58   2                      AD7606_RD=1;
-  59   2                      
-  60   2                      Data[byte_num++] =TempA;
-  61   2                      Data[byte_num++] =TempB;
-  62   2              }
-  63   1              AD7606_CS=1;
-  64   1      }
+  56   3                      //TempA = (TempA<<1) + P3;
+  57   3                      //TempB = (TempB<<1) + P1;
+  58   3                      TempA = P3;
+  59   3                      TempB = P1;
+  60   3                      RD=1;
+  61   3                      
+  62   3                      TempA = 00010001;
+  63   3                      TempB = 00100010;
+  64   3      
+  65   3                      Data[0] = TempA;
+  66   3                      Data[1] = TempB;
+  67   3                      }
+  68   2              }
+  69   1              CS=1;
+  70   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    122    ----
+   CODE SIZE        =    100    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     27    ----
+   DATA SIZE        =      9    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

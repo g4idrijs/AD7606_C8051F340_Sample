@@ -12,10 +12,10 @@ namespace USBXpress_TestPanel
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var IOBufSize = 16;
+            var IOBufSize = 2;
             var IOBuf = new Byte[IOBufSize];
             var BytesSucceed = 0;
-            var BytesWriteRequest = IOBufSize - 8;
+            var BytesWriteRequest = IOBufSize;
             var BytesReadRequest = IOBufSize;
 
             // Get information from form to write to device
@@ -54,11 +54,12 @@ namespace USBXpress_TestPanel
             }
 
             //take the newly received array and put it into the form
-            //textBox1.Text += (IOBuf[0]+IOBuf[1] * 256).ToString() + " ";
-            for (int i = 0; i < 16; i++)
+            textBox1.Text += (IOBuf[0]).ToString() + " ";
+            textBox1.Text += (IOBuf[1]).ToString() + " ";
+            /*for (int i = 0; i < 16; i++)
             {
                 textBox1.Text += IOBuf[i].ToString() + " ";
-            }
+            }*/
 
         }
 

@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   USB_MAIN                                                              04/29/2015 11:36:29 PAGE 1   
+C51 COMPILER V9.01   USB_MAIN                                                              04/29/2015 23:52:47 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE USB_MAIN
@@ -11,146 +11,166 @@ line level    source
    2          #include <stddef.h>
    3          #include "USB_API.h"
    4          #include "C8051F340_AD7606.h"
-   5          
-   6          sbit Led = P2^2;                         // LED='1' means ON
-   7          BYTE Out_Packet[8] = {0,0,0,0,0,0,0,0};   // Last packet received from host
-   8          
-   9          extern unsigned char Data[16]; //调用C8051F340——AD7606.c中的数组Date
-  10          
-  11          /*** [BEGIN] USB Descriptor Information [BEGIN] ***/
-  12          code const UINT USB_VID = 0x10C4;
-  13          code const UINT USB_PID = 0xEA61;
-  14          code const BYTE USB_MfrStr[] = {0x1A,0x03,'S',0,'i',0,'l',0,'i',0,'c',0,'o',0,'n',0,' ',0,'L',0,'a',0,'b',
+   5          #include "stdio.h"
+   6          
+   7          #define SYSCLK 12000000
+   8          #define BAUDRATE 9600
+   9          
+  10          sbit Led = P2^2;                         // LED='1' means ON
+  11          BYTE Out_Packet[2] = {0,0};   // Last packet received from host
+  12          extern unsigned char Data[2];
+  13          
+  14          /*** [BEGIN] USB Descriptor Information [BEGIN] ***/
+  15          code const UINT USB_VID = 0x10C4;
+  16          code const UINT USB_PID = 0xEA61;
+  17          code const BYTE USB_MfrStr[] = {0x1A,0x03,'S',0,'i',0,'l',0,'i',0,'c',0,'o',0,'n',0,' ',0,'L',0,'a',0,'b',
              -0,'s',0};                       // Manufacturer String
-  15          code const BYTE USB_ProductStr[] = {0x10,0x03,'U',0,'S',0,'B',0,' ',0,'A',0,'P',0,'I',0}; // Product Desc.
+  18          code const BYTE USB_ProductStr[] = {0x10,0x03,'U',0,'S',0,'B',0,' ',0,'A',0,'P',0,'I',0}; // Product Desc.
              - String
-  16          code const BYTE USB_SerialStr[] = {0x0A,0x03,'i',0,'d',0,'r',0,'i',0};
-  17          code const BYTE USB_MaxPower = 15;            // Max current = 30 mA (15 * 2)
-  18          code const BYTE USB_PwAttributes = 0x80;      // Bus-powered, remote wakeup not supported
-  19          code const UINT USB_bcdDevice = 0x0100;       // Device release number 1.00
-  20          /*** [ END ] USB Descriptor Information [ END ] ***/
-  21          
-  22          void Port_Init(void);
-  23          void Suspend_Device(void);
-  24          void Initialize(void);
+  19          code const BYTE USB_SerialStr[] = {0x0A,0x03,'i',0,'d',0,'r',0,'i',0};
+  20          code const BYTE USB_MaxPower = 15;            // Max current = 30 mA (15 * 2)
+  21          code const BYTE USB_PwAttributes = 0x80;      // Bus-powered, remote wakeup not supported
+  22          code const UINT USB_bcdDevice = 0x0100;       // Device release number 1.00
+  23          /*** [ END ] USB Descriptor Information [ END ] ***/
+  24          
   25          void Oscillator_Init();
-  26          
-  27          void main(void)
-  28          {
-  29   1         PCA0MD &= ~0x40;
-  30   1         Oscillator_Init();
-  31   1         USB_Clock_Start();
-  32   1         USB_Init(USB_VID,USB_PID,USB_MfrStr,USB_ProductStr,USB_SerialStr,USB_MaxPower,USB_PwAttributes,USB_bcdD
+  26          void Port_Init(void);
+  27          void UART0_Init(void);
+  28          void Suspend_Device(void);
+  29          
+  30          void main(void)
+  31          {
+  32   1         PCA0MD &= ~0x40;
+  33   1         Oscillator_Init();
+  34   1         Port_Init();
+  35   1         UART0_Init();
+  36   1         USB_Clock_Start();
+  37   1         USB_Init(USB_VID,USB_PID,USB_MfrStr,USB_ProductStr,USB_SerialStr,USB_MaxPower,USB_PwAttributes,USB_bcdD
              -evice);
-  33   1      
-  34   1         Initialize();
-  35   1         USB_Int_Enable();
-  36   1         AD7606_Init();
-  37   1       
-  38   1         while (1)
-  39   1         {
-  40   2            if (Out_Packet[0] == 1) Led = 1;   // Update status of LED #1
-  41   2            else Led = 0;
-  42   2      
-  43   2                AD7606_Read();
-  44   2                
-  45   2                Block_Write(Data, 16);
-  46   2             
-  47   2         }
-  48   1      }
-  49          
-  50          void Port_Init(void)
-  51          {
-  52   1              P0MDOUT |= 0x1D;
-C51 COMPILER V9.01   USB_MAIN                                                              04/29/2015 11:36:29 PAGE 2   
+  38   1         USB_Int_Enable();
+  39   1      
+  40   1         AD7606_Init();
+  41   1      
+  42   1         //EA = 1;
+  43   1         printf("Start.\n");
+  44   1         while (1)
+  45   1         {
+  46   2            //if (Out_Packet[0] == 1) Led = 1;
+  47   2            //else Led = 0;
+  48   2                AD7606_Read();
+  49   2                printf("%d ",Data[0]);
+  50   2                printf("%d    ",Data[1]);
+  51   2                //Block_Write(Data, 2);    
+  52   2         }
+C51 COMPILER V9.01   USB_MAIN                                                              04/29/2015 23:52:47 PAGE 2   
 
-  53   1              P0MDIN |= 0x02;
-  54   1              P1MDOUT = 0x00;
-  55   1              P1MDIN |= 0xff;
-  56   1              P2MDOUT |= 0x02;
-  57   1              P3MDOUT = 0x00;
-  58   1              P3MDIN |= 0xff;  
-  59   1      
-  60   1              XBR0 = 0x00;
-  61   1              XBR1 = 0x40; // Enable Crossbar
-  62   1      }
-  63          
-  64          void Oscillator_Init()
-  65          {
-  66   1          int i = 0;
-  67   1          FLSCL     = 0x90;
-  68   1          CLKMUL    = 0x80;
-  69   1          for (i = 0; i < 20; i++);    // Wait 5us for initialization
-  70   1          CLKMUL    |= 0xC0;
-  71   1          while ((CLKMUL & 0x20) == 0);
-  72   1          CLKSEL    = 0x03;
-  73   1          OSCICN    = 0x83;
-  74   1      }
-  75          
-  76          void Suspend_Device(void)
-  77          {
-  78   1         // Disable peripherals before calling USB_Suspend()
-  79   1         P0MDIN = 0x00;                       // Port 0 configured as analog input
-  80   1         P1MDIN = 0x00;                       // Port 1 configured as analog input
-  81   1         P2MDIN = 0x00;                       // Port 2 configured as analog input
-  82   1         P3MDIN = 0x00;                       // Port 3 configured as analog input
-  83   1      
-  84   1         USB_Suspend();                       // Put the device in suspend state
-  85   1      
-  86   1         // Once execution returns from USB_Suspend(), device leaves suspend state.
-  87   1         // Reenable peripherals
-  88   1         P0MDIN = 0xFF;
-  89   1         P1MDIN = 0x7F;                       // Port 1 pin 7 set as analog input
-  90   1         P2MDIN = 0xFF;
-  91   1         P3MDIN = 0x01;
-  92   1      }
-  93          
-  94          //-------------------------
-  95          // Initialize
-  96          //-------------------------
-  97          // Called when a DEV_CONFIGURED interrupt is received.
-  98          // - Enables all peripherals needed for the application
-  99          //
- 100          void Initialize(void)
- 101          {
- 102   1         Port_Init();                           // Initialize crossbar and GPIO
- 103   1         //Timer_Init();                          // Initialize timer2
- 104   1         //Adc_Init();                            // Initialize ADC
- 105   1      }
- 106          
- 107          // Example ISR for USB_API
- 108          void  USB_API_TEST_ISR(void) interrupt 17
- 109          {
- 110   1         BYTE INTVAL = Get_Interrupt_Source();
- 111   1      
- 112   1         if (INTVAL & RX_COMPLETE)
- 113   1         {
- 114   2            Block_Read(Out_Packet, 8);
-C51 COMPILER V9.01   USB_MAIN                                                              04/29/2015 11:36:29 PAGE 3   
+  53   1      }
+  54          
+  55          void Port_Init(void)
+  56          {
+  57   1              //P0MDIN &= ~0x08;
+  58   1              P0MDIN = 0xf7;// Port 0 pin 3 set as BUSY input
+  59   1              P0MDOUT = 0x97;
+  60   1              //P0MDOUT |= 0x10;// Set TX pin to push-pull
+  61   1              
+  62   1              //P1MDIN &= ~0xff;
+  63   1              //P1MDIN |= 0xff;
+  64   1              P1MDOUT = 0x00;
+  65   1      
+  66   1              P2MDOUT |= 0x02;
+  67   1              //P3MDIN &= ~0xff;
+  68   1              //P3MDIN |= 0xff;       
+  69   1              P3MDOUT = 0x00;  
+  70   1      
+  71   1              XBR0 = 0x01;// Enable UART0
+  72   1              XBR1 = 0xc0;// Enable crossbar and weak pull-ups
+  73   1      }
+  74          
+  75          void Oscillator_Init()
+  76          {
+  77   1          //CLKSEL = 0x00; // Select the internal osc. as the SYSCLK source
+  78   1          OSCICN = 0x83; // configure internal oscillator for 12MHz / 1
+  79   1              RSTSRC = 0x04; // enable missing clock detector
+  80   1      }
+  81          
+  82          void UART0_Init (void)
+  83          {
+  84   1         SCON0 = 0x10; // SCON0: 8-bit variable bit rate
+  85   1         if (SYSCLK/BAUDRATE/2/256 < 1) {
+  86   2            TH1 = -(SYSCLK/BAUDRATE/2);
+  87   2            CKCON &= ~0x0B;                  // T1M = 1; SCA1:0 = xx
+  88   2            CKCON |=  0x08;
+  89   2         } else if (SYSCLK/BAUDRATE/2/256 < 4) {
+  90   2            TH1 = -(SYSCLK/BAUDRATE/2/4);
+  91   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 01                  
+  92   2            CKCON |=  0x01;
+  93   2         } else if (SYSCLK/BAUDRATE/2/256 < 12) {
+  94   2            TH1 = -(SYSCLK/BAUDRATE/2/12);
+  95   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 00
+  96   2         } else {
+  97   2            TH1 = -(SYSCLK/BAUDRATE/2/48);
+  98   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 10
+  99   2            CKCON |=  0x02;
+ 100   2         }
+ 101   1      
+ 102   1         TL1 = TH1;                          // Init Timer1
+ 103   1         TMOD &= ~0xf0;                      // TMOD: timer 1 in 8-bit autoreload
+ 104   1         TMOD |=  0x20;                       
+ 105   1         TR1 = 1;                            // START Timer1
+ 106   1         TI0 = 1;                            // Indicate TX0 ready
+ 107   1      }
+ 108          
+ 109          void Suspend_Device(void)
+ 110          {
+ 111   1         // Disable peripherals before calling USB_Suspend()
+ 112   1         P0MDIN = 0x00;                       // Port 0 configured as analog input
+ 113   1         P1MDIN = 0x00;                       // Port 1 configured as analog input
+ 114   1         P2MDIN = 0x00;                       // Port 2 configured as analog input
+C51 COMPILER V9.01   USB_MAIN                                                              04/29/2015 23:52:47 PAGE 3   
 
- 115   2         }
+ 115   1         P3MDIN = 0x00;                       // Port 3 configured as analog input
  116   1      
- 117   1         if (INTVAL & DEV_SUSPEND)
- 118   1         {
- 119   2              Suspend_Device();
- 120   2         }
- 121   1      
- 122   1         if (INTVAL & DEV_CONFIGURED)
- 123   1         {
- 124   2            Initialize();
- 125   2         }
- 126   1      }
+ 117   1         USB_Suspend();                       // Put the device in suspend state
+ 118   1      
+ 119   1         // Once execution returns from USB_Suspend(), device leaves suspend state.Reenable peripherals
+ 120   1         P0MDIN = 0xFF;
+ 121   1         P1MDIN = 0x7F;                       // Port 1 pin 7 set as analog input
+ 122   1         P2MDIN = 0xFF;
+ 123   1         P3MDIN = 0x01;
+ 124   1      }
+ 125          
+ 126          // Example ISR for USB_API
+ 127          void  USB_API_TEST_ISR(void) interrupt 17
+ 128          {
+ 129   1         BYTE INTVAL = Get_Interrupt_Source();
+ 130   1      
+ 131   1         if (INTVAL & RX_COMPLETE)
+ 132   1         {
+ 133   2            Block_Read(Out_Packet, 2);
+ 134   2         }
+ 135   1      
+ 136   1         if (INTVAL & DEV_SUSPEND)
+ 137   1         {
+ 138   2              Suspend_Device();
+ 139   2         }
+ 140   1      
+ 141   1         if (INTVAL & DEV_CONFIGURED)
+ 142   1         {
+ 143   2            Initialize();
+*** WARNING C206 IN LINE 143 OF USB_MAIN.C: 'Initialize': missing function-prototype
+ 144   2         }
+ 145   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    319    ----
-   CONSTANT SIZE    =     60    ----
+   CODE SIZE        =    321    ----
+   CONSTANT SIZE    =     79    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      8       1
+   DATA SIZE        =      2       1
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
