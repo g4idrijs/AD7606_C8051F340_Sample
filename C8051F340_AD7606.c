@@ -12,33 +12,53 @@ int byte_num;
 unsigned char H_Data,L_Data;
 unsigned char Data[16];
 
+unsigned char j, k;
+unsigned short int TempA, TempB;
+unsigned char Busy;
+
 void AD7606_Init()
-{	AD7606_REST=0;
-	AD7606_RD=1;
-	AD7606_CS=0;
-	AD7606_CONVSTA=1;
-	AD7606_REST=1;
+{	
+	delay1ms();
 	AD7606_REST=0;
+	AD7606_CS=1;
+	AD7606_CONVSTA=1;
+	AD7606_RD=1;
+	delay1ms();
+	AD7606_REST=1;
+	delay1us();
+	AD7606_REST=0;
+	delay1us();
+	
 }
 void AD7606_Read()
 {
-	int i;
 	AD7606_CONVSTA=0;
+	delay1us();
 	byte_num=0;
 	AD7606_CONVSTA=1;
-	
-	while(AD7606_BUSY);
-	
-	//AD7606_CS=0;
-	
-	for(i=0;i<1;i++)
-	{	
-		AD7606_RD=0;
-		H_Data=P3;
-	    L_Data=P1;
-		AD7606_RD=1;
-		Data[byte_num++] =H_Data;
-		Data[byte_num++] =L_Data;
+	delay1us();
+
+	Busy=AD7606_BUSY;
+
+	while(Busy==1)
+	{
+		delay1us();
+		Busy=AD7606_BUSY;
 	}
-	//AD7606_CS=1;
+
+	AD7606_CS = 0;
+	for(j=0; j<8; j++)
+	{
+		TempA=0;
+		TempB=0;
+		
+		AD7606_RD=0;
+		TempA= P3;
+		TempB= P1;
+		AD7606_RD=1;
+		
+		Data[byte_num++] =TempA;
+		Data[byte_num++] =TempB;
+	}
+	AD7606_CS=1;
 }

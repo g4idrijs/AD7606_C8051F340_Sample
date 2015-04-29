@@ -19,16 +19,7 @@ namespace USBXpress_TestPanel
             var BytesReadRequest = IOBufSize;
 
             // Get information from form to write to device
-            if (checkBox_LED1.Checked) // LED1
-            {
-                IOBuf[0] = 1;
-            }
-            else
-            {
-                IOBuf[0] = 0;
-            }
-
-            if (checkBox_LED2.Checked) // LED2
+            if (checkBox_LED.Checked)
             {
                 IOBuf[1] = 1;
             }
@@ -63,11 +54,11 @@ namespace USBXpress_TestPanel
             }
 
             //take the newly received array and put it into the form
-            for (int i = 0; i < 2; i++)
+            //textBox1.Text += (IOBuf[0]+IOBuf[1] * 256).ToString() + " ";
+            for (int i = 0; i < 16; i++)
             {
-                textBox1.Text += IOBuf[i].ToString();
+                textBox1.Text += IOBuf[i].ToString() + " ";
             }
-            textBox1.Text += " ";
 
         }
 

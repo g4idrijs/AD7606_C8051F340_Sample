@@ -31,13 +31,12 @@ namespace USBXpress_TestPanel
             this.components = new System.ComponentModel.Container();
             this.button_Exit = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.checkBox_LED1 = new System.Windows.Forms.CheckBox();
-            this.checkBox_LED2 = new System.Windows.Forms.CheckBox();
-            this.groupBoxLEDs = new System.Windows.Forms.GroupBox();
+            this.checkBox_LED = new System.Windows.Forms.CheckBox();
+            this.groupBoxLED = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBoxLEDs.SuspendLayout();
+            this.groupBoxLED.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_Exit
@@ -55,36 +54,25 @@ namespace USBXpress_TestPanel
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // checkBox_LED1
+            // checkBox_LED
             // 
-            this.checkBox_LED1.AutoSize = true;
-            this.checkBox_LED1.Location = new System.Drawing.Point(26, 18);
-            this.checkBox_LED1.Name = "checkBox_LED1";
-            this.checkBox_LED1.Size = new System.Drawing.Size(48, 16);
-            this.checkBox_LED1.TabIndex = 0;
-            this.checkBox_LED1.Text = "LED1";
-            this.checkBox_LED1.UseVisualStyleBackColor = true;
+            this.checkBox_LED.AutoSize = true;
+            this.checkBox_LED.Location = new System.Drawing.Point(26, 18);
+            this.checkBox_LED.Name = "checkBox_LED";
+            this.checkBox_LED.Size = new System.Drawing.Size(42, 16);
+            this.checkBox_LED.TabIndex = 0;
+            this.checkBox_LED.Text = "LED";
+            this.checkBox_LED.UseVisualStyleBackColor = true;
             // 
-            // checkBox_LED2
+            // groupBoxLED
             // 
-            this.checkBox_LED2.AutoSize = true;
-            this.checkBox_LED2.Location = new System.Drawing.Point(26, 39);
-            this.checkBox_LED2.Name = "checkBox_LED2";
-            this.checkBox_LED2.Size = new System.Drawing.Size(48, 16);
-            this.checkBox_LED2.TabIndex = 1;
-            this.checkBox_LED2.Text = "LED2";
-            this.checkBox_LED2.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxLEDs
-            // 
-            this.groupBoxLEDs.Controls.Add(this.checkBox_LED2);
-            this.groupBoxLEDs.Controls.Add(this.checkBox_LED1);
-            this.groupBoxLEDs.Location = new System.Drawing.Point(522, 5);
-            this.groupBoxLEDs.Name = "groupBoxLEDs";
-            this.groupBoxLEDs.Size = new System.Drawing.Size(108, 67);
-            this.groupBoxLEDs.TabIndex = 2;
-            this.groupBoxLEDs.TabStop = false;
-            this.groupBoxLEDs.Text = "LED States";
+            this.groupBoxLED.Controls.Add(this.checkBox_LED);
+            this.groupBoxLED.Location = new System.Drawing.Point(522, 5);
+            this.groupBoxLED.Name = "groupBoxLED";
+            this.groupBoxLED.Size = new System.Drawing.Size(108, 42);
+            this.groupBoxLED.TabIndex = 2;
+            this.groupBoxLED.TabStop = false;
+            this.groupBoxLED.Text = "LED States";
             // 
             // textBox1
             // 
@@ -125,11 +113,11 @@ namespace USBXpress_TestPanel
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button_Exit);
-            this.Controls.Add(this.groupBoxLEDs);
+            this.Controls.Add(this.groupBoxLED);
             this.Name = "TestPanel";
             this.Text = "TestPanel";
-            this.groupBoxLEDs.ResumeLayout(false);
-            this.groupBoxLEDs.PerformLayout();
+            this.groupBoxLED.ResumeLayout(false);
+            this.groupBoxLED.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,9 +127,8 @@ namespace USBXpress_TestPanel
 
         private System.Windows.Forms.Button button_Exit;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.CheckBox checkBox_LED1;
-        private System.Windows.Forms.CheckBox checkBox_LED2;
-        private System.Windows.Forms.GroupBox groupBoxLEDs;
+        private System.Windows.Forms.CheckBox checkBox_LED;
+        private System.Windows.Forms.GroupBox groupBoxLED;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

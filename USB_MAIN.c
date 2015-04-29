@@ -3,9 +3,7 @@
 #include "USB_API.h"
 #include "C8051F340_AD7606.h"
 
-sbit Led1 = P2^2;                         // LED='1' means ON
-sbit Led2 = P2^3;
-
+sbit Led = P2^2;                         // LED='1' means ON
 BYTE Out_Packet[8] = {0,0,0,0,0,0,0,0};   // Last packet received from host
 
 extern unsigned char Data[16]; //调用C8051F340——AD7606.c中的数组Date
@@ -39,12 +37,11 @@ void main(void)
  
    while (1)
    {
-      if (Out_Packet[0] == 1) Led1 = 1;   // Update status of LED #1
-      else Led1 = 0;
-      if (Out_Packet[1] == 1) Led2 = 1;   // Update status of LED #2
-      else Led2 = 0;
+      if (Out_Packet[0] == 1) Led = 1;   // Update status of LED #1
+      else Led = 0;
 
 	  AD7606_Read();
+	  
 	  Block_Write(Data, 16);
        
    }
@@ -52,13 +49,13 @@ void main(void)
 
 void Port_Init(void)
 {
-	P0MDOUT = 0xFD;
-	P0MDIN = 0x02;
+	P0MDOUT |= 0x1D;
+	P0MDIN |= 0x02;
 	P1MDOUT = 0x00;
-	P1MDIN = 0xff;
-	P2MDOUT |= 0x0C;
+	P1MDIN |= 0xff;
+	P2MDOUT |= 0x02;
 	P3MDOUT = 0x00;
-	P3MDIN = 0xff;	 
+	P3MDIN |= 0xff;	 
 
 	XBR0 = 0x00;
 	XBR1 = 0x40; // Enable Crossbar
