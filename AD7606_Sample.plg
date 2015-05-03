@@ -12,7 +12,6 @@ assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -22,22 +21,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4441
+Program Size: data=23.0 xdata=449 code=3699
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -47,22 +38,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4448
+Program Size: data=23.0 xdata=449 code=3705
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -72,22 +55,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4448
+Program Size: data=23.0 xdata=449 code=3714
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -97,25 +72,15 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4448
+Program Size: data=23.0 xdata=449 code=3705
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?AD7606_READ?C8051F340_AD7606
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
@@ -124,22 +89,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D30H
-Program Size: data=42.1 xdata=449 code=4416
+Program Size: data=23.0 xdata=449 code=3724
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 8 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -149,22 +106,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4448
+Program Size: data=22.0 xdata=449 code=3721
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -174,22 +123,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4432
+Program Size: data=22.0 xdata=449 code=3721
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -199,22 +140,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4438
+Program Size: data=22.0 xdata=449 code=3721
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -224,22 +157,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4432
+Program Size: data=22.0 xdata=449 code=3712
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(142): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -249,22 +174,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4438
+Program Size: data=22.0 xdata=449 code=3715
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(143): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -274,22 +191,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4437
+Program Size: data=22.0 xdata=449 code=3712
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(143): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -299,22 +208,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4437
+Program Size: data=22.0 xdata=449 code=3717
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(143): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -324,22 +225,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4437
+Program Size: data=22.0 xdata=449 code=3712
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(143): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -349,22 +242,14 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4437
+Program Size: data=22.0 xdata=449 code=3713
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling C8051F340_AD7606.c...
 compiling delay24M.c...
 compiling USB_MAIN.c...
-USB_MAIN.C(143): warning C206: 'Initialize': missing function-prototype
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?DELAY24M
@@ -374,13 +259,57 @@ linking...
     SEGMENT: ?PR?_DELAY_MS?DELAY24M
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_S?DELAY24M
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  INITIALIZE
-    MODULE:  USB_MAIN.obj (USB_MAIN)
-    ADDRESS: 0D4BH
-Program Size: data=42.1 xdata=449 code=4443
+Program Size: data=22.0 xdata=449 code=3710
 creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 7 Warning(s).
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling C8051F340_AD7606.c...
+compiling delay24M.c...
+compiling USB_MAIN.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_US?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_10US?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_S?DELAY24M
+Program Size: data=22.0 xdata=449 code=3710
+creating hex file from "AD7606_Sample"...
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling C8051F340_AD7606.c...
+compiling delay24M.c...
+compiling USB_MAIN.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_US?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_10US?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_S?DELAY24M
+Program Size: data=22.0 xdata=449 code=3717
+creating hex file from "AD7606_Sample"...
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling C8051F340_AD7606.c...
+compiling delay24M.c...
+compiling USB_MAIN.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_US?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_10US?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?DELAY24M
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_S?DELAY24M
+Program Size: data=22.0 xdata=449 code=3717
+creating hex file from "AD7606_Sample"...
+"AD7606_Sample" - 0 Error(s), 4 Warning(s).

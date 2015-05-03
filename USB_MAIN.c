@@ -5,14 +5,13 @@
 #include "stdio.h"
 
 #define SYSCLK 12000000
-#define BAUDRATE 9600
-
-sbit Led = P2^2;                         // LED='1' means ON
-BYTE Out_Packet[2] = {0,0};   // Last packet received from host
+#define BAUDRATE 115200
+sbit Led = P2^3; // LED='1' means ON
+unsigned char Out_Packet[3] = {0,0,0};   // Last packet received from host
 extern unsigned char Data[2];
 
 /*** [BEGIN] USB Descriptor Information [BEGIN] ***/
-code const UINT USB_VID = 0x10C4;
+code const UINT USB_VID = 0x10C4;								
 code const UINT USB_PID = 0xEA61;
 code const BYTE USB_MfrStr[] = {0x1A,0x03,'S',0,'i',0,'l',0,'i',0,'c',0,'o',0,'n',0,' ',0,'L',0,'a',0,'b',0,'s',0};                       // Manufacturer String
 code const BYTE USB_ProductStr[] = {0x10,0x03,'U',0,'S',0,'B',0,' ',0,'A',0,'P',0,'I',0}; // Product Desc. String
@@ -24,7 +23,7 @@ code const UINT USB_bcdDevice = 0x0100;       // Device release number 1.00
 
 void Oscillator_Init();
 void Port_Init(void);
-void UART0_Init(void);
+//void UART0_Init(void);
 void Suspend_Device(void);
 
 void main(void)
@@ -32,7 +31,7 @@ void main(void)
    PCA0MD &= ~0x40;
    Oscillator_Init();
    Port_Init();
-   UART0_Init();
+   //UART0_Init();
    USB_Clock_Start();
    USB_Init(USB_VID,USB_PID,USB_MfrStr,USB_ProductStr,USB_SerialStr,USB_MaxPower,USB_PwAttributes,USB_bcdDevice);
    USB_Int_Enable();
@@ -40,71 +39,72 @@ void main(void)
    AD7606_Init();
 
    //EA = 1;
-   printf("Start.\n");
    while (1)
    {
-      //if (Out_Packet[0] == 1) Led = 1;
-      //else Led = 0;
+      if (Out_Packet[0] == 1) Led = 1;
+      else Led = 0;
 	  AD7606_Read();
-	  printf("%d ",Data[0]);
-	  printf("%d    ",Data[1]);
-	  //Block_Write(Data, 2);    
+	  //printf("%d ",Data[0]);
+	  //printf("%d    ",Data[1]);
+	  Out_Packet[1] = Data[0];
+	  Out_Packet[2] = Data[1];
+	  //Block_Write(Data, 2);
+	  Block_Write(Out_Packet, 3);     
    }
 }
 
 void Port_Init(void)
 {
-	//P0MDIN &= ~0x08;
-	P0MDIN = 0xf7;// Port 0 pin 3 set as BUSY input
-	P0MDOUT = 0x97;
-	//P0MDOUT |= 0x10;// Set TX pin to push-pull
-	
-	//P1MDIN &= ~0xff;
-	//P1MDIN |= 0xff;
-	P1MDOUT = 0x00;
+	P0MDIN |= 0x40;// Port 0 pin 3 set as BUSY input
+	P0MDOUT = 0xcf; //0x10 : Set TX pin to push-pull	
 
-	P2MDOUT |= 0x02;
-	//P3MDIN &= ~0xff;
-	//P3MDIN |= 0xff;	
-	P3MDOUT = 0x00;	 
+	P1MDIN |= 0xff; 
+	P1MDOUT = 0x00;
+	P1 |= 0xff;//Set port latches to '1'
+
+	P2MDOUT = 0x08;
+
+	P3MDIN |= 0xff;	
+	P3MDOUT = 0x00;
+	P3 |= 0xff;//Set port latches to '1'		  
 
 	XBR0 = 0x01;// Enable UART0
-	XBR1 = 0xc0;// Enable crossbar and weak pull-ups
+	XBR1 = 0x40;// Enable crossbar and weak pull-ups
 }
 
 void Oscillator_Init()
-{
-    //CLKSEL = 0x00; // Select the internal osc. as the SYSCLK source
+{							   	
+    CLKSEL = 0x00; // Select the internal osc. as the SYSCLK source
     OSCICN = 0x83; // configure internal oscillator for 12MHz / 1
 	RSTSRC = 0x04; // enable missing clock detector
 }
 
-void UART0_Init (void)
-{
-   SCON0 = 0x10; // SCON0: 8-bit variable bit rate
-   if (SYSCLK/BAUDRATE/2/256 < 1) {
-      TH1 = -(SYSCLK/BAUDRATE/2);
-      CKCON &= ~0x0B;                  // T1M = 1; SCA1:0 = xx
-      CKCON |=  0x08;
-   } else if (SYSCLK/BAUDRATE/2/256 < 4) {
-      TH1 = -(SYSCLK/BAUDRATE/2/4);
-      CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 01                  
-      CKCON |=  0x01;
-   } else if (SYSCLK/BAUDRATE/2/256 < 12) {
-      TH1 = -(SYSCLK/BAUDRATE/2/12);
-      CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 00
-   } else {
-      TH1 = -(SYSCLK/BAUDRATE/2/48);
-      CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 10
-      CKCON |=  0x02;
-   }
-
-   TL1 = TH1;                          // Init Timer1
-   TMOD &= ~0xf0;                      // TMOD: timer 1 in 8-bit autoreload
-   TMOD |=  0x20;                       
-   TR1 = 1;                            // START Timer1
-   TI0 = 1;                            // Indicate TX0 ready
-}
+//void UART0_Init (void)
+//{
+//   SCON0 = 0x10; // SCON0: 8-bit variable bit rate
+//   if (SYSCLK/BAUDRATE/2/256 < 1) {
+//      TH1 = -(SYSCLK/BAUDRATE/2);
+//      CKCON &= ~0x0B;                  // T1M = 1; SCA1:0 = xx
+//      CKCON |=  0x08;
+//   } else if (SYSCLK/BAUDRATE/2/256 < 4) {
+//      TH1 = -(SYSCLK/BAUDRATE/2/4);
+//      CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 01                  
+//      CKCON |=  0x01;
+//   } else if (SYSCLK/BAUDRATE/2/256 < 12) {
+//      TH1 = -(SYSCLK/BAUDRATE/2/12);
+//      CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 00
+//   } else {
+//      TH1 = -(SYSCLK/BAUDRATE/2/48);
+//      CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 10
+//      CKCON |=  0x02;
+//   }
+//
+//   TL1 = TH1;                          // Init Timer1
+//   TMOD &= ~0xf0;                      // TMOD: timer 1 in 8-bit autoreload
+//   TMOD |=  0x20;                       
+//   TR1 = 1;                            // START Timer1
+//   TI0 = 1;                            // Indicate TX0 ready
+//}
 
 void Suspend_Device(void)
 {
@@ -130,7 +130,7 @@ void  USB_API_TEST_ISR(void) interrupt 17
 
    if (INTVAL & RX_COMPLETE)
    {
-      Block_Read(Out_Packet, 2);
+      Block_Read(Out_Packet, 3);
    }
 
    if (INTVAL & DEV_SUSPEND)
@@ -140,6 +140,7 @@ void  USB_API_TEST_ISR(void) interrupt 17
 
    if (INTVAL & DEV_CONFIGURED)
    {
-      Initialize();
+		Oscillator_Init();
+		Port_Init();
    }
 }

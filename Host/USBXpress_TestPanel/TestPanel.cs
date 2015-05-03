@@ -12,7 +12,7 @@ namespace USBXpress_TestPanel
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var IOBufSize = 2;
+            var IOBufSize = 3;
             var IOBuf = new Byte[IOBufSize];
             var BytesSucceed = 0;
             var BytesWriteRequest = IOBufSize;
@@ -21,11 +21,11 @@ namespace USBXpress_TestPanel
             // Get information from form to write to device
             if (checkBox_LED.Checked)
             {
-                IOBuf[1] = 1;
+                IOBuf[0] = 1;
             }
             else
             {
-                IOBuf[1] = 0;
+                IOBuf[0] = 0;
             }
 
             // Send output data out to the board
@@ -53,30 +53,32 @@ namespace USBXpress_TestPanel
                 Application.Exit();
             }
 
-            //take the newly received array and put it into the form
-            textBox1.Text += (IOBuf[0]).ToString() + " ";
-            textBox1.Text += (IOBuf[1]).ToString() + " ";
-            /*for (int i = 0; i < 16; i++)
-            {
-                textBox1.Text += IOBuf[i].ToString() + " ";
-            }*/
-
+            //take the newly received array and put it into the for
+            /*textBox1.Text += (IOBuf[0]) + "|";
+            textBox1.Text += (IOBuf[1]) + "|";
+            textBox1.Text += (IOBuf[2]) + "   ";*/
+            textBox1.Text += (IOBuf[1]*256 + IOBuf[2]).ToString() + " ";
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_Start_Click(object sender, EventArgs e)
         {
             timer1.Start();
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btn_Stop_Click(object sender, EventArgs e)
         {
             timer1.Stop();
         }
-        private void button_Exit_Click(object sender, EventArgs e)
+
+        private void btn_Clear_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
         {
             SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Close(SLUSBXpressDLL.hUSBDevice);
             Application.Exit(); // Exit program
         }
-
     }
 }
