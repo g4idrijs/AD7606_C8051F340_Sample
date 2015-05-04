@@ -37,26 +37,26 @@ namespace USBXpress_TestPanel
             // comboBox_Device
             // 
             this.comboBox_Device.FormattingEnabled = true;
-            this.comboBox_Device.Location = new System.Drawing.Point(104, 28);
+            this.comboBox_Device.Location = new System.Drawing.Point(104, 26);
             this.comboBox_Device.Name = "comboBox_Device";
-            this.comboBox_Device.Size = new System.Drawing.Size(310, 21);
+            this.comboBox_Device.Size = new System.Drawing.Size(310, 20);
             this.comboBox_Device.TabIndex = 0;
             this.comboBox_Device.Text = "None Available";
             // 
             // label_Device
             // 
             this.label_Device.AutoSize = true;
-            this.label_Device.Location = new System.Drawing.Point(12, 31);
+            this.label_Device.Location = new System.Drawing.Point(12, 29);
             this.label_Device.Name = "label_Device";
-            this.label_Device.Size = new System.Drawing.Size(75, 13);
+            this.label_Device.Size = new System.Drawing.Size(77, 12);
             this.label_Device.TabIndex = 1;
             this.label_Device.Text = "Device Name:";
             // 
             // button_Accept
             // 
-            this.button_Accept.Location = new System.Drawing.Point(104, 64);
+            this.button_Accept.Location = new System.Drawing.Point(104, 59);
             this.button_Accept.Name = "button_Accept";
-            this.button_Accept.Size = new System.Drawing.Size(75, 23);
+            this.button_Accept.Size = new System.Drawing.Size(75, 21);
             this.button_Accept.TabIndex = 2;
             this.button_Accept.Text = "&OK";
             this.button_Accept.UseVisualStyleBackColor = true;
@@ -64,9 +64,9 @@ namespace USBXpress_TestPanel
             // 
             // button_Reject
             // 
-            this.button_Reject.Location = new System.Drawing.Point(268, 64);
+            this.button_Reject.Location = new System.Drawing.Point(268, 59);
             this.button_Reject.Name = "button_Reject";
-            this.button_Reject.Size = new System.Drawing.Size(75, 23);
+            this.button_Reject.Size = new System.Drawing.Size(75, 21);
             this.button_Reject.TabIndex = 3;
             this.button_Reject.Text = "&Cancel";
             this.button_Reject.UseVisualStyleBackColor = true;
@@ -74,14 +74,15 @@ namespace USBXpress_TestPanel
             // 
             // SelectScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 103);
+            this.ClientSize = new System.Drawing.Size(426, 95);
             this.Controls.Add(this.button_Reject);
             this.Controls.Add(this.button_Accept);
             this.Controls.Add(this.label_Device);
             this.Controls.Add(this.comboBox_Device);
             this.Name = "SelectScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Device";
             this.Load += new System.EventHandler(this.SelectScreen_Load);
             this.ResumeLayout(false);

@@ -58,3 +58,4 @@ C:\Users\g4idrijs\Documents\GitHub\AD7606_C8051F340_Sample\Host\USBXpress_TestPa
 C:\Users\g4idrijs\Documents\GitHub\AD7606_C8051F340_Sample\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.csproj.GenerateResource.Cache
 C:\Users\g4idrijs\Documents\GitHub\AD7606_C8051F340_Sample\Host\USBXpress_TestPanel\bin\Release\USBXpress_TestPanel.exe
 C:\Users\g4idrijs\Documents\GitHub\AD7606_C8051F340_Sample\Host\USBXpress_TestPanel\bin\Release\USBXpress_TestPanel.pdb
+C:\Users\g4idrijs\Documents\GitHub\AD7606_C8051F340_Sample\Host\USBXpress_TestPanel\bin\Release\ZedGraph.dll

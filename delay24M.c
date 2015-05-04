@@ -8,22 +8,22 @@
 void delay1us(void)
 {
 unsigned char xdata i;
-for(i=10;i>0;i--);
+for(i=6;i>0;i--);
  
 }
 void delay10us(void)   
 {
     unsigned char a,b;
-    for(b=5;b>0;b--)
-        for(a=10;a>0;a--);
+    for(b=10;b>0;b--)
+        for(a=12;a>0;a--);
 }
 
 void delay1ms(void) 
 {
     unsigned char a,b,c;
-    for(c=2;c>0;c--)
-        for(b=222;b>0;b--)
-            for(a=13;a>0;a--);
+    for(c=100;c>0;c--)
+        for(b=10;b>0;b--)
+            for(a=12;a>0;a--);
 }
 void delay1s(void)   
 {
