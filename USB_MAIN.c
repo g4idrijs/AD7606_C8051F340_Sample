@@ -5,9 +5,10 @@
 #include "stdio.h"
 																									
 sbit Led = P2^3;
-unsigned char Out_Packet[32]; // Last packet received from host
+unsigned char Out_Packet[16]; // Last packet received from host
 unsigned char In_Packet[2]; // Last packet received from host
-extern unsigned char Data[32];
+extern unsigned char Data[16];
+unsigned char Ax[32] ={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32};
 unsigned char i;
 
 /*** [BEGIN] USB Descriptor Information [BEGIN] ***/
@@ -34,18 +35,20 @@ void main(void)
    USB_Init(USB_VID,USB_PID,USB_MfrStr,USB_ProductStr,USB_SerialStr,USB_MaxPower,USB_PwAttributes,USB_bcdDevice);
    USB_Int_Enable();
 
-   AD7606_Init();
+   //AD7606_Init();
    
    while (1)
    {
       if (In_Packet[0] == 1) Led = 1;
       else Led = 0;
-	  AD7606_Read();
+	  //AD7606_Read();
 	  /*for(i=0;i<32;i++)
 	  {
 	  Out_Packet[i] = Data[i];
 	  }*/	  
-	  Block_Write(Data, 32);     
+
+	  //Block_Write(Data, 16);
+	  Block_Write(Ax, 32);      
    }
 }
 

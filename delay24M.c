@@ -8,7 +8,7 @@
 void delay1us(void)
 {
 unsigned char xdata i;
-for(i=6;i>0;i--);
+for(i=3;i>0;i--);
  
 }
 void delay10us(void)   

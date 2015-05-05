@@ -193,10 +193,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>24</ColumnNumber>
+      <ColumnNumber>21</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>35</TopLine>
-      <CurrentLine>54</CurrentLine>
+      <TopLine>17</TopLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\C8051F340_AD7606.c</PathWithFileName>
       <FilenameWithoutPath>C8051F340_AD7606.c</FilenameWithoutPath>
@@ -221,10 +221,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>101</ColumnNumber>
+      <ColumnNumber>18</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>20</CurrentLine>
+      <CurrentLine>21</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\delay24M.c</PathWithFileName>
       <FilenameWithoutPath>delay24M.c</FilenameWithoutPath>
@@ -263,10 +263,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>35</ColumnNumber>
+      <ColumnNumber>36</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>31</TopLine>
-      <CurrentLine>52</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>19</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USB_MAIN.c</PathWithFileName>
       <FilenameWithoutPath>USB_MAIN.c</FilenameWithoutPath>
@@ -1658,15 +1658,15 @@
       <Documents>
         <Doc>
           <Name>.\USB_MAIN.c</Name>
-          <ColumnNumber>35</ColumnNumber>
-          <TopLine>31</TopLine>
-          <CurrentLine>52</CurrentLine>
+          <ColumnNumber>36</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>19</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\C8051F340_AD7606.c</Name>
-          <ColumnNumber>24</ColumnNumber>
-          <TopLine>35</TopLine>
-          <CurrentLine>54</CurrentLine>
+          <ColumnNumber>21</ColumnNumber>
+          <TopLine>17</TopLine>
+          <CurrentLine>17</CurrentLine>
         </Doc>
         <Doc>
           <Name>C8051F340_AD7606.H</Name>
@@ -1676,15 +1676,27 @@
         </Doc>
         <Doc>
           <Name>.\USB_API.h</Name>
-          <ColumnNumber>8</ColumnNumber>
+          <ColumnNumber>52</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>25</CurrentLine>
+          <CurrentLine>10</CurrentLine>
         </Doc>
         <Doc>
           <Name>C:\KEIL\C51\INC\CYGNAL\C8051F340.H</Name>
           <ColumnNumber>52</ColumnNumber>
           <TopLine>72</TopLine>
           <CurrentLine>84</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>DELAY24M.H</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>1</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\delay24M.c</Name>
+          <ColumnNumber>18</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>21</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

@@ -14,7 +14,7 @@ sbit OA=P2^4;
 sbit OB=P2^5;
 sbit OC=P2^6;
 sbit RAGE= P2^7;
-unsigned char Data[32];
+unsigned char Data[16];
 
 unsigned char j;
 unsigned char k = 0;
