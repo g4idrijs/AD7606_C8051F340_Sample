@@ -37,20 +37,19 @@ namespace USBXpress_TestPanel
             this.btn_Stop = new System.Windows.Forms.Button();
             this.btn_Start = new System.Windows.Forms.Button();
             this.btn_Clear = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBoxLED.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Exit
             // 
-            this.btn_Exit.Location = new System.Drawing.Point(102, 143);
+            this.btn_Exit.Location = new System.Drawing.Point(70, 624);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(75, 21);
             this.btn_Exit.TabIndex = 8;
@@ -77,7 +76,7 @@ namespace USBXpress_TestPanel
             // groupBoxLED
             // 
             this.groupBoxLED.Controls.Add(this.checkBox_LED);
-            this.groupBoxLED.Location = new System.Drawing.Point(84, 9);
+            this.groupBoxLED.Location = new System.Drawing.Point(52, 490);
             this.groupBoxLED.Name = "groupBoxLED";
             this.groupBoxLED.Size = new System.Drawing.Size(108, 42);
             this.groupBoxLED.TabIndex = 2;
@@ -87,17 +86,16 @@ namespace USBXpress_TestPanel
             // textBox1
             // 
             this.textBox1.AllowDrop = true;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Location = new System.Drawing.Point(0, 3);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(532, 172);
+            this.textBox1.Size = new System.Drawing.Size(202, 445);
             this.textBox1.TabIndex = 9;
             // 
             // btn_Stop
             // 
-            this.btn_Stop.Location = new System.Drawing.Point(102, 86);
+            this.btn_Stop.Location = new System.Drawing.Point(70, 567);
             this.btn_Stop.Name = "btn_Stop";
             this.btn_Stop.Size = new System.Drawing.Size(75, 23);
             this.btn_Stop.TabIndex = 10;
@@ -107,7 +105,7 @@ namespace USBXpress_TestPanel
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(102, 57);
+            this.btn_Start.Location = new System.Drawing.Point(70, 538);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(75, 23);
             this.btn_Start.TabIndex = 11;
@@ -117,37 +115,13 @@ namespace USBXpress_TestPanel
             // 
             // btn_Clear
             // 
-            this.btn_Clear.Location = new System.Drawing.Point(102, 115);
+            this.btn_Clear.Location = new System.Drawing.Point(70, 596);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(75, 23);
             this.btn_Clear.TabIndex = 12;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.UseVisualStyleBackColor = true;
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.AllowDrop = true;
-            this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.btn_Stop);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_Clear);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBoxLED);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_Start);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_Exit);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(803, 172);
-            this.splitContainer1.SplitterDistance = 267;
-            this.splitContainer1.TabIndex = 13;
             // 
             // zedGraphControl1
             // 
@@ -161,37 +135,68 @@ namespace USBXpress_TestPanel
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(803, 487);
+            this.zedGraphControl1.Size = new System.Drawing.Size(1061, 657);
             this.zedGraphControl1.TabIndex = 14;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.zedGraphControl1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 170);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 487);
+            this.panel1.Size = new System.Drawing.Size(1061, 657);
             this.panel1.TabIndex = 15;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.btn_Stop);
+            this.panel2.Controls.Add(this.btn_Exit);
+            this.panel2.Controls.Add(this.btn_Clear);
+            this.panel2.Controls.Add(this.btn_Start);
+            this.panel2.Controls.Add(this.groupBoxLED);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(1054, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(202, 657);
+            this.panel2.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 454);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 472);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "label2";
             // 
             // TestPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(803, 657);
+            this.ClientSize = new System.Drawing.Size(1256, 657);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.splitContainer1);
             this.Name = "TestPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TestPanel";
             this.groupBoxLED.ResumeLayout(false);
             this.groupBoxLED.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -206,8 +211,10 @@ namespace USBXpress_TestPanel
         private System.Windows.Forms.Button btn_Stop;
         private System.Windows.Forms.Button btn_Start;
         private System.Windows.Forms.Button btn_Clear;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -2,8 +2,7 @@
 #include "C8051F340_AD7606.h"
 #include "delay24M.h"
 #include <intrins.h>
-typedef unsigned char     u8;
-typedef unsigned short    u16;
+
 sbit CS=P0^0;
 sbit RD=P0^1;
 sbit CONVSTA=P0^2;
@@ -14,11 +13,11 @@ sbit OA=P2^4;
 sbit OB=P2^5;
 sbit OC=P2^6;
 sbit RAGE= P2^7;
-unsigned char Data[16];
+U8 Out_Packet[16];
 
-unsigned char j;
-unsigned char k = 0;
-unsigned char Busy;
+U8 j;
+U8 k = 0;
+U8 Busy;
 
 void AD7606_Init()
 {	
@@ -55,8 +54,8 @@ void AD7606_Read()
 		for(k=0; k<8; k++)
 		{
 			RD=0;
-			Data[k*2] = P1;
-			Data[k*2+1] = P3;
+			Out_Packet[k*2] = P1;
+			Out_Packet[k*2+1] = P3;
 			RD=1;
 		}
 	}

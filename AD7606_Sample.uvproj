@@ -386,6 +386,11 @@
               <FileType>4</FileType>
               <FilePath>.\USBX_F34X.LIB</FilePath>
             </File>
+            <File>
+              <FileName>compiler_defs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\compiler_defs.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   DELAY24M                                                              05/05/2015 11:38:19 PAGE 1   
+C51 COMPILER V9.01   DELAY24M                                                              05/07/2015 17:10:08 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE DELAY24M
@@ -62,7 +62,7 @@ line level    source
   52          void delay_ms(unsigned char T)  
   53          {
   54   1          while(T--)
-C51 COMPILER V9.01   DELAY24M                                                              05/05/2015 11:38:19 PAGE 2   
+C51 COMPILER V9.01   DELAY24M                                                              05/07/2015 17:10:08 PAGE 2   
 
   55   1              {
   56   2                      delay1ms();       
