@@ -362,16 +362,6 @@
               <FilePath>.\C8051F340_AD7606.h</FilePath>
             </File>
             <File>
-              <FileName>delay24M.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\delay24M.c</FilePath>
-            </File>
-            <File>
-              <FileName>delay24M.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\delay24M.h</FilePath>
-            </File>
-            <File>
               <FileName>USB_API.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\USB_API.h</FilePath>
@@ -390,6 +380,16 @@
               <FileName>compiler_defs.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\compiler_defs.h</FilePath>
+            </File>
+            <File>
+              <FileName>Delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>Delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Delay.h</FilePath>
             </File>
           </Files>
         </Group>

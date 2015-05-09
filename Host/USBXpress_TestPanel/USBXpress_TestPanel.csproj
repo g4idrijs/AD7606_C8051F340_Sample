@@ -66,6 +66,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Complex.cs" />
+    <Compile Include="FFT_IFFT.cs" />
     <Compile Include="SelectScreen.cs">
       <SubType>Form</SubType>
     </Compile>

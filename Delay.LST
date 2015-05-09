@@ -1,0 +1,102 @@
+C51 COMPILER V9.01   DELAY                                                                 05/09/2015 12:33:23 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE DELAY
+OBJECT MODULE PLACED IN Delay.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Delay.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"Delay.h"
+   2          
+   3          /*void delay1us(void)   
+   4          {
+   5              unsigned char a;
+   6                  a=0;
+   7          } */
+   8          void delay0us(void)
+   9          {
+  10   1              unsigned char xdata i;
+  11   1              for(i=1;i>0;i--);
+  12   1      }
+  13          void delay1us(void)
+  14          {
+  15   1              unsigned char xdata i;
+  16   1              for(i=6;i>0;i--);
+  17   1      }
+  18          void delay5us(void)   
+  19          {
+  20   1          unsigned char a,b;
+  21   1          for(b=5;b>0;b--)
+  22   1              for(a=6;a>0;a--);
+  23   1      }
+  24          
+  25          void delay10us(void)   
+  26          {
+  27   1          unsigned char a,b;
+  28   1          for(b=10;b>0;b--)
+  29   1              for(a=6;a>0;a--);
+  30   1      }
+  31          
+  32          void delay1ms(void) 
+  33          {
+  34   1          unsigned char a,b,c;
+  35   1          for(c=100;c>0;c--)
+  36   1              for(b=10;b>0;b--)
+  37   1                  for(a=6;a>0;a--);
+  38   1      }
+  39          void delay1s(void)   
+  40          {
+  41   1          unsigned char a,b,c;
+  42   1          for(c=100000;c>0;c--)
+  43   1              for(b=10;b>0;b--)
+  44   1                  for(a=6;a>0;a--);
+  45   1      }
+  46          //*******************************************************************************//
+  47          //函数功能:24M延时函数
+  48          //*******************************************************************************//     
+  49          void delay_us(unsigned char T)  //延时T=1,实际延时2us;T=5 or 10 延时误差小，仅用于短时间延时，较长延时用其
+             -它延时函数
+  50          {
+  51   1          while(T--)
+  52   1              {
+  53   2                      delay1us();       
+  54   2              }
+C51 COMPILER V9.01   DELAY                                                                 05/09/2015 12:33:23 PAGE 2   
+
+  55   1      }
+  56          void delay_10us(unsigned char T)  
+  57          {
+  58   1          while(T--)
+  59   1              {
+  60   2                      delay10us();      
+  61   2              }
+  62   1      }
+  63          void delay_ms(unsigned char T)  
+  64          {
+  65   1          while(T--)
+  66   1              {
+  67   2                      delay1ms();       
+  68   2              }
+  69   1      }
+  70          void delay_s(unsigned char T)   
+  71          {
+  72   1          while(T--)
+  73   1              {
+  74   2                      delay1s();        
+  75   2              }
+  76   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    130    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       2
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

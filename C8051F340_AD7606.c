@@ -1,6 +1,6 @@
 #include <c8051f340.h>
 #include "C8051F340_AD7606.h"
-#include "delay24M.h"
+#include "Delay.h"
 #include <intrins.h>
 
 sbit CS=P0^0;
@@ -13,14 +13,18 @@ sbit OA=P2^4;
 sbit OB=P2^5;
 sbit OC=P2^6;
 sbit RAGE= P2^7;
-U8 Out_Packet[16];
+sbit Led = P2^3;
+U8 Out_Packet[32];
 
 U8 j;
-U8 k = 0;
+U8 k;
 U8 Busy;
+U8 temp;
+U8 t = 0;
 
 void AD7606_Init()
 {	
+	Led=1;
 	delay1ms();
 	REST=0;
 	OA=0;
@@ -39,25 +43,31 @@ void AD7606_Init()
 void AD7606_Read()
 {
 	CONVSTA=0; CONVSTB=0;
-	delay1us();
+	delay0us();
 	CONVSTA=1; CONVSTB=1;
-	delay1us();
+	delay0us();
 	Busy=BUSY;
 	while(Busy==1)
 	{
-		delay1us();
+		delay0us();
 		Busy=BUSY;
 	}
 	CS = 0;
-	for(j=0; j<1; j++)
+	for(k=0; k<4; k++)
 	{
-		for(k=0; k<8; k++)
+		RD=0;
+		if(k==0)
 		{
-			RD=0;
-			Out_Packet[k*2] = P1;
-			Out_Packet[k*2+1] = P3;
-			RD=1;
-		}
+			Out_Packet[t*2] = P1;
+			Out_Packet[(t++)*2+1] = P3;	
+		}			
+		RD=1;
 	}
+
+//	RD=0;
+//	Out_Packet[t*2] = P1;
+//	Out_Packet[(t++)*2+1] = P3;
+//	RD=1;
+
 	CS=1;
 }

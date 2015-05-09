@@ -13,7 +13,7 @@ namespace USBXpress_TestPanel
 
         private void button_Reject_Click(object sender, EventArgs e)
         {
-            Application.Exit(); 
+            Application.Exit();
         }
 
         private void SelectScreen_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace USBXpress_TestPanel
 
             if (SLUSBXpressDLL.Status == SLUSBXpressDLL.SI_SUCCESS)
             {
-                for (int i = 0; i < DevNum; i++)
+                for (var i = 0; i < DevNum; i++)
                 {
                     SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_GetProductString(i, DevStr,
                         SLUSBXpressDLL.SI_RETURN_SERIAL_NUMBER);
@@ -42,7 +42,6 @@ namespace USBXpress_TestPanel
                 MessageBox.Show("Error finding USB device.  Aborting application.");
                 Application.Exit();
             }
-
 
 
             // Automatically open the device

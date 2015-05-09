@@ -191,12 +191,12 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>19</ColumnNumber>
+      <ColumnNumber>77</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>35</TopLine>
-      <CurrentLine>56</CurrentLine>
+      <TopLine>56</TopLine>
+      <CurrentLine>67</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\C8051F340_AD7606.c</PathWithFileName>
       <FilenameWithoutPath>C8051F340_AD7606.c</FilenameWithoutPath>
@@ -221,10 +221,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>25</ColumnNumber>
+      <ColumnNumber>11</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>18</CurrentLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\delay24M.c</PathWithFileName>
       <FilenameWithoutPath>delay24M.c</FilenameWithoutPath>
@@ -263,10 +263,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>26</ColumnNumber>
+      <ColumnNumber>83</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>31</TopLine>
-      <CurrentLine>51</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>16</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USB_MAIN.c</PathWithFileName>
       <FilenameWithoutPath>USB_MAIN.c</FilenameWithoutPath>
@@ -285,33 +285,21 @@
       <PathWithFileName>.\USBX_F34X.LIB</PathWithFileName>
       <FilenameWithoutPath>USBX_F34X.LIB</FilenameWithoutPath>
     </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>9</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\compiler_defs.h</PathWithFileName>
+      <FilenameWithoutPath>compiler_defs.h</FilenameWithoutPath>
+    </File>
   </Group>
-
-  <AlienFiles>
-    <PathWithFilename>C:\KEIL\C51\INC\CYGNAL\C8051F340.H</PathWithFilename>
-    <TopLine>72</TopLine>
-    <CurrentLine>84</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
 
   <WinLayout>
     <sActiveDebugView>Default</sActiveDebugView>
@@ -1658,39 +1646,27 @@
       <Documents>
         <Doc>
           <Name>.\USB_MAIN.c</Name>
-          <ColumnNumber>26</ColumnNumber>
-          <TopLine>31</TopLine>
-          <CurrentLine>51</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\USB_API.h</Name>
-          <ColumnNumber>30</ColumnNumber>
-          <TopLine>11</TopLine>
-          <CurrentLine>30</CurrentLine>
+          <ColumnNumber>83</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>16</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\C8051F340_AD7606.c</Name>
-          <ColumnNumber>19</ColumnNumber>
-          <TopLine>35</TopLine>
-          <CurrentLine>56</CurrentLine>
+          <ColumnNumber>77</ColumnNumber>
+          <TopLine>56</TopLine>
+          <CurrentLine>67</CurrentLine>
         </Doc>
         <Doc>
-          <Name>C:\KEIL\C51\INC\CYGNAL\C8051F340.H</Name>
-          <ColumnNumber>52</ColumnNumber>
-          <TopLine>72</TopLine>
-          <CurrentLine>84</CurrentLine>
+          <Name>.\delay24M.c</Name>
+          <ColumnNumber>11</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>17</CurrentLine>
         </Doc>
         <Doc>
           <Name>DELAY24M.H</Name>
           <ColumnNumber>0</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>1</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\delay24M.c</Name>
-          <ColumnNumber>25</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>18</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

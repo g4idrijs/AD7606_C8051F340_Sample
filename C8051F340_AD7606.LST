@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   C8051F340_AD7606                                                      05/07/2015 17:10:08 PAGE 1   
+C51 COMPILER V9.01   C8051F340_AD7606                                                      05/09/2015 12:33:23 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE C8051F340_AD7606
@@ -9,7 +9,7 @@ line level    source
 
    1          #include <c8051f340.h>
    2          #include "C8051F340_AD7606.h"
-   3          #include "delay24M.h"
+   3          #include "Delay.h"
    4          #include <intrins.h>
    5          
    6          sbit CS=P0^0;
@@ -22,64 +22,74 @@ line level    source
   13          sbit OB=P2^5;
   14          sbit OC=P2^6;
   15          sbit RAGE= P2^7;
-  16          U8 Out_Packet[16];
-  17          
-  18          U8 j;
-  19          U8 k = 0;
-  20          U8 Busy;
-  21          
-  22          void AD7606_Init()
-  23          {       
-  24   1              delay1ms();
-  25   1              REST=0;
-  26   1              OA=0;
-  27   1              OB=0;
-  28   1              OC=0;
-  29   1              RAGE=0;
-  30   1              CS=1;
-  31   1              CONVSTA=1; CONVSTB=1;
-  32   1              RD=1;
-  33   1              delay1ms();
-  34   1              REST=1;
-  35   1              delay1ms();
-  36   1              REST=0;
+  16          sbit Led = P2^3;
+  17          U8 Out_Packet[32];
+  18          
+  19          U8 j;
+  20          U8 k;
+  21          U8 Busy;
+  22          U8 temp;
+  23          U8 t = 0;
+  24          
+  25          void AD7606_Init()
+  26          {       
+  27   1              Led=1;
+  28   1              delay1ms();
+  29   1              REST=0;
+  30   1              OA=0;
+  31   1              OB=0;
+  32   1              OC=0;
+  33   1              RAGE=0;
+  34   1              CS=1;
+  35   1              CONVSTA=1; CONVSTB=1;
+  36   1              RD=1;
   37   1              delay1ms();
-  38   1      }
-  39          void AD7606_Read()
-  40          {
-  41   1              CONVSTA=0; CONVSTB=0;
-  42   1              delay1us();
-  43   1              CONVSTA=1; CONVSTB=1;
-  44   1              delay1us();
-  45   1              Busy=BUSY;
-  46   1              while(Busy==1)
-  47   1              {
-  48   2                      delay1us();
-  49   2                      Busy=BUSY;
-  50   2              }
-  51   1              CS = 0;
-  52   1              for(j=0; j<1; j++)
-  53   1              {
-  54   2                      for(k=0; k<8; k++)
-  55   2                      {
-C51 COMPILER V9.01   C8051F340_AD7606                                                      05/07/2015 17:10:08 PAGE 2   
+  38   1              REST=1;
+  39   1              delay1ms();
+  40   1              REST=0;
+  41   1              delay1ms();
+  42   1      }
+  43          void AD7606_Read()
+  44          {
+  45   1              CONVSTA=0; CONVSTB=0;
+  46   1              delay0us();
+  47   1              CONVSTA=1; CONVSTB=1;
+  48   1              delay0us();
+  49   1              Busy=BUSY;
+  50   1              while(Busy==1)
+  51   1              {
+  52   2                      delay0us();
+  53   2                      Busy=BUSY;
+  54   2              }
+  55   1              CS = 0;
+C51 COMPILER V9.01   C8051F340_AD7606                                                      05/09/2015 12:33:23 PAGE 2   
 
-  56   3                              RD=0;
-  57   3                              Out_Packet[k*2] = P1;
-  58   3                              Out_Packet[k*2+1] = P3;
-  59   3                              RD=1;
-  60   3                      }
-  61   2              }
-  62   1              CS=1;
-  63   1      }
+  56   1              for(k=0; k<4; k++)
+  57   1              {
+  58   2                      RD=0;
+  59   2                      if(k==0)
+  60   2                      {
+  61   3                              Out_Packet[t*2] = P1;
+  62   3                              Out_Packet[(t++)*2+1] = P3;     
+  63   3                      }                       
+  64   2                      RD=1;
+  65   2              }
+  66   1      
+  67   1      //      RD=0;
+  68   1      //      Out_Packet[t*2] = P1;
+  69   1      //      Out_Packet[(t++)*2+1] = P3;
+  70   1      //      RD=1;
+  71   1      
+  72   1              CS=1;
+  73   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    110    ----
+   CODE SIZE        =    109    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     19    ----
+   DATA SIZE        =     37    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
