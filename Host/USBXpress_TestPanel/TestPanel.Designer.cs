@@ -105,11 +105,11 @@ namespace USBXpress_TestPanel
             // textBox1
             // 
             this.textBox1.AllowDrop = true;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Location = new System.Drawing.Point(3, 126);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(196, 517);
+            this.textBox1.Size = new System.Drawing.Size(196, 394);
             this.textBox1.TabIndex = 9;
             // 
             // btn_Stop

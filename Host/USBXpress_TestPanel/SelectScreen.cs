@@ -44,27 +44,29 @@ namespace USBXpress_TestPanel
             }
 
 
-            // Automatically open the device
-            /*SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_SetTimeouts(10000, 10000);
-            SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Open(comboBox_Device.SelectedIndex, ref SLUSBXpressDLL.hUSBDevice);
+            //// Automatically open the device
+            //SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_SetTimeouts(10000, 10000);
+            //SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Open(comboBox_Device.SelectedIndex, ref SLUSBXpressDLL.hUSBDevice);
 
-            if (SLUSBXpressDLL.Status != SLUSBXpressDLL.SI_SUCCESS)
-            {
-                MessageBox.Show("Error opening device: " + comboBox_Device.Text +
-                                ". Application is aborting. Reset hardware and try again.");
-                Application.Exit();
-            }
+            //if (SLUSBXpressDLL.Status != SLUSBXpressDLL.SI_SUCCESS)
+            //{
+            //    MessageBox.Show("Error opening device: " + comboBox_Device.Text +
+            //                    ". Application is aborting. Reset hardware and try again.");
+            //    Application.Exit();
+            //}
 
-            var TPForm = new TestPanel();
-            ActiveForm.Hide();
-            TPForm.Show();*/
+            ////ActiveForm.Hide();
+            
+            //var TPForm = new TestPanel();
+            //TPForm.Show();
+            ////SelectScreen.ActiveForm.Close();
         }
 
         private void button_Accept_Click(object sender, EventArgs e)
         {
             // when ok is clicked, set the timeouts on the device
             // and open the device
-            SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_SetTimeouts(10000, 10000);
+            SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_SetTimeouts(360, 360);//10000
             SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Open(comboBox_Device.SelectedIndex, ref SLUSBXpressDLL.hUSBDevice);
 
             if (SLUSBXpressDLL.Status != SLUSBXpressDLL.SI_SUCCESS)

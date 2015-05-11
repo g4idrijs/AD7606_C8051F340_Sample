@@ -1,15 +1,18 @@
 //#include "compiler_defs.h"
 #include <c8051f340.h>
 #include <stddef.h>
+#include "USB_MAIN.h"
 #include "USB_API.h"
+#include "USB_register.h"
+#include "Delay.h"
 #include "C8051F340_AD7606.h"
 #include "stdio.h"
 
 U8 In_Packet[2]; // Last packet received from host
-extern U8 Out_Packet[32];
 extern U8 t;
-U8 Ax[16] ={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 U8 i;
+extern U8 xdata out[2];
+U8 xdata out_test[128];
 
 /*** [BEGIN] USB Descriptor Information [BEGIN] ***/
 code const UINT USB_VID = 0x10C4;								
@@ -29,25 +32,33 @@ void Suspend_Device(void);
 void main(void)
 {
    PCA0MD &= ~0x40;
+
+   //Oscillator_Init();
    
    USB_Clock_Start();
    USB_Init(USB_VID,USB_PID,USB_MfrStr,USB_ProductStr,USB_SerialStr,USB_MaxPower,USB_PwAttributes,USB_bcdDevice);
    USB_Int_Enable();
+   USB0_Init();  
 
-   Oscillator_Init();
+   
    Port_Init();
-
    AD7606_Init();
+
+   for(i=0;i<128;i++)
+   {
+   	out_test[i]=i;
+   }
    
    while (1)
    {
 	  AD7606_Read();
-	  if(t==16)
-	  {
-	  	Block_Write(Out_Packet, 32);
-		t=0;
-	  }
-	  //Block_Write(Ax, 16);      
+//	  if(t==2)
+//	  {
+//	  	Block_Write(out, 4);
+//		t=0;
+//	  }
+	Block_Write(out, 2);
+	  //Block_Write(out_test, 128);      
    }
 }
 
@@ -73,10 +84,39 @@ void Port_Init(void)
 
 void Oscillator_Init()
 {							   	
-    CLKSEL = 0x00; // Select the internal osc. as the SYSCLK source
-    OSCICN = 0x83; // configure internal oscillator for 12MHz / 1
-	RSTSRC = 0x04; // enable missing clock detector
+//    CLKSEL = 0x00; // Select the internal osc. as the SYSCLK source
+//    OSCICN = 0x83; // configure internal oscillator for 12MHz / 1
+//	RSTSRC = 0x04; // enable missing clock detector 
+	   
+	OSCICN |= 0x03;// Configure internal oscillator for its maximum frequency and enable missing clock detector   
+	CLKSEL  = SYS_INT_OSC; // Select System clock   
+	//CLKSEL |= USB_INT_OSC_DIV_2; // Select USB clock   
+
+//	OSCICN |= 0x03; // Configure internal oscillator for its maximum frequency and enable missing clock detector   
+//	CLKMUL  = 0x00; // Select internal oscillator as input to clock multiplier   
+//	CLKMUL |= 0x80; // Enable clock multiplier   
+//	delay_us(1000); // Delay for clock multiplier to begin   
+//	CLKMUL |= 0xC0; // Initialize the clock multiplier   
+//	delay_us(1000); // Delay for clock multiplier to begin   
+//   
+//	while(!(CLKMUL & 0x20)); // Wait for multiplier to lock   
+//	CLKSEL  = SYS_INT_OSC; // Select system clock   
+//	CLKSEL |= USB_4X_CLOCK; // Select USB clock 
 }
+
+void USB0_Init(void)   
+{    
+   POLL_WRITE_BYTE(POWER,  0x08);      // Force Asynchronous USB Reset   
+   POLL_WRITE_BYTE(IN1IE,  0x07);      // Enable Endpoint 0-2 in interrupts   
+   POLL_WRITE_BYTE(OUT1IE, 0x07);      // Enable Endpoint 0-2 out interrupts   
+   POLL_WRITE_BYTE(CMIE,   0x07);      // Enable Reset,Resume,Suspend interrupts     
+   USB0XCN = 0xE0;                     // Enable transceiver; select full speed   
+   POLL_WRITE_BYTE(CLKREC, 0x80);      // Enable clock recovery, single-step mode disabled    
+   
+   EIE1 |= 0x02;                       // Enable USB0 Interrupts   
+   EA = 1; // Global Interrupt enable;Enable USB0 by clearing the USB;Inhibit bit   
+   POLL_WRITE_BYTE(POWER,  0x01);      // and enable suspend detection   
+}  
 
 void Suspend_Device(void)
 {
