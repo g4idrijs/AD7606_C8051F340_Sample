@@ -13,18 +13,13 @@ sbit OA=P2^4;
 sbit OB=P2^5;
 sbit OC=P2^6;
 sbit RAGE= P2^7;
-sbit Led = P2^3;
 U8 xdata out[2];
 
-U8 j;
-U8 k;
 U8 Busy;
-U8 temp;
 U8 t = 0;
 
 void AD7606_Init()
-{	
-	Led=1;
+{
 	delay_us(250);
 	REST=0;
 	OA=0;OB=0;OC=0;RAGE=0;
@@ -42,30 +37,15 @@ void AD7606_Read()
 	CONVSTA=0; CONVSTB=0;
 	delay0us();
 	CONVSTA=1; CONVSTB=1;
-	//delay0us();
+	delay0us();
 	Busy=BUSY;
 	while(Busy==1)
 	{
-		delay0us();
+		delay1us();
 		Busy=BUSY;
-	}
-//	CS = 0;
-//	for(k=0; k<1; k++)
-//	{
-//		RD=0;
-//		if(k==0)
-//		{
-//			out[t*2] = P1;
-//			out[(t++)*2+1] = P3;	
-//		}			
-//		RD=1;
-//	}
-//	CS=1;
-	
+	}	
 	CS=0;RD=0;
-//	out[t*2] = P1;
-//	out[(t++)*2+1] = P3;
-	out[0]=P1;
-	out[1]=P3;
+	out[t*2] = P3;
+	out[(t++)*2+1] = P1;
 	RD=1;CS=1;
 }

@@ -13,7 +13,7 @@ namespace USBXpress_TestPanel
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SelectScreen());
+            Application.Run(new TestPanel());
         }
     }
 }

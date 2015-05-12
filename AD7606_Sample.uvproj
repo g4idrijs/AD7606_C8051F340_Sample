@@ -391,6 +391,16 @@
               <FileType>5</FileType>
               <FilePath>.\Delay.h</FilePath>
             </File>
+            <File>
+              <FileName>USB_MAIN.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USB_MAIN.h</FilePath>
+            </File>
+            <File>
+              <FileName>F34x_USB_Register.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\F34x_USB_Register.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

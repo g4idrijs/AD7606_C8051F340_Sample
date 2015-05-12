@@ -68,22 +68,12 @@
   <ItemGroup>
     <Compile Include="Complex.cs" />
     <Compile Include="FFT_IFFT.cs" />
-    <Compile Include="SelectScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SelectScreen.Designer.cs">
-      <DependentUpon>SelectScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SelectScreen.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>SelectScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestPanel.resx">
       <SubType>Designer</SubType>

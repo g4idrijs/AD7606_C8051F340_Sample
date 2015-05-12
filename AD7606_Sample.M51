@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        05/11/2015  20:29:48  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/12/2015  23:08:23  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -37,10 +37,10 @@ LINK MAP OF MODULE:  AD7606_Sample (?C_STARTUP)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0005H     UNIT         ?DT?C8051F340_AD7606
-            DATA    000DH     0003H     UNIT         ?DT?USB_MAIN
-            DATA    0010H     0001H     UNIT         _DATA_GROUP_
-            IDATA   0011H     0001H     UNIT         ?STACK
+            DATA    0008H     0003H     UNIT         ?DT?USB_MAIN
+            DATA    000BH     0002H     UNIT         ?DT?C8051F340_AD7606
+            DATA    000DH     0001H     UNIT         _DATA_GROUP_
+            IDATA   000EH     0001H     UNIT         ?STACK
 
             * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
             XDATA   0000H     0080H     UNIT         ?XD?USB_MAIN
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  AD7606_Sample (?C_STARTUP)
             XDATA   078EH     0003H     ABSOLUTE     
             XDATA   0791H     0001H     ABSOLUTE     
             XDATA   0792H     0001H     ABSOLUTE     
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 2
 
 
             XDATA   0793H     0001H     ABSOLUTE     
@@ -85,8 +85,8 @@ LINK MAP OF MODULE:  AD7606_Sample (?C_STARTUP)
             CODE    003FH     0004H     UNIT         ?C_INITSEG
             CODE    0043H     0003H     ABSOLUTE     
             CODE    0046H     003AH     UNIT         ?CO?USB_API
-            CODE    0080H     0007H     UNIT         ?PR?OSCILLATOR_INIT?USB_MAIN
-                    0087H     0004H                  *** GAP ***
+            CODE    0080H     0001H     UNIT         ?PR?SYSCLK_INIT?USB_MAIN
+                    0081H     000AH                  *** GAP ***
             CODE    008BH     0003H     ABSOLUTE     
             CODE    008EH     0233H     UNIT         ?PR?USBXCORE_HANDLE_SETUP?USB_API
             CODE    02C1H     0151H     UNIT         ?PR?USBXCORE_USB_ISR?USB_API
@@ -95,37 +95,38 @@ LINK MAP OF MODULE:  AD7606_Sample (?C_STARTUP)
             CODE    065AH     00CDH     UNIT         ?PR?USBXCORE_VENDOR_USB_API?USB_API
             CODE    0727H     00B2H     UNIT         ?PR?USBXCORE_GET_DESCRIPTOR?USB_API
             CODE    07D9H     00AFH     UNIT         ?PR?_BLOCK_READ?BLOCK_READ
-            CODE    0888H     0096H     UNIT         ?PR?MAIN?USB_MAIN
-            CODE    091EH     008CH     UNIT         ?C_C51STARTUP
-            CODE    09AAH     0073H     UNIT         ?PR?USBXCORE_GET_STATUS?USB_API
-            CODE    0A1DH     0060H     UNIT         ?PR?USB_API_TEST_ISR?USB_MAIN
-            CODE    0A7DH     005CH     UNIT         ?C?LIB_CODE
-            CODE    0AD9H     005AH     UNIT         ?PR?USBXCORE_SET_CONFIGURATION?USB_API
-            CODE    0B33H     0058H     UNIT         ?PR?USBXCORE_CLEAR_FEATURE?USB_API
-            CODE    0B8BH     0057H     UNIT         ?PR?USBXCORE_SET_FEATURE?USB_API
-            CODE    0BE2H     004BH     UNIT         ?PR?USB0_INIT?USB_MAIN
-            CODE    0C2DH     0047H     UNIT         ?PR?USBXCORE_GET_CONFIGURATION?USB_API
-            CODE    0C74H     0038H     UNIT         ?PR?USB_CLOCK_START?USB_CLOCK_START
-            CODE    0CACH     0030H     UNIT         ?PR?AD7606_READ?C8051F340_AD7606
-            CODE    0CDCH     002CH     UNIT         ?PR?AD7606_INIT?C8051F340_AD7606
-            CODE    0D08H     002BH     UNIT         ?PR?USB_SUSPEND?USB_SUSPEND
-            CODE    0D33H     0027H     UNIT         ?PR?USBXCORE_USB_RESET?USB_API
-            CODE    0D5AH     0027H     UNIT         ?PR?USBXCORE_GET_INTERFACE?USB_API
-            CODE    0D81H     0022H     UNIT         ?PR?USBXCORE_JUMP_ISR?USB_JUMP_ISR
-            CODE    0DA3H     0021H     UNIT         ?PR?PORT_INIT?USB_MAIN
-            CODE    0DC4H     0020H     UNIT         ?PR?USBXCORE_SET_ADDRESS?USB_API
-            CODE    0DE4H     001DH     UNIT         ?PR?USBXCORE_FORCE_STALL?USB_API
-            CODE    0E01H     0019H     UNIT         ?PR?SUSPEND_DEVICE?USB_MAIN
-            CODE    0E1AH     0019H     UNIT         ?PR?USB_INT_ENABLE?USB_INT_ENABLE
-            CODE    0E33H     0014H     UNIT         ?PR?USBXCORE_SET_SOP?USB_API
-            CODE    0E47H     0010H     UNIT         ?PR?DELAY0US?DELAY
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 3
+            CODE    0888H     0091H     UNIT         ?PR?MAIN?USB_MAIN
+            CODE    0919H     008CH     UNIT         ?C_C51STARTUP
+            CODE    09A5H     0073H     UNIT         ?PR?USBXCORE_GET_STATUS?USB_API
+            CODE    0A18H     0060H     UNIT         ?PR?USB_API_TEST_ISR?USB_MAIN
+            CODE    0A78H     005CH     UNIT         ?C?LIB_CODE
+            CODE    0AD4H     005AH     UNIT         ?PR?USBXCORE_SET_CONFIGURATION?USB_API
+            CODE    0B2EH     0058H     UNIT         ?PR?USBXCORE_CLEAR_FEATURE?USB_API
+            CODE    0B86H     0057H     UNIT         ?PR?USBXCORE_SET_FEATURE?USB_API
+            CODE    0BDDH     004CH     UNIT         ?PR?AD7606_READ?C8051F340_AD7606
+            CODE    0C29H     0047H     UNIT         ?PR?USBXCORE_GET_CONFIGURATION?USB_API
+            CODE    0C70H     0038H     UNIT         ?PR?USB_CLOCK_START?USB_CLOCK_START
+            CODE    0CA8H     002BH     UNIT         ?PR?USB_SUSPEND?USB_SUSPEND
+            CODE    0CD3H     002AH     UNIT         ?PR?AD7606_INIT?C8051F340_AD7606
+            CODE    0CFDH     0027H     UNIT         ?PR?USBXCORE_USB_RESET?USB_API
+            CODE    0D24H     0027H     UNIT         ?PR?USBXCORE_GET_INTERFACE?USB_API
+            CODE    0D4BH     0022H     UNIT         ?PR?USBXCORE_JUMP_ISR?USB_JUMP_ISR
+            CODE    0D6DH     0020H     UNIT         ?PR?PORT_INIT?USB_MAIN
+            CODE    0D8DH     0020H     UNIT         ?PR?OSCILLATOR_INIT?USB_MAIN
+            CODE    0DADH     0020H     UNIT         ?PR?USBXCORE_SET_ADDRESS?USB_API
+            CODE    0DCDH     001DH     UNIT         ?PR?USBXCORE_FORCE_STALL?USB_API
+            CODE    0DEAH     0019H     UNIT         ?PR?SUSPEND_DEVICE?USB_MAIN
+            CODE    0E03H     0019H     UNIT         ?PR?USB_INT_ENABLE?USB_INT_ENABLE
+            CODE    0E1CH     0014H     UNIT         ?PR?USBXCORE_SET_SOP?USB_API
+            CODE    0E30H     0010H     UNIT         ?PR?DELAY0US?DELAY
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 3
 
 
-            CODE    0E57H     0010H     UNIT         ?PR?DELAY1US?DELAY
-            CODE    0E67H     000EH     UNIT         ?PR?GET_INTERRUPT_SOURCE?GET_INTERRUPT_SOURCE
-            CODE    0E75H     000CH     UNIT         ?PR?USBXCORE_CLKREC?USB_CLOCK_RECOVERY
-            CODE    0E81H     000CH     UNIT         ?PR?_DELAY_US?DELAY
+            CODE    0E40H     0010H     UNIT         ?PR?DELAY1US?DELAY
+            CODE    0E50H     000FH     UNIT         ?PR?DELAY?USB_MAIN
+            CODE    0E5FH     000EH     UNIT         ?PR?GET_INTERRUPT_SOURCE?GET_INTERRUPT_SOURCE
+            CODE    0E6DH     000CH     UNIT         ?PR?USBXCORE_CLKREC?USB_CLOCK_RECOVERY
+            CODE    0E79H     000CH     UNIT         ?PR?_DELAY_US?DELAY
 
 
 
@@ -140,15 +141,18 @@ SEGMENT                                            DATA_GROUP          XDATA_GRO
   +--> ?C_INITSEG
 
 ?PR?MAIN?USB_MAIN                                -----    -----      -----    -----
+  +--> ?PR?OSCILLATOR_INIT?USB_MAIN
   +--> ?PR?USB_CLOCK_START?USB_CLOCK_START
   +--> ?CO?USB_MAIN
   +--> ?PR?_USB_INIT?USB_API
   +--> ?PR?USB_INT_ENABLE?USB_INT_ENABLE
-  +--> ?PR?USB0_INIT?USB_MAIN
   +--> ?PR?PORT_INIT?USB_MAIN
   +--> ?PR?AD7606_INIT?C8051F340_AD7606
   +--> ?PR?AD7606_READ?C8051F340_AD7606
   +--> ?PR?_BLOCK_WRITE?BLOCK_WRITE
+
+?PR?OSCILLATOR_INIT?USB_MAIN                     -----    -----      -----    -----
+  +--> ?PR?DELAY?USB_MAIN
 
 ?PR?_USB_INIT?USB_API                            -----    -----      0080H    0011H
   +--> ?CO?USB_API
@@ -164,23 +168,24 @@ SEGMENT                                            DATA_GROUP          XDATA_GRO
 
 ?PR?AD7606_READ?C8051F340_AD7606                 -----    -----      -----    -----
   +--> ?PR?DELAY0US?DELAY
+  +--> ?PR?DELAY1US?DELAY
 
 ?PR?DELAY0US?DELAY                               -----    -----      0080H    0001H
 
 *** NEW ROOT ***************************************************
 
-?PR?USB_API_TEST_ISR?USB_MAIN                    0010H    0001H      -----    -----
+?PR?USB_API_TEST_ISR?USB_MAIN                    000DH    0001H      -----    -----
   +--> ?PR?GET_INTERRUPT_SOURCE?GET_INTERRUP...
   +--> ?PR?_BLOCK_READ?BLOCK_READ
   +--> ?PR?SUSPEND_DEVICE?USB_MAIN
   +--> ?PR?OSCILLATOR_INIT?USB_MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 4
+
+
   +--> ?PR?PORT_INIT?USB_MAIN
 
 ?PR?SUSPEND_DEVICE?USB_MAIN                      -----    -----      -----    -----
   +--> ?PR?USB_SUSPEND?USB_SUSPEND
-
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 4
-
 
 ?PR?USB_SUSPEND?USB_SUSPEND                      -----    -----      -----    -----
   +--> ?PR?USB_CLOCK_START?USB_CLOCK_START
@@ -234,13 +239,13 @@ SEGMENT                                            DATA_GROUP          XDATA_GRO
 
 ?PR?USBXCORE_SET_CONFIGURATION?USB_API           -----    -----      -----    -----
   +--> ?PR?USBXCORE_SET_SOP?USB_API
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 5
+
+
 
 ?PR?USBXCORE_GET_INTERFACE?USB_API               -----    -----      -----    -----
   +--> ?CO?USB_API
   +--> ?PR?USBXCORE_SET_SOP?USB_API
-
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 5
-
 
 
 
@@ -250,8 +255,8 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:091EH         SEGMENT       ?C_C51STARTUP
-  I:0011H         SEGMENT       ?STACK
+  C:0919H         SEGMENT       ?C_C51STARTUP
+  I:000EH         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
@@ -260,7 +265,7 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0921H         SYMBOL        IDATALOOP
+  C:091CH         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -269,18 +274,18 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:091EH         SYMBOL        STARTUP1
+  C:0919H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:091EH         LINE#         133
-  C:0920H         LINE#         134
-  C:0921H         LINE#         135
-  C:0922H         LINE#         136
-  C:0924H         LINE#         185
-  C:0927H         LINE#         196
+  C:0919H         LINE#         133
+  C:091BH         LINE#         134
+  C:091CH         LINE#         135
+  C:091DH         LINE#         136
+  C:091FH         LINE#         185
+  C:0922H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        C8051F340_AD7606
@@ -292,83 +297,77 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   B:00A0H.4       PUBLIC        OA
   B:00A0H.5       PUBLIC        OB
   B:00A0H.6       PUBLIC        OC
-  B:00A0H.3       PUBLIC        Led
   B:0080H.1       PUBLIC        RD
   B:0080H.0       PUBLIC        CS
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 6
+
+
   B:00A0H.7       PUBLIC        RAGE
   B:0080H.2       PUBLIC        CONVSTA
   B:0080H.3       PUBLIC        CONVSTB
-  D:0008H         PUBLIC        Busy
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 6
-
-
-  D:0009H         PUBLIC        temp
-  C:0CACH         PUBLIC        AD7606_Read
+  D:000BH         PUBLIC        Busy
+  C:0BDDH         PUBLIC        AD7606_Read
   B:0080H.7       PUBLIC        REST
   B:0080H.6       PUBLIC        BUSY
-  C:0CDCH         PUBLIC        AD7606_Init
+  C:0CD3H         PUBLIC        AD7606_Init
   X:0091H         PUBLIC        out
-  D:000AH         PUBLIC        j
-  D:000BH         PUBLIC        k
   D:000CH         PUBLIC        t
   -------         PROC          AD7606_INIT
-  C:0CDCH         LINE#         25
-  C:0CDCH         LINE#         26
-  C:0CDCH         LINE#         27
-  C:0CDEH         LINE#         28
-  C:0CE3H         LINE#         29
-  C:0CE5H         LINE#         30
-  C:0CEDH         LINE#         31
-  C:0CEFH         LINE#         32
-  C:0CF3H         LINE#         33
-  C:0CF5H         LINE#         34
-  C:0CFAH         LINE#         35
-  C:0CFCH         LINE#         36
-  C:0D01H         LINE#         37
-  C:0D03H         LINE#         38
+  C:0CD3H         LINE#         21
+  C:0CD3H         LINE#         22
+  C:0CD3H         LINE#         23
+  C:0CD8H         LINE#         24
+  C:0CDAH         LINE#         25
+  C:0CE2H         LINE#         26
+  C:0CE4H         LINE#         27
+  C:0CE8H         LINE#         28
+  C:0CEAH         LINE#         29
+  C:0CEFH         LINE#         30
+  C:0CF1H         LINE#         31
+  C:0CF6H         LINE#         32
+  C:0CF8H         LINE#         33
   -------         ENDPROC       AD7606_INIT
   -------         PROC          AD7606_READ
-  C:0CACH         LINE#         40
-  C:0CACH         LINE#         41
-  C:0CACH         LINE#         42
-  C:0CB0H         LINE#         43
-  C:0CB3H         LINE#         44
-  C:0CB7H         LINE#         46
-  C:0CB9H         LINE#         47
-  C:0CBEH         LINE#         48
-  C:0CBEH         LINE#         49
-  C:0CC1H         LINE#         50
-  C:0CC7H         LINE#         51
-  C:0CC9H         LINE#         65
-  C:0CCDH         LINE#         68
-  C:0CD3H         LINE#         69
-  C:0CD7H         LINE#         70
-  C:0CDBH         LINE#         71
+  C:0BDDH         LINE#         35
+  C:0BDDH         LINE#         36
+  C:0BDDH         LINE#         37
+  C:0BE1H         LINE#         38
+  C:0BE4H         LINE#         39
+  C:0BE8H         LINE#         40
+  C:0BEBH         LINE#         41
+  C:0BEDH         LINE#         42
+  C:0BF2H         LINE#         43
+  C:0BF2H         LINE#         44
+  C:0BF5H         LINE#         45
+  C:0BFBH         LINE#         46
+  C:0BFDH         LINE#         47
+  C:0C01H         LINE#         48
+  C:0C11H         LINE#         49
+  C:0C24H         LINE#         50
+  C:0C28H         LINE#         51
   -------         ENDPROC       AD7606_READ
   -------         ENDMOD        C8051F340_AD7606
 
   -------         MODULE        USB_MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   C:003BH         PUBLIC        USB_MaxPower
-  D:00E6H         PUBLIC        EIE1
-  B:00A8H.7       PUBLIC        EA
-  D:00D7H         PUBLIC        USB0XCN
   D:00A4H         PUBLIC        P0MDOUT
   D:00A5H         PUBLIC        P1MDOUT
   D:00A6H         PUBLIC        P2MDOUT
   D:00A7H         PUBLIC        P3MDOUT
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 7
+  B:00A0H.3       PUBLIC        Led
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 7
 
 
-  C:0BE2H         PUBLIC        USB0_Init
   D:00D9H         PUBLIC        PCA0MD
-  C:0A1DH         PUBLIC        USB_API_TEST_ISR
-  C:0080H         PUBLIC        Oscillator_Init
-  C:0E01H         PUBLIC        Suspend_Device
+  C:0A18H         PUBLIC        USB_API_TEST_ISR
+  C:0D8DH         PUBLIC        Oscillator_Init
+  C:0DEAH         PUBLIC        Suspend_Device
   D:00E1H         PUBLIC        XBR0
-  C:0DA3H         PUBLIC        Port_Init
+  C:0D6DH         PUBLIC        Port_Init
   D:00E2H         PUBLIC        XBR1
   C:0888H         PUBLIC        main
   C:0005H         PUBLIC        USB_PID
@@ -382,111 +381,125 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   D:00B2H         PUBLIC        OSCICN
   C:003CH         PUBLIC        USB_PwAttributes
   C:003DH         PUBLIC        USB_bcdDevice
-  D:000DH         PUBLIC        i
+  D:00B9H         PUBLIC        CLKMUL
+  D:00EFH         PUBLIC        RSTSRC
+  D:0008H         PUBLIC        i
   C:0031H         PUBLIC        USB_SerialStr
   C:0021H         PUBLIC        USB_ProductStr
-  D:000EH         PUBLIC        In_Packet
-  D:0096H         PUBLIC        USB0ADR
-  D:0097H         PUBLIC        USB0DAT
+  C:0E50H         PUBLIC        Delay
+  C:0080H         PUBLIC        Sysclk_Init
+  D:0009H         PUBLIC        In_Packet
   X:0000H         PUBLIC        out_test
   -------         PROC          MAIN
-  C:0888H         LINE#         32
-  C:0888H         LINE#         33
-  C:0888H         LINE#         34
+  C:0888H         LINE#         35
+  C:0888H         LINE#         36
+  C:0888H         LINE#         37
   C:088BH         LINE#         38
-  C:088EH         LINE#         39
-  C:08E8H         LINE#         40
-  C:08EBH         LINE#         41
-  C:08EEH         LINE#         44
-  C:08F1H         LINE#         45
-  C:08F4H         LINE#         47
-  C:08F7H         LINE#         48
-  C:08F7H         LINE#         49
-  C:0905H         LINE#         50
-  C:090CH         LINE#         52
-  C:090CH         LINE#         53
-  C:090CH         LINE#         54
-  C:090FH         LINE#         60
-  C:091CH         LINE#         62
+  C:088EH         LINE#         41
+  C:0891H         LINE#         42
+  C:08EBH         LINE#         43
+  C:08EEH         LINE#         45
+  C:08F1H         LINE#         46
+  C:08F4H         LINE#         53
+  C:08F4H         LINE#         54
+  C:08F4H         LINE#         55
+  C:08F9H         LINE#         56
+  C:08FDH         LINE#         58
+  C:08FFH         LINE#         59
+  C:0902H         LINE#         60
+  C:0907H         LINE#         61
+  C:0907H         LINE#         62
+  C:0914H         LINE#         63
+  C:0917H         LINE#         64
+  C:0917H         LINE#         66
   -------         ENDPROC       MAIN
   -------         PROC          PORT_INIT
-  C:0DA3H         LINE#         65
-  C:0DA3H         LINE#         66
-  C:0DA3H         LINE#         67
-  C:0DA6H         LINE#         68
-  C:0DA9H         LINE#         70
-  C:0DACH         LINE#         71
-  C:0DAFH         LINE#         72
-  C:0DB2H         LINE#         74
-  C:0DB5H         LINE#         77
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 8
+  C:0D6DH         LINE#         69
+  C:0D6DH         LINE#         70
+  C:0D6DH         LINE#         71
+  C:0D70H         LINE#         72
+  C:0D73H         LINE#         74
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 8
 
 
-  C:0DB8H         LINE#         78
-  C:0DBAH         LINE#         79
-  C:0DBDH         LINE#         81
-  C:0DC0H         LINE#         82
-  C:0DC3H         LINE#         83
+  C:0D76H         LINE#         75
+  C:0D79H         LINE#         76
+  C:0D7CH         LINE#         78
+  C:0D7FH         LINE#         81
+  C:0D82H         LINE#         82
+  C:0D84H         LINE#         83
+  C:0D87H         LINE#         85
+  C:0D89H         LINE#         86
+  C:0D8CH         LINE#         87
   -------         ENDPROC       PORT_INIT
+  -------         PROC          SYSCLK_INIT
+  C:0080H         LINE#         89
+  C:0080H         LINE#         90
+  C:0080H         LINE#         99
+  -------         ENDPROC       SYSCLK_INIT
   -------         PROC          OSCILLATOR_INIT
-  C:0080H         LINE#         85
-  C:0080H         LINE#         86
-  C:0080H         LINE#         91
-  C:0083H         LINE#         92
-  C:0086H         LINE#         105
+  C:0D8DH         LINE#         101
+  C:0D8DH         LINE#         102
+  C:0D8DH         LINE#         118
+  C:0D90H         LINE#         119
+  C:0D93H         LINE#         120
+  C:0D96H         LINE#         122
+  C:0D98H         LINE#         123
+  C:0D9BH         LINE#         124
+  C:0D9EH         LINE#         125
+  C:0DA1H         LINE#         126
+  C:0DA4H         LINE#         127
+  C:0DA9H         LINE#         128
+  C:0DACH         LINE#         129
   -------         ENDPROC       OSCILLATOR_INIT
-  -------         PROC          USB0_INIT
-  C:0BE2H         LINE#         107
-  C:0BE2H         LINE#         108
-  C:0BE2H         LINE#         109
-  C:0BEDH         LINE#         110
-  C:0BF8H         LINE#         111
-  C:0C03H         LINE#         112
-  C:0C0EH         LINE#         113
-  C:0C11H         LINE#         114
-  C:0C1CH         LINE#         116
-  C:0C1FH         LINE#         117
-  C:0C21H         LINE#         118
-  C:0C2CH         LINE#         119
-  -------         ENDPROC       USB0_INIT
   -------         PROC          SUSPEND_DEVICE
-  C:0E01H         LINE#         121
-  C:0E01H         LINE#         122
-  C:0E01H         LINE#         124
-  C:0E04H         LINE#         125
-  C:0E06H         LINE#         126
-  C:0E08H         LINE#         127
-  C:0E0AH         LINE#         129
-  C:0E0DH         LINE#         132
-  C:0E10H         LINE#         133
-  C:0E13H         LINE#         134
-  C:0E16H         LINE#         135
-  C:0E19H         LINE#         136
+  C:0DEAH         LINE#         132
+  C:0DEAH         LINE#         133
+  C:0DEAH         LINE#         135
+  C:0DEDH         LINE#         136
+  C:0DEFH         LINE#         137
+  C:0DF1H         LINE#         138
+  C:0DF3H         LINE#         140
+  C:0DF6H         LINE#         143
+  C:0DF9H         LINE#         144
+  C:0DFCH         LINE#         145
+  C:0DFFH         LINE#         146
+  C:0E02H         LINE#         147
   -------         ENDPROC       SUSPEND_DEVICE
   -------         PROC          USB_API_TEST_ISR
   -------         DO            
-  D:0010H         SYMBOL        INTVAL
+  D:000DH         SYMBOL        INTVAL
   -------         ENDDO         
-  C:0A1DH         LINE#         139
-  C:0A3AH         LINE#         141
-  C:0A3FH         LINE#         143
-  C:0A44H         LINE#         144
-  C:0A44H         LINE#         145
-  C:0A4FH         LINE#         146
-  C:0A4FH         LINE#         148
-  C:0A54H         LINE#         149
-  C:0A54H         LINE#         150
-  C:0A57H         LINE#         151
-  C:0A57H         LINE#         153
-  C:0A5CH         LINE#         154
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 9
+  C:0A18H         LINE#         150
+  C:0A35H         LINE#         152
+  C:0A3AH         LINE#         154
+  C:0A3FH         LINE#         155
+  C:0A3FH         LINE#         156
+  C:0A4AH         LINE#         157
+  C:0A4AH         LINE#         159
+  C:0A4FH         LINE#         160
+  C:0A4FH         LINE#         161
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 9
 
 
-  C:0A5CH         LINE#         155
-  C:0A5FH         LINE#         156
-  C:0A62H         LINE#         157
-  C:0A62H         LINE#         158
+  C:0A52H         LINE#         162
+  C:0A52H         LINE#         164
+  C:0A57H         LINE#         165
+  C:0A57H         LINE#         166
+  C:0A5AH         LINE#         167
+  C:0A5DH         LINE#         168
+  C:0A5DH         LINE#         169
   -------         ENDPROC       USB_API_TEST_ISR
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        x
+  -------         ENDDO         
+  C:0E50H         LINE#         178
+  C:0E50H         LINE#         179
+  C:0E50H         LINE#         181
+  C:0E53H         LINE#         182
+  C:0E5EH         LINE#         183
+  -------         ENDPROC       DELAY
   -------         ENDMOD        USB_MAIN
 
   -------         MODULE        USB_API
@@ -510,38 +523,38 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   X:0786H         PUBLIC        USBXcore_USB_State
   X:079BH         PUBLIC        USBXcore_tmpBlockWrite
   C:007CH         PUBLIC        USBXcore_ONES_PACKET
-  C:0D33H         PUBLIC        USBXcore_USB_Reset
+  C:0CFDH         PUBLIC        USBXcore_USB_Reset
   X:07A3H         PUBLIC        USBXcore_Reserved_FutureUse
   C:0046H         PUBLIC        USBXcore_DeviceDesc
-  C:0DE4H         PUBLIC        USBXcore_Force_Stall
-  C:0DC4H         PUBLIC        USBXcore_Set_Address
+  C:0DCDH         PUBLIC        USBXcore_Force_Stall
+  C:0DADH         PUBLIC        USBXcore_Set_Address
   C:0058H         PUBLIC        USBXcore_ConfigDesc
   C:007EH         PUBLIC        USBXcore_ZERO_PACKET
   X:0797H         PUBLIC        USBXcore_wLength
-  C:0B8BH         PUBLIC        USBXcore_Set_Feature
-  C:0C2DH         PUBLIC        USBXcore_Get_Configuration
+  C:0B86H         PUBLIC        USBXcore_Set_Feature
+  C:0C29H         PUBLIC        USBXcore_Get_Configuration
   X:0792H         PUBLIC        USBXcore_API_IntValue
   X:0791H         PUBLIC        USBXcore_i
   X:0772H         PUBLIC        USBXcore_StringDescTable
-  C:0AD9H         PUBLIC        USBXcore_Set_Configuration
+  C:0AD4H         PUBLIC        USBXcore_Set_Configuration
   C:0412H         PUBLIC        _USB_Init
   X:0740H         PUBLIC        USBXcore_DeviceDescCopy
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 10
+
+
   X:079FH         PUBLIC        USBXcore_BW_BytesWritten
   X:0795H         PUBLIC        USBXcore_wValue
   C:065AH         PUBLIC        USBXcore_Vendor_USB_API
   X:0752H         PUBLIC        USBXcore_ConfigDescCopy
-  C:0E33H         PUBLIC        USBXcore_Set_SOP
-  C:09AAH         PUBLIC        USBXcore_Get_Status
+  C:0E1CH         PUBLIC        USBXcore_Set_SOP
+  C:09A5H         PUBLIC        USBXcore_Get_Status
   X:077EH         PUBLIC        USBXcore_Setup
   X:078AH         PUBLIC        USBXcore_DataSent
-  C:0D5AH         PUBLIC        USBXcore_Get_Interface
+  C:0D24H         PUBLIC        USBXcore_Get_Interface
   X:078CH         PUBLIC        USBXcore_DataSize
-  C:0B33H         PUBLIC        USBXcore_Clear_Feature
+  C:0B2EH         PUBLIC        USBXcore_Clear_Feature
   X:078EH         PUBLIC        USBXcore_Ep_Status
   D:0096H         PUBLIC        USB0ADR
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 10
-
-
   D:0097H         PUBLIC        USB0DAT
   C:0727H         PUBLIC        USBXcore_Get_Descriptor
   X:079DH         PUBLIC        USBXcore_tmpVendUSBAPI
@@ -586,6 +599,9 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:0521H         LINE#         206
   C:0524H         LINE#         209
   C:0527H         LINE#         211
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 11
+
+
   C:052CH         LINE#         212
   C:0530H         LINE#         213
   C:0534H         LINE#         214
@@ -595,18 +611,15 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:0548H         LINE#         221
   -------         ENDPROC       _USB_INIT
   -------         PROC          USBXCORE_USB_RESET
-  C:0D33H         LINE#         227
-  C:0D33H         LINE#         229
-  C:0D39H         LINE#         230
-  C:0D44H         LINE#         231
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 11
-
-
-  C:0D49H         LINE#         232
-  C:0D4DH         LINE#         233
-  C:0D4FH         LINE#         234
-  C:0D54H         LINE#         235
-  C:0D59H         LINE#         236
+  C:0CFDH         LINE#         227
+  C:0CFDH         LINE#         229
+  C:0D03H         LINE#         230
+  C:0D0EH         LINE#         231
+  C:0D13H         LINE#         232
+  C:0D17H         LINE#         233
+  C:0D19H         LINE#         234
+  C:0D1EH         LINE#         235
+  C:0D23H         LINE#         236
   -------         ENDPROC       USBXCORE_USB_RESET
   -------         PROC          USBXCORE_HANDLE_SETUP
   C:008EH         LINE#         242
@@ -646,6 +659,9 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:018FH         LINE#         281
   C:018FH         LINE#         282
   C:0192H         LINE#         283
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 12
+
+
   C:0194H         LINE#         284
   C:0194H         LINE#         285
   C:0197H         LINE#         286
@@ -659,9 +675,6 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:01A3H         LINE#         294
   C:01A6H         LINE#         295
   C:01A8H         LINE#         296
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 12
-
-
   C:01A8H         LINE#         297
   C:01ABH         LINE#         298
   C:01ADH         LINE#         299
@@ -706,6 +719,9 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:0286H         LINE#         339
   C:028DH         LINE#         340
   C:0292H         LINE#         341
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 13
+
+
   C:0292H         LINE#         342
   C:02A6H         LINE#         343
   C:02A6H         LINE#         344
@@ -716,78 +732,75 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:02C0H         LINE#         349
   -------         ENDPROC       USBXCORE_HANDLE_SETUP
   -------         PROC          USBXCORE_FORCE_STALL
-  C:0DE4H         LINE#         356
-  C:0DE4H         LINE#         358
-  C:0DEFH         LINE#         359
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 13
-
-
-  C:0DFAH         LINE#         360
-  C:0E00H         LINE#         361
+  C:0DCDH         LINE#         356
+  C:0DCDH         LINE#         358
+  C:0DD8H         LINE#         359
+  C:0DE3H         LINE#         360
+  C:0DE9H         LINE#         361
   -------         ENDPROC       USBXCORE_FORCE_STALL
   -------         PROC          USBXCORE_GET_STATUS
-  C:09AAH         LINE#         367
-  C:09AAH         LINE#         369
-  C:09B9H         LINE#         370
-  C:09B9H         LINE#         371
-  C:09B9H         LINE#         372
-  C:09B9H         LINE#         373
-  C:09B9H         LINE#         374
-  C:09BBH         LINE#         375
-  C:09BBH         LINE#         379
-  C:09BBH         LINE#         381
-  C:09C9H         LINE#         385
-  C:09C9H         LINE#         386
-  C:09C9H         LINE#         387
-  C:09C9H         LINE#         388
-  C:09CBH         LINE#         390
-  C:09CBH         LINE#         392
-  C:09D9H         LINE#         396
-  C:09D9H         LINE#         397
-  C:09E6H         LINE#         398
-  C:09E6H         LINE#         399
-  C:09E8H         LINE#         401
-  C:09E8H         LINE#         402
-  C:09F6H         LINE#         403
-  C:09FFH         LINE#         404
-  C:09FFH         LINE#         405
-  C:09FFH         LINE#         406
-  C:0A01H         LINE#         407
-  C:0A01H         LINE#         408
-  C:0A04H         LINE#         409
-  C:0A04H         LINE#         410
-  C:0A04H         LINE#         411
-  C:0A0CH         LINE#         412
-  C:0A0CH         LINE#         413
-  C:0A0FH         LINE#         414
-  C:0A15H         LINE#         415
-  C:0A1CH         LINE#         416
-  C:0A1CH         LINE#         417
+  C:09A5H         LINE#         367
+  C:09A5H         LINE#         369
+  C:09B4H         LINE#         370
+  C:09B4H         LINE#         371
+  C:09B4H         LINE#         372
+  C:09B4H         LINE#         373
+  C:09B4H         LINE#         374
+  C:09B6H         LINE#         375
+  C:09B6H         LINE#         379
+  C:09B6H         LINE#         381
+  C:09C4H         LINE#         385
+  C:09C4H         LINE#         386
+  C:09C4H         LINE#         387
+  C:09C4H         LINE#         388
+  C:09C6H         LINE#         390
+  C:09C6H         LINE#         392
+  C:09D4H         LINE#         396
+  C:09D4H         LINE#         397
+  C:09E1H         LINE#         398
+  C:09E1H         LINE#         399
+  C:09E3H         LINE#         401
+  C:09E3H         LINE#         402
+  C:09F1H         LINE#         403
+  C:09FAH         LINE#         404
+  C:09FAH         LINE#         405
+  C:09FAH         LINE#         406
+  C:09FCH         LINE#         407
+  C:09FCH         LINE#         408
+  C:09FFH         LINE#         409
+  C:09FFH         LINE#         410
+  C:09FFH         LINE#         411
+  C:0A07H         LINE#         412
+  C:0A07H         LINE#         413
+  C:0A0AH         LINE#         414
+  C:0A10H         LINE#         415
+  C:0A17H         LINE#         416
+  C:0A17H         LINE#         417
   -------         ENDPROC       USBXCORE_GET_STATUS
   -------         PROC          USBXCORE_CLEAR_FEATURE
-  C:0B33H         LINE#         423
-  C:0B33H         LINE#         425
-  C:0B39H         LINE#         426
-  C:0B39H         LINE#         428
-  C:0B40H         LINE#         429
-  C:0B40H         LINE#         430
-  C:0B4BH         LINE#         436
-  C:0B56H         LINE#         437
-  C:0B5BH         LINE#         438
-  C:0B5DH         LINE#         440
-  C:0B5DH         LINE#         442
-  C:0B68H         LINE#         446
-  C:0B73H         LINE#         447
-  C:0B78H         LINE#         448
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 14
+  C:0B2EH         LINE#         423
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 14
 
 
-  C:0B78H         LINE#         449
-  C:0B7AH         LINE#         451
-  C:0B7AH         LINE#         452
-  C:0B7DH         LINE#         453
-  C:0B7DH         LINE#         454
-  C:0B88H         LINE#         455
+  C:0B2EH         LINE#         425
+  C:0B34H         LINE#         426
+  C:0B34H         LINE#         428
+  C:0B3BH         LINE#         429
+  C:0B3BH         LINE#         430
+  C:0B46H         LINE#         436
+  C:0B51H         LINE#         437
+  C:0B56H         LINE#         438
+  C:0B58H         LINE#         440
+  C:0B58H         LINE#         442
+  C:0B63H         LINE#         446
+  C:0B6EH         LINE#         447
+  C:0B73H         LINE#         448
+  C:0B73H         LINE#         449
+  C:0B75H         LINE#         451
+  C:0B75H         LINE#         452
+  C:0B78H         LINE#         453
+  C:0B78H         LINE#         454
+  C:0B83H         LINE#         455
   -------         ENDPROC       USBXCORE_CLEAR_FEATURE
   -------         PROC          USBXCORE_VENDOR_USB_API
   C:065AH         LINE#         462
@@ -826,6 +839,9 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:0701H         LINE#         506
   C:0708H         LINE#         507
   C:0708H         LINE#         508
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 15
+
+
   C:070CH         LINE#         509
   C:070CH         LINE#         510
   C:0712H         LINE#         511
@@ -834,41 +850,38 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:0724H         LINE#         514
   -------         ENDPROC       USBXCORE_VENDOR_USB_API
   -------         PROC          USBXCORE_SET_FEATURE
-  C:0B8BH         LINE#         521
-  C:0B8BH         LINE#         523
-  C:0B91H         LINE#         524
-  C:0B91H         LINE#         526
-  C:0B98H         LINE#         527
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 15
-
-
-  C:0B98H         LINE#         528
-  C:0BA3H         LINE#         534
-  C:0BAEH         LINE#         535
-  C:0BB1H         LINE#         536
-  C:0BB3H         LINE#         538
-  C:0BB3H         LINE#         540
-  C:0BBEH         LINE#         544
-  C:0BC9H         LINE#         545
-  C:0BCFH         LINE#         546
-  C:0BCFH         LINE#         548
-  C:0BD1H         LINE#         550
-  C:0BD1H         LINE#         551
-  C:0BD4H         LINE#         552
-  C:0BD4H         LINE#         553
-  C:0BDFH         LINE#         554
+  C:0B86H         LINE#         521
+  C:0B86H         LINE#         523
+  C:0B8CH         LINE#         524
+  C:0B8CH         LINE#         526
+  C:0B93H         LINE#         527
+  C:0B93H         LINE#         528
+  C:0B9EH         LINE#         534
+  C:0BA9H         LINE#         535
+  C:0BACH         LINE#         536
+  C:0BAEH         LINE#         538
+  C:0BAEH         LINE#         540
+  C:0BB9H         LINE#         544
+  C:0BC4H         LINE#         545
+  C:0BCAH         LINE#         546
+  C:0BCAH         LINE#         548
+  C:0BCCH         LINE#         550
+  C:0BCCH         LINE#         551
+  C:0BCFH         LINE#         552
+  C:0BCFH         LINE#         553
+  C:0BDAH         LINE#         554
   -------         ENDPROC       USBXCORE_SET_FEATURE
   -------         PROC          USBXCORE_SET_ADDRESS
-  C:0DC4H         LINE#         561
-  C:0DC4H         LINE#         563
-  C:0DD3H         LINE#         564
-  C:0DD9H         LINE#         565
-  C:0DD9H         LINE#         566
-  C:0DDCH         LINE#         567
-  C:0DDEH         LINE#         569
-  C:0DDEH         LINE#         570
-  C:0DE1H         LINE#         571
-  C:0DE1H         LINE#         572
+  C:0DADH         LINE#         561
+  C:0DADH         LINE#         563
+  C:0DBCH         LINE#         564
+  C:0DC2H         LINE#         565
+  C:0DC2H         LINE#         566
+  C:0DC5H         LINE#         567
+  C:0DC7H         LINE#         569
+  C:0DC7H         LINE#         570
+  C:0DCAH         LINE#         571
+  C:0DCAH         LINE#         572
   -------         ENDPROC       USBXCORE_SET_ADDRESS
   -------         PROC          USBXCORE_GET_DESCRIPTOR
   C:0727H         LINE#         579
@@ -886,6 +899,9 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:076DH         LINE#         591
   C:0791H         LINE#         592
   C:079DH         LINE#         593
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 16
+
+
   C:079FH         LINE#         594
   C:079FH         LINE#         595
   C:07A2H         LINE#         596
@@ -899,69 +915,66 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:07C8H         LINE#         604
   C:07CBH         LINE#         605
   C:07D1H         LINE#         606
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 16
-
-
   C:07D8H         LINE#         607
   C:07D8H         LINE#         608
   -------         ENDPROC       USBXCORE_GET_DESCRIPTOR
   -------         PROC          USBXCORE_GET_CONFIGURATION
-  C:0C2DH         LINE#         614
-  C:0C2DH         LINE#         616
-  C:0C35H         LINE#         617
-  C:0C35H         LINE#         618
-  C:0C41H         LINE#         619
-  C:0C49H         LINE#         620
-  C:0C49H         LINE#         621
-  C:0C4DH         LINE#         622
-  C:0C4DH         LINE#         623
-  C:0C5BH         LINE#         624
-  C:0C63H         LINE#         625
-  C:0C63H         LINE#         626
-  C:0C66H         LINE#         627
-  C:0C6CH         LINE#         628
-  C:0C73H         LINE#         629
+  C:0C29H         LINE#         614
+  C:0C29H         LINE#         616
+  C:0C31H         LINE#         617
+  C:0C31H         LINE#         618
+  C:0C3DH         LINE#         619
+  C:0C45H         LINE#         620
+  C:0C45H         LINE#         621
+  C:0C49H         LINE#         622
+  C:0C49H         LINE#         623
+  C:0C57H         LINE#         624
+  C:0C5FH         LINE#         625
+  C:0C5FH         LINE#         626
+  C:0C62H         LINE#         627
+  C:0C68H         LINE#         628
+  C:0C6FH         LINE#         629
   -------         ENDPROC       USBXCORE_GET_CONFIGURATION
   -------         PROC          USBXCORE_SET_CONFIGURATION
-  C:0AD9H         LINE#         635
-  C:0AD9H         LINE#         637
-  C:0AE2H         LINE#         638
-  C:0AE2H         LINE#         639
-  C:0AE9H         LINE#         640
-  C:0AEFH         LINE#         641
-  C:0AF4H         LINE#         642
-  C:0AF6H         LINE#         644
-  C:0B01H         LINE#         645
-  C:0B0CH         LINE#         646
-  C:0B17H         LINE#         653
-  C:0B22H         LINE#         654
-  C:0B24H         LINE#         656
-  C:0B24H         LINE#         657
-  C:0B2AH         LINE#         658
-  C:0B2EH         LINE#         659
-  C:0B30H         LINE#         660
-  C:0B30H         LINE#         661
+  C:0AD4H         LINE#         635
+  C:0AD4H         LINE#         637
+  C:0ADDH         LINE#         638
+  C:0ADDH         LINE#         639
+  C:0AE4H         LINE#         640
+  C:0AEAH         LINE#         641
+  C:0AEFH         LINE#         642
+  C:0AF1H         LINE#         644
+  C:0AFCH         LINE#         645
+  C:0B07H         LINE#         646
+  C:0B12H         LINE#         653
+  C:0B1DH         LINE#         654
+  C:0B1FH         LINE#         656
+  C:0B1FH         LINE#         657
+  C:0B25H         LINE#         658
+  C:0B29H         LINE#         659
+  C:0B2BH         LINE#         660
+  C:0B2BH         LINE#         661
   -------         ENDPROC       USBXCORE_SET_CONFIGURATION
   -------         PROC          USBXCORE_GET_INTERFACE
-  C:0D5AH         LINE#         668
-  C:0D5AH         LINE#         670
-  C:0D68H         LINE#         671
-  C:0D70H         LINE#         672
-  C:0D73H         LINE#         673
-  C:0D79H         LINE#         674
-  C:0D80H         LINE#         675
+  C:0D24H         LINE#         668
+  C:0D24H         LINE#         670
+  C:0D32H         LINE#         671
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 17
+
+
+  C:0D3AH         LINE#         672
+  C:0D3DH         LINE#         673
+  C:0D43H         LINE#         674
+  C:0D4AH         LINE#         675
   -------         ENDPROC       USBXCORE_GET_INTERFACE
   -------         PROC          USBXCORE_SET_SOP
-  C:0E33H         LINE#         682
-  C:0E33H         LINE#         684
-  C:0E3BH         LINE#         685
-  C:0E3BH         LINE#         686
-  C:0E46H         LINE#         687
-  C:0E46H         LINE#         688
+  C:0E1CH         LINE#         682
+  C:0E1CH         LINE#         684
+  C:0E24H         LINE#         685
+  C:0E24H         LINE#         686
+  C:0E2FH         LINE#         687
+  C:0E2FH         LINE#         688
   -------         ENDPROC       USBXCORE_SET_SOP
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 17
-
-
   -------         PROC          USBXCORE_USB_ISR
   C:02C1H         LINE#         699
   C:02DEH         LINE#         702
@@ -1006,6 +1019,9 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:03ABH         LINE#         767
   C:03BEH         LINE#         768
   C:03C2H         LINE#         769
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 18
+
+
   C:03C2H         LINE#         770
   C:03C9H         LINE#         771
   C:03C9H         LINE#         772
@@ -1019,114 +1035,117 @@ SYMBOL TABLE OF MODULE:  AD7606_Sample (?C_STARTUP)
   C:03F7H         LINE#         784
   C:03F7H         LINE#         785
   -------         ENDPROC       USBXCORE_USB_ISR
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 18
-
-
   -------         ENDMOD        USB_API
 
   -------         MODULE        USB_SUSPEND
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00D7H         PUBLIC        USB0XCN
   D:00C9H         PUBLIC        REG0CN
-  C:0D08H         PUBLIC        USB_Suspend
+  C:0CA8H         PUBLIC        USB_Suspend
   D:00A9H         PUBLIC        CLKSEL
   D:00B2H         PUBLIC        OSCICN
   D:00B9H         PUBLIC        CLKMUL
   -------         PROC          USB_SUSPEND
-  C:0D08H         LINE#         70
-  C:0D08H         LINE#         72
-  C:0D0BH         LINE#         74
-  C:0D0EH         LINE#         76
-  C:0D16H         LINE#         79
-  C:0D19H         LINE#         80
-  C:0D1CH         LINE#         81
-  C:0D1FH         LINE#         82
-  C:0D22H         LINE#         84
-  C:0D23H         LINE#         86
-  C:0D26H         LINE#         88
-  C:0D2CH         LINE#         92
-  C:0D2FH         LINE#         94
-  C:0D32H         LINE#         95
+  C:0CA8H         LINE#         70
+  C:0CA8H         LINE#         72
+  C:0CABH         LINE#         74
+  C:0CAEH         LINE#         76
+  C:0CB6H         LINE#         79
+  C:0CB9H         LINE#         80
+  C:0CBCH         LINE#         81
+  C:0CBFH         LINE#         82
+  C:0CC2H         LINE#         84
+  C:0CC3H         LINE#         86
+  C:0CC6H         LINE#         88
+  C:0CCCH         LINE#         92
+  C:0CCFH         LINE#         94
+  C:0CD2H         LINE#         95
   -------         ENDPROC       USB_SUSPEND
   -------         ENDMOD        USB_SUSPEND
 
   -------         MODULE        USB_INT_ENABLE
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:0E1AH         PUBLIC        USB_Int_Enable
+  C:0E03H         PUBLIC        USB_Int_Enable
   D:0096H         PUBLIC        USB0ADR
   D:0097H         PUBLIC        USB0DAT
   -------         PROC          USB_INT_ENABLE
-  C:0E1AH         LINE#         68
-  C:0E1AH         LINE#         71
-  C:0E21H         LINE#         73
-  C:0E27H         LINE#         74
-  C:0E27H         LINE#         75
-  C:0E32H         LINE#         77
-  C:0E32H         LINE#         78
+  C:0E03H         LINE#         68
+  C:0E03H         LINE#         71
+  C:0E0AH         LINE#         73
+  C:0E10H         LINE#         74
+  C:0E10H         LINE#         75
+  C:0E1BH         LINE#         77
+  C:0E1BH         LINE#         78
   -------         ENDPROC       USB_INT_ENABLE
   -------         ENDMOD        USB_INT_ENABLE
 
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 19
+
+
   -------         MODULE        USB_CLOCK_RECOVERY
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:0E75H         PUBLIC        USBXcore_ClkRec
+  C:0E6DH         PUBLIC        USBXcore_ClkRec
   D:0096H         PUBLIC        USB0ADR
   D:0097H         PUBLIC        USB0DAT
   -------         PROC          USBXCORE_CLKREC
-  C:0E75H         LINE#         45
-  C:0E75H         LINE#         47
-  C:0E80H         LINE#         48
+  C:0E6DH         LINE#         45
+  C:0E6DH         LINE#         47
+  C:0E78H         LINE#         48
   -------         ENDPROC       USBXCORE_CLKREC
   -------         ENDMOD        USB_CLOCK_RECOVERY
 
   -------         MODULE        DELAY
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/11/2015  20:29:48  PAGE 19
-
-
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:0E47H         PUBLIC        delay0us
-  C:0E57H         PUBLIC        delay1us
-  C:0E81H         PUBLIC        _delay_us
+  C:0E30H         PUBLIC        delay0us
+  C:0E40H         PUBLIC        delay1us
+  C:0E79H         PUBLIC        _delay_us
   -------         PROC          DELAY0US
   -------         DO            
   X:0080H         SYMBOL        i
   -------         ENDDO         
-  C:0E47H         LINE#         3
-  C:0E47H         LINE#         4
-  C:0E47H         LINE#         6
-  C:0E56H         LINE#         7
+  C:0E30H         LINE#         3
+  C:0E30H         LINE#         4
+  C:0E30H         LINE#         6
+  C:0E3FH         LINE#         7
   -------         ENDPROC       DELAY0US
   -------         PROC          DELAY1US
   -------         DO            
   X:0080H         SYMBOL        i
   -------         ENDDO         
-  C:0E57H         LINE#         8
-  C:0E57H         LINE#         9
-  C:0E57H         LINE#         11
-  C:0E66H         LINE#         12
+  C:0E40H         LINE#         8
+  C:0E40H         LINE#         9
+  C:0E40H         LINE#         11
+  C:0E4FH         LINE#         12
   -------         ENDPROC       DELAY1US
   -------         PROC          _DELAY_US
   D:0007H         SYMBOL        T
-  C:0E81H         LINE#         13
-  C:0E81H         LINE#         14
-  C:0E81H         LINE#         15
-  C:0E87H         LINE#         16
-  C:0E87H         LINE#         17
-  C:0E8AH         LINE#         18
-  C:0E8CH         LINE#         19
+  C:0E79H         LINE#         13
+  C:0E79H         LINE#         14
+  C:0E79H         LINE#         15
+  C:0E7FH         LINE#         16
+  C:0E7FH         LINE#         17
+  C:0E82H         LINE#         18
+  C:0E84H         LINE#         19
   -------         ENDPROC       _DELAY_US
   -------         ENDMOD        DELAY
 
   -------         MODULE        ?C?CLDPTR
-  C:0A7DH         PUBLIC        ?C?CLDPTR
+  C:0A78H         PUBLIC        ?C?CLDPTR
   -------         ENDMOD        ?C?CLDPTR
 
   -------         MODULE        ?C?CLDOPTR
-  C:0A96H         PUBLIC        ?C?CLDOPTR
+  C:0A91H         PUBLIC        ?C?CLDOPTR
   -------         ENDMOD        ?C?CLDOPTR
 
   -------         MODULE        ?C?IILDX
-  C:0AC3H         PUBLIC        ?C?IILDX
+  C:0ABEH         PUBLIC        ?C?IILDX
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/12/2015  23:08:23  PAGE 20
+
+
   -------         ENDMOD        ?C?IILDX
 
-Program Size: data=18.0 xdata=578 code=3721
-LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SYSCLK_INIT?USB_MAIN
+
+Program Size: data=15.0 xdata=578 code=3707
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
