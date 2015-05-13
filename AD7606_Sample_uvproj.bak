@@ -155,7 +155,7 @@
         </DebugOption>
         <Utilities>
           <Flash1>
-            <UseTargetDll>0</UseTargetDll>
+            <UseTargetDll>1</UseTargetDll>
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>0</UpdateFlashBeforeDebugging>
@@ -163,7 +163,7 @@
             <DriverSelection>-1</DriverSelection>
           </Flash1>
           <Flash2></Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
         </Utilities>
         <Target51>
@@ -213,7 +213,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0xffff</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -397,9 +397,9 @@
               <FilePath>.\USB_MAIN.h</FilePath>
             </File>
             <File>
-              <FileName>USB_register.h</FileName>
+              <FileName>F34x_USB_Register.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\USB_register.h</FilePath>
+              <FilePath>.\F34x_USB_Register.h</FilePath>
             </File>
           </Files>
         </Group>

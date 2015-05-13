@@ -17,3 +17,15 @@ void delay_us(unsigned char T)
 		delay1us();	  
 	}
 }
+void delay2us (void)
+{
+   int x;
+   for(x = 0;x < 12;x)
+      x++;
+}
+void delay80us (void)
+{
+   int x;
+   for(x = 0;x < 500;x)
+      x++;
+}

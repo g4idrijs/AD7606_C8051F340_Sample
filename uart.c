@@ -1,7 +1,6 @@
-#include "c8051f340.h"
-#include "stdint.h"
+#include <c8051f340.h>
 #define SYSCLK      12000000           // SYSCLK frequency in Hz
-#define BAUDRATE        9600           // Baud rate of UART in bps
+#define BAUDRATE        115200           // Baud rate of UART in bps
 
 //-----------------------------------------------------------------------------
 // UART0_Init

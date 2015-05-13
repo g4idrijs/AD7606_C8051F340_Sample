@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   UART                                                                  04/29/2015 19:49:55 PAGE 1   
+C51 COMPILER V9.01   UART                                                                  05/13/2015 21:49:46 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE UART
@@ -7,43 +7,41 @@ COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE uart.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
-   1          #include "c8051f340.h"
-   2          #include "stdint.h"
-*** WARNING C318 IN LINE 2 OF uart.c: can't open file 'stdint.h'
-   3          #define SYSCLK      12000000           // SYSCLK frequency in Hz
-   4          #define BAUDRATE        9600           // Baud rate of UART in bps
-   5          
-   6          //-----------------------------------------------------------------------------
-   7          // UART0_Init
-   8          //-----------------------------------------------------------------------------
-   9          // Configure the UART0 using Timer1, for <BAUDRATE> and 8-N-1.
-  10          //-----------------------------------------------------------------------------
-  11          void UART0_Init (void)
-  12          {
-  13   1         SCON0 = 0x10; // SCON0: 8-bit variable bit rate
-  14   1         if (SYSCLK/BAUDRATE/2/256 < 1) {
-  15   2            TH1 = -(SYSCLK/BAUDRATE/2);
-  16   2            CKCON &= ~0x0B;                  // T1M = 1; SCA1:0 = xx
-  17   2            CKCON |=  0x08;
-  18   2         } else if (SYSCLK/BAUDRATE/2/256 < 4) {
-  19   2            TH1 = -(SYSCLK/BAUDRATE/2/4);
-  20   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 01                  
-  21   2            CKCON |=  0x01;
-  22   2         } else if (SYSCLK/BAUDRATE/2/256 < 12) {
-  23   2            TH1 = -(SYSCLK/BAUDRATE/2/12);
-  24   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 00
-  25   2         } else {
-  26   2            TH1 = -(SYSCLK/BAUDRATE/2/48);
-  27   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 10
-  28   2            CKCON |=  0x02;
-  29   2         }
-  30   1      
-  31   1         TL1 = TH1;                          // Init Timer1
-  32   1         TMOD &= ~0xf0;                      // TMOD: timer 1 in 8-bit autoreload
-  33   1         TMOD |=  0x20;                       
-  34   1         TR1 = 1;                            // START Timer1
-  35   1         TI0 = 1;                            // Indicate TX0 ready
-  36   1      }
+   1          #include <c8051f340.h>
+   2          #define SYSCLK      12000000           // SYSCLK frequency in Hz
+   3          #define BAUDRATE        115200           // Baud rate of UART in bps
+   4          
+   5          //-----------------------------------------------------------------------------
+   6          // UART0_Init
+   7          //-----------------------------------------------------------------------------
+   8          // Configure the UART0 using Timer1, for <BAUDRATE> and 8-N-1.
+   9          //-----------------------------------------------------------------------------
+  10          void UART0_Init (void)
+  11          {
+  12   1         SCON0 = 0x10; // SCON0: 8-bit variable bit rate
+  13   1         if (SYSCLK/BAUDRATE/2/256 < 1) {
+  14   2            TH1 = -(SYSCLK/BAUDRATE/2);
+  15   2            CKCON &= ~0x0B;                  // T1M = 1; SCA1:0 = xx
+  16   2            CKCON |=  0x08;
+  17   2         } else if (SYSCLK/BAUDRATE/2/256 < 4) {
+  18   2            TH1 = -(SYSCLK/BAUDRATE/2/4);
+  19   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 01                  
+  20   2            CKCON |=  0x01;
+  21   2         } else if (SYSCLK/BAUDRATE/2/256 < 12) {
+  22   2            TH1 = -(SYSCLK/BAUDRATE/2/12);
+  23   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 00
+  24   2         } else {
+  25   2            TH1 = -(SYSCLK/BAUDRATE/2/48);
+  26   2            CKCON &= ~0x0B;                  // T1M = 0; SCA1:0 = 10
+  27   2            CKCON |=  0x02;
+  28   2         }
+  29   1      
+  30   1         TL1 = TH1;                          // Init Timer1
+  31   1         TMOD &= ~0xf0;                      // TMOD: timer 1 in 8-bit autoreload
+  32   1         TMOD |=  0x20;                       
+  33   1         TR1 = 1;                            // START Timer1
+  34   1         TI0 = 1;                            // Indicate TX0 ready
+  35   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
@@ -57,4 +55,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

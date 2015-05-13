@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   C8051F340_AD7606                                                      05/12/2015 23:08:23 PAGE 1   
+C51 COMPILER V9.01   C8051F340_AD7606                                                      05/14/2015 03:13:05 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE C8051F340_AD7606
@@ -11,63 +11,148 @@ line level    source
    2          #include "C8051F340_AD7606.h"
    3          #include "Delay.h"
    4          #include <intrins.h>
-   5          
-   6          sbit CS=P0^0;
-   7          sbit RD=P0^1;
-   8          sbit CONVSTA=P0^2;
-   9          sbit CONVSTB=P0^3;
-  10          sbit BUSY=P0^6;
-  11          sbit REST=P0^7;
-  12          sbit OA=P2^4;
-  13          sbit OB=P2^5;
-  14          sbit OC=P2^6;
-  15          sbit RAGE= P2^7;
-  16          U8 xdata out[2];
+   5          typedef unsigned char BYTE;
+   6          
+   7          sbit CS=P0^0;
+   8          sbit RD=P0^1;
+   9          sbit CONVSTA=P0^2;
+  10          sbit CONVSTB=P0^3;
+  11          sbit BUSY=P0^6;
+  12          sbit REST=P0^7;
+  13          sbit OA=P2^4;
+  14          sbit OB=P2^5;
+  15          sbit OC=P2^6;
+  16          sbit RAGE= P2^7;
   17          
-  18          U8 Busy;
-  19          U8 t = 0;
-  20          
-  21          void AD7606_Init()
-  22          {
-  23   1              delay_us(250);
-  24   1              REST=0;
-  25   1              OA=0;OB=0;OC=0;RAGE=0;
-  26   1              CS=1;
-  27   1              CONVSTA=1; CONVSTB=1;
-  28   1              RD=1;
-  29   1              delay_us(250);
-  30   1              REST=1;
-  31   1              delay_us(250);
-  32   1              REST=0;
-  33   1              delay_us(250);
-  34   1      }
-  35          void AD7606_Read()
-  36          {
-  37   1              CONVSTA=0; CONVSTB=0;
-  38   1              delay0us();
-  39   1              CONVSTA=1; CONVSTB=1;
-  40   1              delay0us();
-  41   1              Busy=BUSY;
-  42   1              while(Busy==1)
-  43   1              {
-  44   2                      delay1us();
-  45   2                      Busy=BUSY;
-  46   2              }       
-  47   1              CS=0;RD=0;
-  48   1              out[t*2] = P3;
-  49   1              out[(t++)*2+1] = P1;
-  50   1              RD=1;CS=1;
-  51   1      }
+  18          U8 xdata out1[256];
+  19          U8 xdata out2[256];
+  20          U8 xdata out3[256];
+  21          U8 xdata out4[256];
+  22          U8 xdata out5[256];
+  23          U8 xdata out6[256];
+  24          U8 xdata out7[256];
+  25          U8 xdata out8[256];
+  26          U8 t1 = 0;
+  27          U8 t2 = 0;
+  28          U8 t3 = 0;
+  29          U8 t4 = 0;
+  30          U8 t5 = 0;
+  31          U8 t6 = 0;
+  32          U8 t7 = 0;
+  33          U8 t8 = 0;
+  34          
+  35          //U8 xdata out[2048];
+  36          U8 t;
+  37          
+  38          U8 Busy;
+  39          U16 i;
+  40          
+  41          void AD7606_Init()
+  42          {
+  43   1              delay80us();
+  44   1              REST=0;
+  45   1      //      delay80us();
+  46   1              OA=0;OB=0;OC=0;RAGE=0;
+  47   1      //      delay80us();
+  48   1              CS=1;RD=1;
+  49   1              CONVSTA=1; CONVSTB=1;
+  50   1      //      delay80us();
+  51   1              REST=1;
+  52   1              delay80us();
+  53   1              REST=0;
+  54   1              delay80us();
+  55   1              
+C51 COMPILER V9.01   C8051F340_AD7606                                                      05/14/2015 03:13:05 PAGE 2   
+
+  56   1      }
+  57          void AD7606_Read()
+  58          {
+  59   1      //      CONVSTA=0; CONVSTB=0;
+  60   1      //      delay0us();
+  61   1      //      CONVSTA=1; CONVSTB=1;
+  62   1      //      Busy=BUSY;
+  63   1      //      while(Busy==1)
+  64   1      //      {
+  65   1      //              delay1us();
+  66   1      //              Busy=BUSY;
+  67   1      //      }       
+  68   1      //      CS=0;RD=0;
+  69   1      //      out[0] = P3;
+  70   1      //      out[1] = P1;
+  71   1      //      RD=1;CS=1;      
+  72   1      }
+  73          
+  74          void AD7606_ContinuesRead()
+  75          {
+  76   1              t=0;t1=0;t2=0;t3=0;t4=0;t5=0;t6=0;t7=0;t8=0;
+  77   1              for(i=0;i<1024;i++)
+  78   1              {
+  79   2                      CONVSTA=0; CONVSTB=0;
+  80   2                      delay0us();
+  81   2                      CONVSTA=1; CONVSTB=1;
+  82   2                      //delay0us();
+  83   2                      Busy=BUSY;
+  84   2                      while(Busy==1)
+  85   2                      {
+  86   3                              delay0us();
+  87   3                              Busy=BUSY;
+  88   3                      }       
+  89   2                      CS=0;RD=0;
+  90   2      //              out[t*2]=P3;
+  91   2      //              out[(t++)*2+1]=P1;
+  92   2                      if(i<128)
+  93   2                      {
+  94   3                              out1[t1*2] = P3;
+  95   3                              out1[(t1++)*2+1] = P1;
+  96   3                      }
+  97   2                      else if(128<=i&&i<256)
+  98   2                      {
+  99   3                              out2[t2*2] = P3;
+ 100   3                              out2[(t2++)*2+1] = P1;
+ 101   3                      }
+ 102   2                      else if(256<=i&&i<384)
+ 103   2                      {
+ 104   3                              out3[t3*2] = P3;
+ 105   3                              out3[(t3++)*2+1] = P1;
+ 106   3                      }
+ 107   2                      else if(384<=i&&i<512)
+ 108   2                      {
+ 109   3                              out4[t4*2] = P3;
+ 110   3                              out4[(t4++)*2+1] = P1;
+ 111   3                      }
+ 112   2                      else if(512<=i&&i<640)
+ 113   2                      {
+ 114   3                              out5[t5*2] = P3;
+ 115   3                              out5[(t5++)*2+1] = P1;
+ 116   3                      }
+ 117   2                      else if(640<=i&&i<768)
+C51 COMPILER V9.01   C8051F340_AD7606                                                      05/14/2015 03:13:05 PAGE 3   
+
+ 118   2                      {
+ 119   3                              out6[t6*2] = P3;
+ 120   3                              out6[(t6++)*2+1] = P1;
+ 121   3                      }
+ 122   2                      else if(768<=i&&i<896)
+ 123   2                      {
+ 124   3                              out7[t7*2] = P3;
+ 125   3                              out7[(t7++)*2+1] = P1;
+ 126   3                      }
+ 127   2                      else if(896<=i&&i<1024)
+ 128   2                      {
+ 129   3                              out8[t8*2] = P3;
+ 130   3                              out8[(t8++)*2+1] = P1;
+ 131   3                      }
+ 132   2                      RD=1;CS=1;
+ 133   2              }               
+ 134   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    118    ----
-C51 COMPILER V9.01   C8051F340_AD7606                                                      05/12/2015 23:08:23 PAGE 2   
-
+   CODE SIZE        =    520    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      2    ----
+   XDATA SIZE       =   2048    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      2    ----
+   DATA SIZE        =     12    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

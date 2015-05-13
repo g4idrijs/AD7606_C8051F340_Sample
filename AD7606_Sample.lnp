@@ -5,3 +5,4 @@
 "Delay.obj" 
 TO "AD7606_Sample" 
 RAMSIZE(256) 
+XDATA( 0X0000-0X0FFF )

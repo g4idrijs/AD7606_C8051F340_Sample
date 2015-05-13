@@ -1,36 +1,5 @@
-//-----------------------------------------------------------------------------
-// F34x_USB_Main.h
-//-----------------------------------------------------------------------------
-// Copyright 2005 Silicon Laboratories, Inc.
-// http://www.silabs.com
-//
-// Program Description:
-//
-// Main header file for USB firmware. Includes function prototypes,
-// standard constants, and configuration constants.
-//
-//
-// How To Test:    See Readme.txt
-//
-//
-// FID:            34X000020
-// Target:         C8051F34x
-// Tool chain:     Keil C51 7.50 / Keil EVAL C51
-//                 Silicon Laboratories IDE version 2.6
-// Command Line:   See Readme.txt
-// Project Name:   F34x_USB_Interrupt
-//
-//
-// Release 1.0
-//    -Initial Revision (GP)
-//    -22 NOV 2005
-//    -Ported from 'F320_USB_Bulk
-//
 #ifndef  F34x_USB_MAIN_H
 #define  F34x_USB_MAIN_H
-
-//#define _USB_LOW_SPEED_                    // Change this comment to
-                                             // make Full/Low speed
 
 //-----------------------------------------------------------------------------
 // Global Constants
@@ -194,7 +163,3 @@ void Fifo_Read (BYTE, unsigned int, BYTE *);
 void Fifo_Write (BYTE, unsigned int, BYTE *);
 
 #endif                                 // F340_USB_Interrupt
-
-//-----------------------------------------------------------------------------
-// End Of File
-//-----------------------------------------------------------------------------

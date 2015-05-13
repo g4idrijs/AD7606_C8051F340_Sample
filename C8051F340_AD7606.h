@@ -4,4 +4,5 @@
 
 void AD7606_Init();
 void AD7606_Read();
+void AD7606_ContinuesRead();
 #endif

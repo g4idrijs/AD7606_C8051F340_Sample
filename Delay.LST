@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   DELAY                                                                 05/12/2015 23:08:23 PAGE 1   
+C51 COMPILER V9.01   DELAY                                                                 05/14/2015 03:13:05 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE DELAY
@@ -26,10 +26,22 @@ line level    source
   17   2                      delay1us();       
   18   2              }
   19   1      }
+  20          void delay2us (void)
+  21          {
+  22   1         int x;
+  23   1         for(x = 0;x < 12;x)
+  24   1            x++;
+  25   1      }
+  26          void delay80us (void)
+  27          {
+  28   1         int x;
+  29   1         for(x = 0;x < 500;x)
+  30   1            x++;
+  31   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     44    ----
+   CODE SIZE        =     74    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----       2
    PDATA SIZE       =   ----    ----
