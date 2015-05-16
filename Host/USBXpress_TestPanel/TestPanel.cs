@@ -10,8 +10,8 @@ namespace USBXpress_TestPanel
 {
     public partial class TestPanel : Form
     {
-        private static readonly int N = 2*1024*16*5;
-        private static readonly int InBufSize = 2*1024*8;
+        private static readonly int N = 16*1024*4;
+        private static readonly int InBufSize = 16*1024*4;
         private static readonly int OutBufSize = 1;
         private static readonly int skip = 2;
         private readonly int BytesReadRequest = InBufSize;
@@ -23,7 +23,7 @@ namespace USBXpress_TestPanel
         private readonly Stopwatch stopwatch2 = new Stopwatch();
         private readonly double[] ValueToShow = new double[InBufSize];
         private int BytesSucceed;
-        private Complex[] output_complex = new Complex[InBufSize/skip];
+        private Complex[] output_complex = new Complex[N/skip/2];
         private Int16 ParseValue;
         private int T;
         private float time_all;
@@ -48,14 +48,7 @@ namespace USBXpress_TestPanel
             zedGraphControl2.GraphPane.XAxis.IsVisible = true;
             zedGraphControl2.GraphPane.YAxis.IsVisible = true;
 
-            //var path = Environment.CurrentDirectory;
-            //var pattern = "*.txt";
-            //var strFileName = Directory.GetFiles(path, pattern);
-            //foreach (var item in strFileName)
-            //{
-            //    File.Delete(item);
-            //}
-            File.Delete("data1.txt");
+            //File.Delete("data1.txt");
 
             if ((float) N/1000000 >= 1)
             {
@@ -63,7 +56,7 @@ namespace USBXpress_TestPanel
             }
             else
             {
-                label1.Text = "总接收字节数：" + ((float) (N/1000)) + "KB";
+                label1.Text = "总接收字节数：" + ((float) (N/1024)) + "KB";
             }
             label2.Hide();
             label_ConnectState.Text = "设备状态：未连接";
@@ -98,17 +91,6 @@ namespace USBXpress_TestPanel
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Write(SLUSBXpressDLL.hUSBDevice, ref OutBuf[0], BytesWriteRequest,
-                ref BytesSucceed, 0);
-
-            if ((BytesSucceed != BytesWriteRequest) || (SLUSBXpressDLL.Status != SLUSBXpressDLL.SI_SUCCESS))
-            {
-                MessageBox.Show("Error writing to USB. Wrote " + BytesSucceed + " of " + BytesWriteRequest +
-                                " bytes. Application is aborting. Reset hardware and try again.");
-                Application.Exit();
-            }
-            BytesSucceed = 0;
-
             stopwatch1.Restart();
             SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Read(SLUSBXpressDLL.hUSBDevice, ref InBuf[0], BytesReadRequest,
                 ref BytesSucceed, 0);
@@ -120,34 +102,31 @@ namespace USBXpress_TestPanel
                 Application.Exit();
             }
             time_read += stopwatch1.Elapsed.Seconds + (float) stopwatch1.Elapsed.Milliseconds/1000;
-            OutBuf[0] = 0;
             for (var i = 0; i < InBufSize/skip; i++)
             {
-                OutBuf[0] = 0;
                 if (T == (N/skip))
                 {
-                    OutBuf[0] = 1;
                     label2.Show();
                     //timer1.Stop();
-                    v_N = (1/time_read)*N/skip;
+                    v_N = (1/time_read)*InBufSize/skip;
                     if (v_N >= 1000000)
                     {
-                        label2.Text = "有效速度：" +
+                        label2.Text = "读取的有效速度：" +
                                       v_N/1000000 +
                                       "MB/s";
                     }
                     else
                     {
-                        label2.Text = "有效速度：" + v_N/1000 +
+                        label2.Text = "读取的有效速度：" + v_N/1024 +
                                       "KB/s";
                     }
                     fft();
                     CulveDisplay();
                     T = 0;
-                    //SaveReceivedData();
+                    SaveReceivedData();
                     textBox1.Text += "读取时间为：" + time_read + Environment.NewLine + "总用时为：" + time_all +
                                      Environment.NewLine;
-                    time_all += stopwatch2.Elapsed.Seconds + (float) stopwatch2.Elapsed.Milliseconds/1000;
+                    time_all += stopwatch2.Elapsed.Seconds + (float) stopwatch2.Elapsed.Milliseconds/1024;
                     time_read = 0;
                     time_all = 0;
                     break;
@@ -162,14 +141,14 @@ namespace USBXpress_TestPanel
 
         public void fft()
         {
-            output_complex = FFT_IFFT.FFT(ValueToShow, false); //正变换
+            output_complex = FFT_IFFT.FFT(ReceivedValue1, false); //正变换
 
             Double x2, y2;
             var myPane2 = zedGraphControl2.GraphPane;
             myPane2.CurveList.Clear();
             myPane2.GraphObjList.Clear();
             var culveList1 = new PointPairList();
-            for (var i = 0; i < InBufSize/skip/2; i++)
+            for (var i = 0; i < N/skip/2; i++)
             {
                 x2 = i;
                 y2 =
@@ -193,7 +172,7 @@ namespace USBXpress_TestPanel
 
         public void SaveReceivedData()
         {
-            var fs = new FileStream("data1.txt", FileMode.Append);
+            var fs = new FileStream("data5.txt", FileMode.Append);
             var sw = new StreamWriter(fs);
             var i = 1;
             while (i < N/skip)
@@ -218,9 +197,6 @@ namespace USBXpress_TestPanel
                 y1 = ValueToShow[i];
                 culveList1.Add(x1, y1);
             }
-            //culveList1.Add(t, ValueToShow);
-            //culveList1.SetX(t);
-            //culveList1.SetY(ReceivedValue1);
             var Culve1 = myPane1.AddCurve("", culveList1, Color.Blue, SymbolType.None);
             myPane1.Title.Text = "";
             myPane1.YAxis.Title.Text = "采样值";
@@ -230,8 +206,8 @@ namespace USBXpress_TestPanel
             myPane1.YAxis.Scale.FontSpec.FontColor = Color.Black;
             myPane1.YAxis.MajorGrid.IsZeroLine = false;
             myPane1.YAxis.Scale.Align = AlignP.Inside;
-            //myPane1.YAxis.Scale.Min = -0.5;
-            //myPane1.YAxis.Scale.Max = 0.5;
+            myPane1.YAxis.Scale.Min = -1;
+            myPane1.YAxis.Scale.Max = 1;
             myPane1.XAxis.Scale.Max = InBufSize/skip;
             zedGraphControl1.AxisChange();
             zedGraphControl1.Invalidate();
@@ -239,8 +215,6 @@ namespace USBXpress_TestPanel
 
         private void button_Connect_Click(object sender, EventArgs e)
         {
-            // when ok is clicked, set the timeouts on the device
-            // and open the device
             SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_SetTimeouts(360, 360); //10000
             SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Open(comboBox_Device.SelectedIndex, ref SLUSBXpressDLL.hUSBDevice);
 
