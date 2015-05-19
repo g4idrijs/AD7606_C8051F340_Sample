@@ -48,15 +48,15 @@ namespace USBXpress_TestPanel
             zedGraphControl2.GraphPane.XAxis.IsVisible = true;
             zedGraphControl2.GraphPane.YAxis.IsVisible = true;
 
-            //File.Delete("data1.txt");
+            //File.Delete("data.txt");
 
             if ((float) N/1000000 >= 1)
             {
-                label1.Text = "总接收字节数：" + ((float) N/1000000) + "MB";
+                label1.Text = "总有效接收字节数：" + ((float) N/2/1000000) + "MB";
             }
             else
             {
-                label1.Text = "总接收字节数：" + ((float) (N/1024)) + "KB";
+                label1.Text = "总有效接收字节数：" + ((float) (N/2/1024)) + "KB";
             }
             label2.Hide();
             label_ConnectState.Text = "设备状态：未连接";
@@ -92,6 +92,7 @@ namespace USBXpress_TestPanel
         private void timer1_Tick(object sender, EventArgs e)
         {
             stopwatch1.Restart();
+            //stopwatch2.Restart();
             SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Read(SLUSBXpressDLL.hUSBDevice, ref InBuf[0], BytesReadRequest,
                 ref BytesSucceed, 0);
 
@@ -104,11 +105,12 @@ namespace USBXpress_TestPanel
             time_read += stopwatch1.Elapsed.Seconds + (float) stopwatch1.Elapsed.Milliseconds/1000;
             for (var i = 0; i < InBufSize/skip; i++)
             {
-                if (T == (N/skip))
+                if (T == (N/skip-1))
                 {
                     label2.Show();
                     //timer1.Stop();
-                    v_N = (1/time_read)*InBufSize/skip;
+                    time_all += stopwatch2.Elapsed.Seconds + (float)stopwatch2.Elapsed.Milliseconds / 1000;
+                    v_N = (1/time_all)*N/skip;
                     if (v_N >= 1000000)
                     {
                         label2.Text = "读取的有效速度：" +
@@ -122,13 +124,13 @@ namespace USBXpress_TestPanel
                     }
                     fft();
                     CulveDisplay();
+                    //SaveReceivedData();
+                    //textBox1.Text += "读取时间为：" + time_read + Environment.NewLine + "总用时为：" + time_all +
+                    //                 Environment.NewLine;
                     T = 0;
-                    SaveReceivedData();
-                    textBox1.Text += "读取时间为：" + time_read + Environment.NewLine + "总用时为：" + time_all +
-                                     Environment.NewLine;
-                    time_all += stopwatch2.Elapsed.Seconds + (float) stopwatch2.Elapsed.Milliseconds/1024;
                     time_read = 0;
                     time_all = 0;
+                    stopwatch2.Restart();
                     break;
                 }
                 ReceivedValue1[T++] = (Double) BitConverter.ToInt16(InBuf, skip*i)/32768;
@@ -136,7 +138,6 @@ namespace USBXpress_TestPanel
                 ValueToShow[i] = ReceivedValue1[i];
             }
             time_all += stopwatch2.Elapsed.Seconds + (float) stopwatch2.Elapsed.Milliseconds/1000;
-            stopwatch2.Restart();
         }
 
         public void fft()
@@ -172,7 +173,7 @@ namespace USBXpress_TestPanel
 
         public void SaveReceivedData()
         {
-            var fs = new FileStream("data5.txt", FileMode.Append);
+            var fs = new FileStream("data.txt", FileMode.Append);
             var sw = new StreamWriter(fs);
             var i = 1;
             while (i < N/skip)
@@ -191,7 +192,7 @@ namespace USBXpress_TestPanel
             myPane1.CurveList.Clear();
             myPane1.GraphObjList.Clear();
             var culveList1 = new PointPairList();
-            for (var i = 0; i < InBufSize/skip; i++)
+            for (var i = 0; i < InBufSize/skip/16; i++)
             {
                 x1 = i;
                 y1 = ValueToShow[i];
@@ -208,7 +209,7 @@ namespace USBXpress_TestPanel
             myPane1.YAxis.Scale.Align = AlignP.Inside;
             myPane1.YAxis.Scale.Min = -1;
             myPane1.YAxis.Scale.Max = 1;
-            myPane1.XAxis.Scale.Max = InBufSize/skip;
+            myPane1.XAxis.Scale.Max = InBufSize/skip/16;
             zedGraphControl1.AxisChange();
             zedGraphControl1.Invalidate();
         }

@@ -179,10 +179,10 @@
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>37</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>136</TopLine>
+      <CurrentLine>151</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\STARTUP.A51</PathWithFileName>
       <FilenameWithoutPath>STARTUP.A51</FilenameWithoutPath>
@@ -193,10 +193,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>46</ColumnNumber>
+      <ColumnNumber>17</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <CurrentLine>19</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\C8051F340_AD7606.c</PathWithFileName>
       <FilenameWithoutPath>C8051F340_AD7606.c</FilenameWithoutPath>
@@ -235,10 +235,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>75</ColumnNumber>
+      <ColumnNumber>81</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>96</TopLine>
-      <CurrentLine>99</CurrentLine>
+      <TopLine>34</TopLine>
+      <CurrentLine>34</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USB_MAIN.c</PathWithFileName>
       <FilenameWithoutPath>USB_MAIN.c</FilenameWithoutPath>
@@ -1670,19 +1670,31 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>1</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
-          <Name>USB_MAIN.H</Name>
-          <ColumnNumber>79</ColumnNumber>
+          <Name>.\USB_MAIN.c</Name>
+          <ColumnNumber>81</ColumnNumber>
+          <TopLine>34</TopLine>
+          <CurrentLine>34</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\USB_API.h</Name>
+          <ColumnNumber>51</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>23</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\USB_MAIN.c</Name>
-          <ColumnNumber>75</ColumnNumber>
-          <TopLine>96</TopLine>
-          <CurrentLine>99</CurrentLine>
+          <Name>.\C8051F340_AD7606.c</Name>
+          <ColumnNumber>17</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>19</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\STARTUP.A51</Name>
+          <ColumnNumber>37</ColumnNumber>
+          <TopLine>136</TopLine>
+          <CurrentLine>151</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

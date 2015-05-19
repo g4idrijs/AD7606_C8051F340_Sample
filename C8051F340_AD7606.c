@@ -3,10 +3,8 @@
 #include "Delay.h"
 #include <intrins.h>
 
-sbit CS=P0^0;
-sbit RD=P0^1;
-sbit CONVSTA=P0^2;
-sbit CONVSTB=P0^3;
+sbit CS_RD=P0^0;
+sbit CONVSTAB=P0^1;
 sbit BUSY=P0^6;
 sbit REST=P0^7;
 sbit OA=P2^4;
@@ -25,29 +23,26 @@ void AD7606_Init()
 	delay80us();
 	REST=0;
 	OA=0;OB=0;OC=0;RAGE=0;
-	CS=1;RD=1;
-	CONVSTA=1; CONVSTB=1;
+	CS_RD=1;
+	CONVSTAB=1;
 	REST=1;
-	delay1us(); /* AD7606是高电平复位，要求最小脉宽50ns */
+	delay1us();
 	REST=0;
 	
 }					   
 
-void AD7606_ContinuesRead()
+void AD7606_Read()
 {
-	t=0;
-	for(i=0;i<512;i++)
+	CONVSTAB=1;	
+	Block_Write(out,1024);
+	Busy=BUSY;
+	while(Busy==1)
 	{
-		CONVSTA=1; CONVSTB=1;		
 		Busy=BUSY;
-		while(Busy==1)
-		{
-			Busy=BUSY;
-		}	
-		CS=0;RD=0;
-		out[t*2]=P3;
-		out[(t++)*2+1]=P1;
-		RD=1;CS=1;
-		CONVSTA=0; CONVSTB=0;
-	}		
+	}	
+	CS_RD=0;
+	out[0]=P3;
+	out[1]=P1;
+	CS_RD=1;
+	CONVSTAB=0;
 }

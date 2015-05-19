@@ -352,16 +352,6 @@
               <FilePath>.\STARTUP.A51</FilePath>
             </File>
             <File>
-              <FileName>C8051F340_AD7606.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\C8051F340_AD7606.c</FilePath>
-            </File>
-            <File>
-              <FileName>C8051F340_AD7606.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\C8051F340_AD7606.h</FilePath>
-            </File>
-            <File>
               <FileName>USB_API.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\USB_API.h</FilePath>

@@ -63,7 +63,7 @@ namespace USBXpress_TestPanel
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 600;
+            this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
@@ -135,7 +135,7 @@ namespace USBXpress_TestPanel
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(1061, 373);
+            this.zedGraphControl1.Size = new System.Drawing.Size(1142, 383);
             this.zedGraphControl1.TabIndex = 14;
             // 
             // panel1
@@ -145,12 +145,12 @@ namespace USBXpress_TestPanel
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1061, 751);
+            this.panel1.Size = new System.Drawing.Size(1139, 751);
             this.panel1.TabIndex = 15;
             // 
             // zedGraphControl2
             // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(-3, 371);
+            this.zedGraphControl2.Location = new System.Drawing.Point(-3, 379);
             this.zedGraphControl2.Name = "zedGraphControl2";
             this.zedGraphControl2.ScrollGrace = 0D;
             this.zedGraphControl2.ScrollMaxX = 0D;
@@ -159,7 +159,7 @@ namespace USBXpress_TestPanel
             this.zedGraphControl2.ScrollMinX = 0D;
             this.zedGraphControl2.ScrollMinY = 0D;
             this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(1061, 377);
+            this.zedGraphControl2.Size = new System.Drawing.Size(1142, 369);
             this.zedGraphControl2.TabIndex = 15;
             // 
             // panel2
@@ -177,7 +177,7 @@ namespace USBXpress_TestPanel
             this.panel2.Controls.Add(this.btn_Clear);
             this.panel2.Controls.Add(this.btn_Start);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1064, 0);
+            this.panel2.Location = new System.Drawing.Point(1139, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(221, 751);
             this.panel2.TabIndex = 16;
@@ -236,7 +236,7 @@ namespace USBXpress_TestPanel
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1285, 751);
+            this.ClientSize = new System.Drawing.Size(1360, 751);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "TestPanel";
