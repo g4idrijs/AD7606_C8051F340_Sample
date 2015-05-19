@@ -1,7 +1,7 @@
-"STARTUP.obj",
 "USB_MAIN.obj",
 ".\USBX_F34X.LIB",
-"Delay.obj" 
+"Delay.obj",
+"STARTUP.obj" 
 TO "AD7606_Sample" 
 RAMSIZE(256) 
 XDATA( 0X0000-0X0FFF )

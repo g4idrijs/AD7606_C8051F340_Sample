@@ -1,0 +1,183 @@
+C51 COMPILER V9.53.0.0   F34X_USB_DESCRIPTOR                                               05/19/2015 14:02:36 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE F34X_USB_DESCRIPTOR
+OBJECT MODULE PLACED IN .\src\F34x_USB_Descriptor.OBJ
+COMPILER INVOKED BY: c:\SiliconLabs\SimplicityStudio\v3\developer\toolchains\keil_8051\9.53\BIN\C51.exe G:\AD7606_C8051F
+                    -340_Sample\AD7606_C8051F340_SimplicityStudio\src\F34x_USB_Descriptor.c OMF2 SMALL DEBUG OBJECTEXTEND ROM(LARGE) WARNINGL
+                    -EVEL(2) FLOATFUZZY(3) OPTIMIZE(8,SPEED) DEFINE(DEBUG=1) INTVECTOR(0X0000) INTPROMOTE INCDIR(C:/SiliconLabs/SimplicityStu
+                    -dio/v3/developer/sdks/si8051/v3//Device/shared/si8051Base;C:/SiliconLabs/SimplicityStudio/v3/developer/sdks/si8051/v3//D
+                    -evice/C8051F340;C:/SiliconLabs/SimplicityStudio/v3/developer/sdks/si8051/v3//Device/C8051F340/inc) PRINT(.\src\F34x_USB_
+                    -Descriptor.lst) COND PAGEWIDTH(120) PAGELENGTH(65) OBJECT(.\src\F34x_USB_Descriptor.OBJ)
+
+line level    source
+
+   1          // Program Description:
+   2          //
+   3          // Source file for USB firmware. Includes descriptor data.
+   4          #include "F34x_USB_Register.h"
+   5          #include "USB_MAIN.h"
+   6          #include "F34x_USB_Descriptor.h"
+   7          
+   8          //-----------------------------------------------------------------------------
+   9          // Descriptor Declarations
+  10          //-----------------------------------------------------------------------------
+  11          
+  12          const device_descriptor DeviceDesc =
+  13          {
+  14             18,                  // bLength
+  15             0x01,                // bDescriptorType
+  16             0x1001,              // bcdUSB
+  17             0x00,                // bDeviceClass
+  18             0x00,                // bDeviceSubClass
+  19             0x00,                // bDeviceProtocol
+  20             EP0_PACKET_SIZE,     // bMaxPacketSize0
+*** ERROR C202 IN LINE 20 OF G:\AD7606_C8051F340_Sample\AD7606_C8051F340_SimplicityStudio\src\F34x_USB_Descriptor.c: 'EP
+             -0_PACKET_SIZE': undefined identifier
+  21             0xC410,              // idVendor
+  22             0x0000,              // idProduct
+  23             0x0000,              // bcdDevice
+  24             0x01,                // iManufacturer
+  25             0x02,                // iProduct
+  26             0x00,                // iSerialNumber
+  27             0x01                 // bNumConfigurations
+  28          }; //end of DeviceDesc
+  29          
+  30          const configuration_descriptor ConfigDesc =
+  31          {
+  32             0x09,                // Length
+  33             0x02,                // Type
+  34             0x2000,              // Totallength
+  35             0x01,                // NumInterfaces
+  36             0x01,                // bConfigurationValue
+  37             0x00,                // iConfiguration
+  38             0x80,                // bmAttributes
+  39             0x0F                 // MaxPower
+  40          }; //end of ConfigDesc
+  41          
+  42          const interface_descriptor InterfaceDesc =
+  43          {
+  44             0x09,                // bLength
+  45             0x04,                // bDescriptorType
+  46             0x00,                // bInterfaceNumber
+  47             0x00,                // bAlternateSetting
+  48             0x02,                // bNumEndpoints
+  49             0x00,                // bInterfaceClass
+C51 COMPILER V9.53.0.0   F34X_USB_DESCRIPTOR                                               05/19/2015 14:02:36 PAGE 2   
+
+  50             0x00,                // bInterfaceSubClass
+  51             0x00,                // bInterfaceProcotol
+  52             0x00                 // iInterface
+  53          }; //end of InterfaceDesc
+  54          
+  55          const endpoint_descriptor Endpoint1Desc =
+  56          {
+  57             0x07,                // bLength
+  58             0x05,                // bDescriptorType
+  59             0x81,                // bEndpointAddress
+  60             0x03,                // bmAttributes
+  61             EP1_PACKET_SIZE_LE,  // MaxPacketSize (LITTLE ENDIAN)
+*** ERROR C202 IN LINE 61 OF G:\AD7606_C8051F340_Sample\AD7606_C8051F340_SimplicityStudio\src\F34x_USB_Descriptor.c: 'EP
+             -1_PACKET_SIZE_LE': undefined identifier
+  62             10                   // bInterval
+  63          }; //end of Endpoint1Desc
+  64          
+  65          const endpoint_descriptor Endpoint2Desc =
+  66          {
+  67             0x07,                // bLength
+  68             0x05,                // bDescriptorType
+  69             0x02,                // bEndpointAddress
+  70             0x03,                // bmAttributes
+  71             EP2_PACKET_SIZE_LE,  // MaxPacketSize (LITTLE ENDIAN)
+*** ERROR C202 IN LINE 71 OF G:\AD7606_C8051F340_Sample\AD7606_C8051F340_SimplicityStudio\src\F34x_USB_Descriptor.c: 'EP
+             -2_PACKET_SIZE_LE': undefined identifier
+  72             10                   // bInterval
+  73          }; //end of Endpoint2Desc
+  74          
+  75          #define STR0LEN 4
+  76          
+  77          code const BYTE String0Desc[STR0LEN] =
+  78          {
+  79             STR0LEN, 0x03, 0x09, 0x04
+  80          }; //end of String0Desc
+  81          
+  82          #define STR1LEN sizeof("SILICON LABORATORIES INC.")*2
+  83          
+  84          code const BYTE String1Desc[STR1LEN] =
+  85          {
+  86             STR1LEN, 0x03,
+  87             'S', 0,
+  88             'I', 0,
+  89             'L', 0,
+  90             'I', 0,
+  91             'C', 0,
+  92             'O', 0,
+  93             'N', 0,
+  94             ' ', 0,
+  95             'L', 0,
+  96             'A', 0,
+  97             'B', 0,
+  98             'O', 0,
+  99             'R', 0,
+ 100             'A', 0,
+ 101             'T', 0,
+ 102             'O', 0,
+ 103             'R', 0,
+ 104             'I', 0,
+ 105             'E', 0,
+ 106             'S', 0,
+ 107             ' ', 0,
+ 108             'I', 0,
+C51 COMPILER V9.53.0.0   F34X_USB_DESCRIPTOR                                               05/19/2015 14:02:36 PAGE 3   
+
+ 109             'N', 0,
+ 110             'C', 0,
+ 111             '.', 0
+ 112            }; //end of String1Desc
+ 113          
+ 114          #define STR2LEN sizeof("C8051F340 Development Board")*2
+ 115          
+ 116          code const BYTE String2Desc[STR2LEN] =
+ 117          {
+ 118             STR2LEN, 0x03,
+ 119             'C', 0,
+ 120             '8', 0,
+ 121             '0', 0,
+ 122             '5', 0,
+ 123             '1', 0,
+ 124             'F', 0,
+ 125             '3', 0,
+ 126             '4', 0,
+ 127             '0', 0,
+ 128             ' ', 0,
+ 129             'D', 0,
+ 130             'e', 0,
+ 131             'v', 0,
+ 132             'e', 0,
+ 133             'l', 0,
+ 134             'o', 0,
+ 135             'p', 0,
+ 136             'm', 0,
+ 137             'e', 0,
+ 138             'n', 0,
+ 139             't', 0,
+ 140             ' ', 0,
+ 141             'B', 0,
+ 142             'o', 0,
+ 143             'a', 0,
+ 144             'r', 0,
+ 145             'd', 0
+ 146          }; //end of String2Desc
+ 147          
+ 148          BYTE* const StringDescTable[] =
+ 149          {
+ 150             String0Desc,
+ 151             String1Desc,
+ 152             String2Desc
+ 153          };
+ 154          
+ 155          //-----------------------------------------------------------------------------
+ 156          // End Of File
+ 157          //-----------------------------------------------------------------------------
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  3 ERROR(S)

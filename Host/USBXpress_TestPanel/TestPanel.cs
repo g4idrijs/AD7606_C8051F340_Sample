@@ -124,16 +124,16 @@ namespace USBXpress_TestPanel
                     }
                     fft();
                     CulveDisplay();
-                    //SaveReceivedData();
-                    //textBox1.Text += "读取时间为：" + time_read + Environment.NewLine + "总用时为：" + time_all +
-                    //                 Environment.NewLine;
+                    SaveReceivedData();
+                    textBox1.Text += "读取时间为：" + time_read + Environment.NewLine + "总用时为：" + time_all +
+                                     Environment.NewLine;
                     T = 0;
                     time_read = 0;
                     time_all = 0;
                     stopwatch2.Restart();
                     break;
                 }
-                ReceivedValue1[T++] = (Double) BitConverter.ToInt16(InBuf, skip*i)/32768;
+                ReceivedValue1[T++] = (Double) BitConverter.ToInt16(InBuf, skip*i)/32768*5;
                 //ReceivedValue1[T++] = InBuf[skip*i];
                 ValueToShow[i] = ReceivedValue1[i];
             }
@@ -207,8 +207,8 @@ namespace USBXpress_TestPanel
             myPane1.YAxis.Scale.FontSpec.FontColor = Color.Black;
             myPane1.YAxis.MajorGrid.IsZeroLine = false;
             myPane1.YAxis.Scale.Align = AlignP.Inside;
-            myPane1.YAxis.Scale.Min = -1;
-            myPane1.YAxis.Scale.Max = 1;
+            myPane1.YAxis.Scale.Min = -1*5;
+            myPane1.YAxis.Scale.Max = 1*5;
             myPane1.XAxis.Scale.Max = InBufSize/skip/16;
             zedGraphControl1.AxisChange();
             zedGraphControl1.Invalidate();

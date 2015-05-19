@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 09:37:41 PAGE 1   
+C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 22:22:55 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE USB_MAIN
@@ -29,233 +29,206 @@ line level    source
   19          code const UINT USB_bcdDevice = 0x0100;
   20          /*** [ END ] USB Descriptor Information [ END ] ***/
   21          
-  22          sbit CS_RD=P0^0;
-  23          sbit CONVSTAB=P0^1;
-  24          sbit BUSY=P0^6;
-  25          sbit REST=P0^7;
-  26          sbit OA=P2^4;
-  27          sbit OB=P2^5;
-  28          sbit OC=P2^6;
-  29          sbit RAGE= P2^7;
-  30          sbit Led = P2^3;
-  31          
-  32          #define N 32
+  22          /*** [BEGIN]  [BEGIN] ***/
+  23          sbit CS_RD=P0^0;
+  24          sbit CONVSTAB=P0^1;
+  25          sbit BUSY=P0^6;
+  26          sbit REST=P0^7;
+  27          sbit OA=P2^4;
+  28          sbit OB=P2^5;
+  29          sbit OC=P2^6;
+  30          sbit RAGE= P2^7;
+  31          sbit Led = P2^3;
+  32          /*** [ END ]  [ END ] ***/
   33          
-  34          #define SYSCLK  12000000/8
-*** WARNING C317 IN LINE 34 OF USB_MAIN.c: attempt to redefine macro 'SYSCLK'
-  35          #define TIMER_PRESCALER 12  // Based on Timer2 CKCON and TMR2CN settings
-  36          #define RATE    40000 // if LED_TOGGLE_RATE = 1, the LED will be on for 1  second and off for 1 second
-  37          // There are SYSCLK/TIMER_PRESCALER timer ticks per second, so SYSCLK/TIMER_PRESCALER timer ticks per seco
-             -nd.
-  38          #define TIMER_TICKS_PER_S  SYSCLK/TIMER_PRESCALER
-  39          // Note: LED_TOGGLE_RATE*TIMER_TICKS_PERS should not exceed 65535 (0xFFFF)for the 16-bit timer
-  40          #define AUX1 TIMER_TICKS_PER_S/RATE
-  41          #define AUX2 -AUX1
-  42          #define TIMER2_RELOAD AUX2  // Reload value for Timer2
-  43          sfr16 TMR2RL = 0xCA; // Timer2 Reload Register
-  44          sfr16 TMR2 = 0xCC; // Timer2 Register
+  34          /*** [BEGIN]  [BEGIN] ***/
+  35          #define SYSCLK 12000000/8
+*** WARNING C317 IN LINE 35 OF USB_MAIN.c: attempt to redefine macro 'SYSCLK'
+  36          #define TIMER_PRESCALER 12  // Based on Timer2 CKCON and TMR2CN settings
+  37          #define RATE    40000 //if LED_TOGGLE_RATE = 1, the LED will be on for 1 second and off for 1 second
+  38          // There are SYSCLK/TIMER_PRESCALER timer ticks per second, so
+  39          // SYSCLK/TIMER_PRESCALER timer ticks per second.
+  40          #define TIMER_TICKS_PER_S  SYSCLK/TIMER_PRESCALER
+  41          // NoteRATE*TIMER_TICKS_PERS should not exceed 65535 (0xFFFF)for the 16-bit timer
+  42          #define AUX1 TIMER_TICKS_PER_S/RATE
+  43          #define AUX2 -AUX1
+  44          #define TIMER2_RELOAD AUX2  // Reload value for Timer2
   45          
-  46          
-  47          U8 temp[2];
-  48          U8 Busy;
-  49          U8 xdata out[N];
-  50          U16 t;
-  51          
-  52          
-C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 09:37:41 PAGE 2   
+  46          sfr16 TMR2RL = 0xca; // Timer2 reload value 
+  47          sfr16 TMR2 = 0xcc; // Timer2 counter
+  48          /*** [ END ]  [ END ] ***/
+  49          
+  50          /*** [BEGIN]  [BEGIN] ***/
+  51          #define N 32
+  52          U8 temp[2]={0,0};
+  53          U8 Busy;
+C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 22:22:55 PAGE 2   
 
-  53          void Sysclk_Init(void);
-  54          void USB0_Init(void);
-  55          void Port_Init(void);
-  56          void Suspend_Device(void);
-  57          void Delay(void);       
-  58          void AD7606_Init(void);
-  59          void AD7606_Read(void);
-  60          void Timer2_Init();
-  61          
-  62          void main(void)
-  63          {
-  64   1              PCA0MD &= ~0x40;
-  65   1              //Sysclk_Init(); 
-  66   1              //USB0_Init();
-  67   1              Port_Init(); 
-  68   1              USB_Clock_Start();
-  69   1              USB_Init(USB_VID,USB_PID,USB_MfrStr,USB_ProductStr,USB_SerialStr,USB_MaxPower,USB_PwAttributes,USB_bcdDev
-             -ice);   
-  70   1      
-  71   1              CLKSEL |= 0x02;
+  54          U8 xdata out[N];
+  55          U16 T;
+  56          U8 i;
+  57          /*** [ END ]  [ END ] ***/
+  58          
+  59          /*** [BEGIN]  [BEGIN] ***/
+  60          void Port_Init(void);
+  61          void Suspend_Device(void);
+  62          void Delay(void);       
+  63          void AD7606_Init(void);
+  64          void AD7606_Read(void);
+  65          void Timer2_1_Init();
+  66          void Timer2_2_Init();
+  67          /*** [ END ]  [ END ] ***/
+  68          
+  69          void main(void)
+  70          {
+  71   1              PCA0MD &= ~0x40;
   72   1      
-  73   1              AD7606_Init();
-  74   1              //USB_Int_Enable();
-  75   1      
-  76   1              Timer2_Init(); 
-  77   1              EA=1;
-  78   1      
-  79   1              t=0;   
-  80   1              while (1)
-  81   1              {       
-  82   2              }
-  83   1      }
-  84          
-  85          void Sysclk_Init(void)
-  86          {
-  87   1          CLKSEL = 0x00; // Select the internal osc. as the SYSCLK source
-  88   1          OSCICN = 0x83; // configure internal oscillator for 12MHz / 1
-  89   1              RSTSRC = 0x04; // enable missing clock detector 
-  90   1      
-  91   1              OSCICN = 0x83;
-  92   1              CLKMUL  = 0x00; 
-  93   1              CLKMUL |= 0x80; // Enable clock multiplier   
-  94   1              Delay(); // Delay for clock multiplier to begin   
-  95   1              CLKMUL |= 0xC0; // Initialize the clock multiplier   
-  96   1              Delay(); // Delay for clock multiplier to begin   
-  97   1              while(!(CLKMUL & 0x20)); // Wait for multiplier to lock
-  98   1              CLKSEL  = SYS_INT_OSC;
-  99   1              CLKSEL = SYS_4X_DIV_2; 
- 100   1      }
- 101          
- 102          void Oscillator_Init()
- 103          {                                                               
- 104   1          CLKSEL = 0x00; // Select the internal osc. as the SYSCLK source
- 105   1          OSCICN = 0x83; // configure internal oscillator for 12MHz / 1
- 106   1              RSTSRC = 0x04; // enable missing clock detector
- 107   1      }
- 108          
- 109          void AD7606_Init()
- 110          {
- 111   1              delay80us();
- 112   1              REST=0;
- 113   1              OA=0;OB=0;OC=0;RAGE=0;
-C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 09:37:41 PAGE 3   
+  73   1              Port_Init(); 
+  74   1              USB_Clock_Start();
+  75   1              CLKSEL |= 0x02;
+  76   1              USB_Init(USB_VID,USB_PID,USB_MfrStr,USB_ProductStr,USB_SerialStr,USB_MaxPower,USB_PwAttributes,USB_bcdDev
+             -ice);   
+  77   1      
+  78   1              AD7606_Init();
+  79   1              USB_Int_Enable();
+  80   1              T=0;
+  81   1              //Timer2_1_Init(); 
+  82   1              EA=1;
+  83   1               
+  84   1              while (1)
+  85   1              {
+  86   2                      AD7606_Read();  
+  87   2              }
+  88   1      }
+  89          
+  90          void AD7606_Init()
+  91          {
+  92   1              delay80us();
+  93   1              REST=0;
+  94   1              OA=0;OB=0;OC=0;RAGE=0;
+  95   1              CS_RD=1;
+  96   1              CONVSTAB=0;
+  97   1              REST=1;
+  98   1              delay80us();
+  99   1              REST=0;
+ 100   1              
+ 101   1      }
+ 102          
+ 103          void AD7606_Read()
+ 104          {
+ 105   1              CONVSTAB=1;
+ 106   1              if(T<N/2)
+ 107   1              {
+ 108   2                      out[T*2]=temp[0];
+ 109   2                      out[(T++)*2+1]=temp[1];
+ 110   2                      if(T==N/2)
+ 111   2                      {
+ 112   3                              Block_Write(out,N);
+ 113   3                              T=0;
+ 114   3                      }
+C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 22:22:55 PAGE 3   
 
- 114   1              CS_RD=1;
- 115   1              CONVSTAB=0;
- 116   1              REST=1;
- 117   1              delay1us();
- 118   1              REST=0;
- 119   1              
- 120   1      }
- 121          
- 122          void AD7606_Read()
- 123          {
- 124   1              CONVSTAB=1;     
- 125   1              if(t<N/2)
- 126   1              {
- 127   2                      out[t*2]=temp[0];
- 128   2                      out[(t++)*2+1]=temp[1];
- 129   2              }
- 130   1              else
- 131   1              {
- 132   2                      Block_Write(out,N);
- 133   2                      t=0;
- 134   2              }
- 135   1              Busy=BUSY;
- 136   1              while(Busy==1)
- 137   1              {
- 138   2                      Busy=BUSY;
- 139   2              }       
- 140   1              CS_RD=0;
- 141   1              temp[0]=P3;
- 142   1              temp[1]=P1;
- 143   1              CS_RD=1;
- 144   1              CONVSTAB=0;
- 145   1      }
- 146          
- 147          void USB0_Init(void)
- 148          {
- 149   1         POLL_WRITE_BYTE(POWER,  0x08); // Force Asynchronous USB Reset
- 150   1         POLL_WRITE_BYTE(IN1IE,  0x07); // Enable Endpoint 0-2 in interrupts
- 151   1         POLL_WRITE_BYTE(OUT1IE, 0x07); // Enable Endpoint 0-2 out interrupts
- 152   1         POLL_WRITE_BYTE(CMIE,   0x07); // Enable Reset, Resume, and Suspend interrupts
- 153   1         USB0XCN = 0xE0; // Enable transceiver; select full speed
- 154   1         POLL_WRITE_BYTE(CLKREC, 0x80); // Enable clock recovery, single-step mode disabled
- 155   1         EIE1 |= 0x02; // Enable USB0 Interrupts;Global Interrupt enable;Enable USB0 by clearing the USB Inhibit
-             - bit
- 156   1         POLL_WRITE_BYTE(POWER,  0x01); // and enable suspend detection
- 157   1      }
- 158          
- 159          
- 160          // This function configures Timer2 as a 16-bit reload timer, interrupt enabled.
- 161          // Using the SYSCLK at 12MHz/8 with a 1:12 prescaler.
- 162          // Note: The Timer2 uses a 1:12 prescaler.  If this setting changes, the
- 163          // TIMER_PRESCALER constant must also be changed.
- 164          void Timer2_Init ()
- 165          {
- 166   1         CKCON &= ~0x60; // Timer2 uses SYSCLK/12
- 167   1         TMR2CN &= ~0x01;
- 168   1      
- 169   1         TMR2RL = TIMER2_RELOAD;             // Reload value to be used in Timer2
- 170   1         TMR2 = TMR2RL;                      // Init the Timer2 register
- 171   1      
- 172   1         TMR2CN = 0x04;                      // Enable Timer2 in auto-reload mode
- 173   1         ET2 = 1; 
- 174   1      }
-C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 09:37:41 PAGE 4   
+ 115   2              }       
+ 116   1              Busy=BUSY;
+ 117   1              while(Busy==1)
+ 118   1              {
+ 119   2                      Busy=BUSY;
+ 120   2              }       
+ 121   1              CS_RD=0;
+ 122   1              temp[0]=P3;
+ 123   1              temp[1]=P1;
+ 124   1              CS_RD=1;
+ 125   1              CONVSTAB=0;
+ 126   1      }
+ 127          
+ 128          // This function configures Timer2 as a 16-bit reload timer, interrupt enabled.
+ 129          // Using the SYSCLK at 12MHz/8 with a 1:12 prescaler.
+ 130          // Note: The Timer2 uses a 1:12 prescaler.  If this setting changes, the
+ 131          // TIMER_PRESCALER constant must also be changed.
+ 132          void Timer2_1_Init ()
+ 133          {
+ 134   1         CKCON &= ~0x60; // Timer2 uses SYSCLK/12
+ 135   1         TMR2CN &= ~0x01;
+ 136   1      
+ 137   1         TMR2RL = TIMER2_RELOAD; // Reload value to be used in Timer2
+ 138   1         TMR2 = TMR2RL; // Init the Timer2 register
+ 139   1      
+ 140   1         TMR2CN = 0x04; // Enable Timer2 in auto-reload mode
+ 141   1         ET2 = 1; 
+ 142   1      }
+ 143          
+ 144          // Configure Timer2 to 16-bit auto-reload and generate an interrupt at 100uS 
+ 145          // intervals.  Timer 2 overflow automatically triggers ADC0 conversion.
+ 146          void Timer2_2_Init ()
+ 147          {
+ 148   1         TMR2CN  = 0x00; // Stop Timer2; Clear TF2;use SYSCLK as timebase, 16-bit auto-reload
+ 149   1         CKCON  |= 0x10; // select SYSCLK for timer 2 source
+ 150   1         TMR2RL  = 65535 - (12000000 / 40000);
+ 151   1         TMR2    = 0xffff; // set to reload immediately
+ 152   1         TR2     = 1; // start Timer2
+ 153   1      }
+ 154          
+ 155          void Port_Init(void)
+ 156          {
+ 157   1              P0MDIN |= 0x40;// 0x40:BUSY input
+ 158   1              P0MDOUT = 0xcc; //0x10 : Set TX pin to push-
+ 159   1              P1MDIN |= 0xff; 
+ 160   1              P1MDOUT = 0x00;
+ 161   1              P1 |= 0xff;
+ 162   1              P2MDOUT = 0xfb;
+ 163   1              P3MDIN |= 0xff; 
+ 164   1              P3MDOUT = 0x00;
+ 165   1              P3 |= 0xff;               
+ 166   1      
+ 167   1              XBR0 = 0x01;// Enable UART0
+ 168   1              XBR1 = 0x40;// Route CEX0 to P0.0,Enable crossbar and weak pull-ups
+ 169   1      }
+ 170          
+ 171          void Suspend_Device(void)
+ 172          {
+ 173   1         USB_Suspend();       // Put the device in suspend state
+ 174   1      
+ 175   1      }
+ 176          
+C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 22:22:55 PAGE 4   
 
- 175          
- 176          void Port_Init(void)
- 177          {
- 178   1              P0MDIN |= 0x40;// 0x40:BUSY input
- 179   1              P0MDOUT = 0xcc; //0x10 : Set TX pin to push-pull        
- 180   1      
- 181   1              P1MDIN |= 0xff; 
- 182   1              P1MDOUT = 0x00;
- 183   1              P1 |= 0xff;//Set port latches to '1'
- 184   1      
- 185   1              P2MDOUT = 0xfb;
+ 177          // Example ISR for USB_API
+ 178          void  USB_API_TEST_ISR(void) interrupt 17
+ 179          {
+ 180   1         BYTE INTVAL = Get_Interrupt_Source();
+ 181   1      
+ 182   1         if (INTVAL & DEV_SUSPEND)
+ 183   1         {
+ 184   2              Suspend_Device();
+ 185   2         }
  186   1      
- 187   1              P3MDIN |= 0xff; 
- 188   1              P3MDOUT = 0x00;
- 189   1              P3 |= 0xff;//Set port latches to '1'              
- 190   1      
- 191   1              XBR0 = 0x01;// Enable UART0
- 192   1              XBR1 = 0x40;// Route CEX0 to P0.0,Enable crossbar and weak pull-ups
- 193   1      }
- 194          
- 195          void Suspend_Device(void)
- 196          {
- 197   1         USB_Suspend();       // Put the device in suspend state
- 198   1      
- 199   1      }
- 200          
- 201          // Example ISR for USB_API
- 202          void  USB_API_TEST_ISR(void) interrupt 17
- 203          {
- 204   1         BYTE INTVAL = Get_Interrupt_Source();
- 205   1      
- 206   1         if (INTVAL & DEV_SUSPEND)
- 207   1         {
- 208   2              Suspend_Device();
- 209   2         }
- 210   1      
- 211   1         if (INTVAL & DEV_CONFIGURED)
- 212   1         {
- 213   2                      Port_Init();
- 214   2         }
- 215   1      }
- 216          
- 217          void Timer2_ISR (void) interrupt 5
- 218          {
- 219   1         TF2H = 0; // Clear Timer2 interrupt flag
- 220   1         AD7606_Read();
- 221   1      }
- 222          
- 223          void Delay (void)
- 224          {
- 225   1         int x;
- 226   1         for(x = 0;x < 500;x)
- 227   1            x++;
- 228   1      }
+ 187   1         if (INTVAL & DEV_CONFIGURED)
+ 188   1         {
+ 189   2                      Port_Init();
+ 190   2         }
+ 191   1      }
+ 192          
+ 193          void Timer2_ISR (void) interrupt 5
+ 194          {
+ 195   1         TF2H = 0; // Clear Timer2 interrupt flag
+ 196   1         AD7606_Read();
+ 197   1         //Block_Write(out,N);
+ 198   1      }
+ 199          
+ 200          void Delay (void)
+ 201          {
+ 202   1         int x;
+ 203   1         for(x = 0;x < 500;x)
+ 204   1            x++;
+ 205   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    620    ----
+   CODE SIZE        =    530    ----
    CONSTANT SIZE    =     60    ----
-   XDATA SIZE       =     37       1
+   XDATA SIZE       =     38       1
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
-C51 COMPILER V9.01   USB_MAIN                                                              05/19/2015 09:37:41 PAGE 5   
-
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
