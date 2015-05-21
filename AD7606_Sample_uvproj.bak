@@ -387,9 +387,9 @@
               <FilePath>.\F34x_USB_Register.h</FilePath>
             </File>
             <File>
-              <FileName>SILABS_STARTUP.A51</FileName>
+              <FileName>STARTUP.A51</FileName>
               <FileType>2</FileType>
-              <FilePath>.\SILABS_STARTUP.A51</FilePath>
+              <FilePath>.\STARTUP.A51</FilePath>
             </File>
           </Files>
         </Group>

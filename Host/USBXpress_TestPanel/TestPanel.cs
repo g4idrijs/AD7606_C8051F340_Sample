@@ -12,12 +12,9 @@ namespace USBXpress_TestPanel
     {
         private static readonly int N = 16*1024*4;
         private static readonly int InBufSize = 16*1024*4;
-        private static readonly int OutBufSize = 1;
         private static readonly int skip = 2;
         private readonly int BytesReadRequest = InBufSize;
-        private readonly int BytesWriteRequest = OutBufSize;
         private readonly Byte[] InBuf = new Byte[InBufSize];
-        private readonly Byte[] OutBuf = new Byte[OutBufSize];
         private readonly double[] ReceivedValue1 = new double[N/skip];
         private readonly Stopwatch stopwatch1 = new Stopwatch();
         private readonly Stopwatch stopwatch2 = new Stopwatch();
@@ -47,6 +44,26 @@ namespace USBXpress_TestPanel
             zedGraphControl2.GraphPane.YAxis.Title.IsVisible = false;
             zedGraphControl2.GraphPane.XAxis.IsVisible = true;
             zedGraphControl2.GraphPane.YAxis.IsVisible = true;
+
+            zedGraphControl1.GraphPane.Title.Text = "";
+            zedGraphControl1.GraphPane.YAxis.Title.Text = "采样值";
+            zedGraphControl1.GraphPane.XAxis.Title.IsVisible = false;
+            zedGraphControl1.GraphPane.YAxis.Scale.Align = AlignP.Inside;
+            zedGraphControl1.GraphPane.YAxis.Scale.FontSpec.FontColor = Color.Black;
+            zedGraphControl1.GraphPane.YAxis.MajorGrid.IsZeroLine = false;
+            zedGraphControl1.GraphPane.YAxis.Scale.Align = AlignP.Inside;
+            zedGraphControl1.GraphPane.YAxis.Scale.Min = -1;
+            zedGraphControl1.GraphPane.YAxis.Scale.Max = 1;
+            zedGraphControl1.GraphPane.XAxis.Scale.Max = InBufSize / skip / 16;
+            zedGraphControl2.GraphPane.Title.Text = "";
+            zedGraphControl2.GraphPane.YAxis.Title.Text = "fft";
+            zedGraphControl2.GraphPane.XAxis.Title.IsVisible = false;
+            zedGraphControl2.GraphPane.YAxis.Scale.Align = AlignP.Inside;
+            zedGraphControl2.GraphPane.YAxis.Scale.FontSpec.FontColor = Color.Black;
+            zedGraphControl2.GraphPane.YAxis.MajorGrid.IsZeroLine = false;
+            zedGraphControl2.GraphPane.YAxis.Scale.Align = AlignP.Inside;
+            zedGraphControl2.GraphPane.XAxis.Scale.Max = InBufSize / skip / 2;
+            
 
             //File.Delete("data.txt");
 
@@ -92,7 +109,7 @@ namespace USBXpress_TestPanel
         private void timer1_Tick(object sender, EventArgs e)
         {
             stopwatch1.Restart();
-            //stopwatch2.Restart();
+            stopwatch2.Restart();
             SLUSBXpressDLL.Status = SLUSBXpressDLL.SI_Read(SLUSBXpressDLL.hUSBDevice, ref InBuf[0], BytesReadRequest,
                 ref BytesSucceed, 0);
 
@@ -105,7 +122,7 @@ namespace USBXpress_TestPanel
             time_read += stopwatch1.Elapsed.Seconds + (float) stopwatch1.Elapsed.Milliseconds/1000;
             for (var i = 0; i < InBufSize/skip; i++)
             {
-                if (T == (N/skip-1))
+                if (T == (N/skip))
                 {
                     label2.Show();
                     //timer1.Stop();
@@ -124,18 +141,18 @@ namespace USBXpress_TestPanel
                     }
                     fft();
                     CulveDisplay();
-                    SaveReceivedData();
-                    textBox1.Text += "读取时间为：" + time_read + Environment.NewLine + "总用时为：" + time_all +
-                                     Environment.NewLine;
+                    //SaveReceivedData();
+                    //textBox1.Text += "读取时间为：" + time_read + Environment.NewLine + "总用时为：" + time_all +
+                    //                 Environment.NewLine;
                     T = 0;
                     time_read = 0;
                     time_all = 0;
-                    stopwatch2.Restart();
+                    //stopwatch2.Restart();
                     break;
                 }
-                ReceivedValue1[T++] = (Double) BitConverter.ToInt16(InBuf, skip*i)/32768*5;
+                ReceivedValue1[T++] = (Double) BitConverter.ToInt16(InBuf, skip*i)/32768;
                 //ReceivedValue1[T++] = InBuf[skip*i];
-                ValueToShow[i] = ReceivedValue1[i];
+                //ValueToShow[i] = ReceivedValue1[i];
             }
             time_all += stopwatch2.Elapsed.Seconds + (float) stopwatch2.Elapsed.Milliseconds/1000;
         }
@@ -158,15 +175,8 @@ namespace USBXpress_TestPanel
                 culveList1.Add(x2, y2);
             }
             var Culve2 = myPane2.AddCurve("", culveList1, Color.Red, SymbolType.None);
-            myPane2.Title.Text = "";
-            myPane2.YAxis.Title.Text = "fft";
-            myPane2.XAxis.Title.IsVisible = false;
+
             Culve2.Line.IsSmooth = true;
-            myPane2.YAxis.Scale.Align = AlignP.Inside;
-            myPane2.YAxis.Scale.FontSpec.FontColor = Color.Black;
-            myPane2.YAxis.MajorGrid.IsZeroLine = false;
-            myPane2.YAxis.Scale.Align = AlignP.Inside;
-            myPane2.XAxis.Scale.Max = InBufSize/skip/2;
             zedGraphControl2.AxisChange();
             zedGraphControl2.Invalidate();
         }
@@ -195,21 +205,12 @@ namespace USBXpress_TestPanel
             for (var i = 0; i < InBufSize/skip/16; i++)
             {
                 x1 = i;
-                y1 = ValueToShow[i];
+                y1 = ReceivedValue1[i];
                 culveList1.Add(x1, y1);
             }
             var Culve1 = myPane1.AddCurve("", culveList1, Color.Blue, SymbolType.None);
-            myPane1.Title.Text = "";
-            myPane1.YAxis.Title.Text = "采样值";
-            myPane1.XAxis.Title.IsVisible = false;
+
             Culve1.Line.IsSmooth = true;
-            myPane1.YAxis.Scale.Align = AlignP.Inside;
-            myPane1.YAxis.Scale.FontSpec.FontColor = Color.Black;
-            myPane1.YAxis.MajorGrid.IsZeroLine = false;
-            myPane1.YAxis.Scale.Align = AlignP.Inside;
-            myPane1.YAxis.Scale.Min = -1*5;
-            myPane1.YAxis.Scale.Max = 1*5;
-            myPane1.XAxis.Scale.Max = InBufSize/skip/16;
             zedGraphControl1.AxisChange();
             zedGraphControl1.Invalidate();
         }
