@@ -68,3 +68,13 @@ G:\AD7606_C8051F340_Sample\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPa
 G:\AD7606_C8051F340_Sample\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.Properties.Resources.resources
 G:\AD7606_C8051F340_Sample\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.TestPanel.resources
 G:\AD7606_C8051F340_Sample\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.csproj.GenerateResource.Cache
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\bin\Release\USBXpress_TestPanel.exe.config
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.exe
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.pdb
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\bin\Release\USBXpress_TestPanel.exe
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\bin\Release\USBXpress_TestPanel.pdb
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\bin\Release\ZedGraph.dll
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.csprojResolveAssemblyReference.cache
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.Properties.Resources.resources
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.TestPanel.resources
+G:\AD7606_C8051F340_Sample - test\Host\USBXpress_TestPanel\obj\Release\USBXpress_TestPanel.csproj.GenerateResource.Cache

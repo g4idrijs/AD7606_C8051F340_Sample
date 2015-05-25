@@ -352,11 +352,6 @@
               <FilePath>.\USB_API.h</FilePath>
             </File>
             <File>
-              <FileName>USB_MAIN.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USB_MAIN.c</FilePath>
-            </File>
-            <File>
               <FileName>USBX_F34X.LIB</FileName>
               <FileType>4</FileType>
               <FilePath>.\USBX_F34X.LIB</FilePath>
@@ -377,19 +372,14 @@
               <FilePath>.\Delay.h</FilePath>
             </File>
             <File>
-              <FileName>USB_MAIN.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\USB_MAIN.h</FilePath>
-            </File>
-            <File>
-              <FileName>F34x_USB_Register.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\F34x_USB_Register.h</FilePath>
-            </File>
-            <File>
-              <FileName>STARTUP.A51</FileName>
+              <FileName>SILABS_STARTUP.A51</FileName>
               <FileType>2</FileType>
-              <FilePath>.\STARTUP.A51</FilePath>
+              <FilePath>.\SILABS_STARTUP.A51</FilePath>
+            </File>
+            <File>
+              <FileName>MAIN.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MAIN.c</FilePath>
             </File>
           </Files>
         </Group>

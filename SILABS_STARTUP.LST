@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/21/2015 10:42:03 PAGE     1
+A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/26/2015 00:51:08 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02
@@ -65,7 +65,7 @@ LOC  OBJ            LINE     SOURCE
                       56     ; <h> Stack Space for reentrant functions in the SMALL model.
                       57     ;  <q> IBPSTACK: Enable SMALL model reentrant stack
                       58     ;     <i> Stack space for reentrant functions in the SMALL model.
-A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/21/2015 10:42:03 PAGE     2
+A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/26/2015 00:51:08 PAGE     2
 
   0000                59     IBPSTACK        EQU     0       ; set to 1 if small reentrant is used.
                       60     ;  <o> IBPSTACKTOP: End address of SMALL model stack <0x0-0xFF>
@@ -133,7 +133,7 @@ LOC  OBJ            LINE     SOURCE
                      122                     EXTRN CODE (?C_START)
                      123                     PUBLIC  ?C_STARTUP
                      124     
-A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/21/2015 10:42:03 PAGE     3
+A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/26/2015 00:51:08 PAGE     3
 
 ----                 125                     CSEG    AT      0
 0000 020000   F      126     ?C_STARTUP:     LJMP    STARTUP1
@@ -201,7 +201,7 @@ LOC  OBJ            LINE     SOURCE
                              ENDIF
                      189     
 0006 758100   F      190                     MOV     SP,#?STACK-1
-A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/21/2015 10:42:03 PAGE     4
+A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/26/2015 00:51:08 PAGE     4
 
                      191     
                      192     ; This code is required if you use L51_BANK.A51 with Banking Mode 4
@@ -217,7 +217,7 @@ LOC  OBJ            LINE     SOURCE
 0009 020000   F      201                     LJMP    ?C_START
                      202     
                      203                     END
-A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/21/2015 10:42:03 PAGE     5
+A51 MACRO ASSEMBLER  SILABS_STARTUP                                                       05/26/2015 00:51:08 PAGE     5
 
 SYMBOL TABLE LISTING
 ------ ----- -------

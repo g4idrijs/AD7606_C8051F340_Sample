@@ -131,12 +131,12 @@ namespace USBXpress_TestPanel
                     if (v_N >= 1000000)
                     {
                         label2.Text = "读取的有效速度：" +
-                                      v_N/1000000 +
+                                      v_N / 1000000 +
                                       "MB/s";
                     }
                     else
                     {
-                        label2.Text = "读取的有效速度：" + v_N/1024 +
+                        label2.Text = "读取的有效速度：" + v_N / 1024 +
                                       "KB/s";
                     }
                     fft();

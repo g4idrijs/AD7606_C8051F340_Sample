@@ -362,16 +362,6 @@
               <FilePath>.\compiler_defs.h</FilePath>
             </File>
             <File>
-              <FileName>Delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Delay.c</FilePath>
-            </File>
-            <File>
-              <FileName>Delay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Delay.h</FilePath>
-            </File>
-            <File>
               <FileName>SILABS_STARTUP.A51</FileName>
               <FileType>2</FileType>
               <FilePath>.\SILABS_STARTUP.A51</FilePath>

@@ -1,5 +1,4 @@
 ".\USBX_F34X.LIB",
-"Delay.obj",
 "SILABS_STARTUP.obj",
 "MAIN.obj" 
 TO "AD7606_Sample" 
