@@ -25,6 +25,6 @@ linking...
     MODEL:   SMALL
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_US?MAIN
-Program Size: data=9.0 xdata=490 code=3578
+Program Size: data=9.0 xdata=490 code=3562
 creating hex file from "AD7606_Sample"...
 "AD7606_Sample" - 0 Error(s), 5 Warning(s).

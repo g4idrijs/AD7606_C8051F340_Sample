@@ -62,7 +62,6 @@ void AD7606_Init(void);
 void AD7606_Read(void);
 void Timer2_Init(U16 counts);
 void Timer2_ISR (void);
-void Ext_Interrupt_Init();
 /*** [ END ]  [ END ] ***/
 
 void main(void)
@@ -79,12 +78,9 @@ void main(void)
 	USB_Int_Enable();
 	T1=0;T2=0;Flag1=1;Flag2=0;
 	Timer2_Init(AUX1); 
-	Ext_Interrupt_Init();
 	Led=0;
 	EA = 1;
-	//IE=0xA1;
-	IP=0x21;
-		 
+	IP=0x20;		 
 
 	while (1)
 	{
@@ -118,6 +114,36 @@ void AD7606_Init()
 
 void AD7606_Read()
 {
+	CS_RD=0;
+
+	if(Flag1==0)
+	{
+		out1[T1]=P3;
+		T1=T1+1;
+		out1[T1]=P1;
+		T1=T1+1;
+		if(T1==N)
+		{
+			Flag1=1;
+			T1=0;
+		}
+	}
+	if(Flag2==0)
+	{
+		out2[T2]=P3;
+		T2=T2+1;
+		out2[T2]=P1;
+		T2=T2+1;
+		if(T2==N)
+		{
+			Flag2=1;
+			T2=0;
+		}
+	}
+
+	CS_RD=1;
+	CONVSTAB=0;	
+
 	CONVSTAB=1;		
 }
 
@@ -157,44 +183,6 @@ void Port_Init(void)
 
 	XBR0 = 0x01;
 	XBR1 = 0x40;
-}
-
-void Ext_Interrupt_Init (void)
-{
-   TCON = 0x03;
-   IT01CF = 0x06; 
-   EX0 = 1; 
-}
-
-void INT0_ISR (void) interrupt 0
-{
-	CS_RD=0;
-	if(Flag1==0)
-	{
-		out1[T1]=P3;
-		T1=T1+1;
-		out1[T1]=P1;
-		T1=T1+1;
-		if(T1==N)
-		{
-			Flag1=1;
-			T1=0;
-		}
-	}
-	if(Flag2==0)
-	{
-		out2[T2]=P3;
-		T2=T2+1;
-		out2[T2]=P1;
-		T2=T2+1;
-		if(T2==N)
-		{
-			Flag2=1;
-			T2=0;
-		}
-	}
-	CS_RD=1;
-	CONVSTAB=0;	
 }
 
 void Suspend_Device(void)
