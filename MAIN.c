@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include "USB_API.h"
+//#include "call.asm"
 
 /*** [BEGIN] USB Descriptor Information [BEGIN] ***/
 code const UINT USB_VID = 0x10C4;								
@@ -31,9 +32,9 @@ sbit Led = P2^3;
 sfr16 TMR2RL = 0xca; // Timer2 reload value 
 sfr16 TMR2 = 0xcc; // Timer2 counter
 
-#define SYSCLK 24000000
+#define SYSCLK 48000000
 #define TIMER_PRESCALER	12  // Based on Timer2 CKCON and TMR2CN settings
-#define RATE	50000
+#define RATE	120000
 // There are SYSCLK/TIMER_PRESCALER timer ticks per second, so
 // SYSCLK/TIMER_PRESCALER timer ticks per second.
 #define TIMER_TICKS_PER_S  SYSCLK/TIMER_PRESCALER
@@ -43,14 +44,13 @@ sfr16 TMR2 = 0xcc; // Timer2 counter
 
 /*** [BEGIN]  [BEGIN] ***/
 #define N 16
-U8 Busy;
-U8 xdata out1[N];
-U8 xdata out2[N];
-U16 T1;
-U16 T2;
+U8 out1[N];
+U8 out2[N];
+U8 T1;
+U8 T2;
 U8 Flag1;
 U8 Flag2;
-U16 i;
+U8 i;
 /*** [ END ]  [ END ] ***/
 
 /*** [BEGIN]  [BEGIN] ***/
@@ -60,7 +60,7 @@ void Suspend_Device(void);
 void Delay(void);	
 void AD7606_Init(void);
 void AD7606_Read(void);
-void Timer2_Init(U16 counts);
+void Timer2_Init(U8 counts);
 void Timer2_ISR (void);
 /*** [ END ]  [ END ] ***/
 
@@ -78,7 +78,7 @@ void main(void)
 	USB_Int_Enable();
 	T1=0;T2=0;Flag1=1;Flag2=0;
 	Timer2_Init(AUX1); 
-	Led=0;
+	Led=1;
 	EA = 1;
 	IP=0x20;		 
 
@@ -95,7 +95,7 @@ void main(void)
 			Block_Write(out2,N);
 			Flag1=0;
 			Flag2=0;
-		}	
+		}
 	}
 }
 
@@ -112,41 +112,6 @@ void AD7606_Init()
 	REST=0;	
 }
 
-void AD7606_Read()
-{
-	CS_RD=0;
-
-	if(Flag1==0)
-	{
-		out1[T1]=P3;
-		T1=T1+1;
-		out1[T1]=P1;
-		T1=T1+1;
-		if(T1==N)
-		{
-			Flag1=1;
-			T1=0;
-		}
-	}
-	if(Flag2==0)
-	{
-		out2[T2]=P3;
-		T2=T2+1;
-		out2[T2]=P1;
-		T2=T2+1;
-		if(T2==N)
-		{
-			Flag2=1;
-			T2=0;
-		}
-	}
-
-	CS_RD=1;
-	CONVSTAB=0;	
-
-	CONVSTAB=1;		
-}
-
 void Oscilitator_Init()
 {
 	CLKMUL = 0x80;
@@ -154,10 +119,10 @@ void Oscilitator_Init()
     CLKMUL |= 0xC0;
     while ((CLKMUL & 0x20) == 0);
     OSCICN = 0x83;
-	CLKSEL |= 0x02;	
+	CLKSEL |= 0x03;	
 }
 
-void Timer2_Init(U16 counts)
+void Timer2_Init(U8 counts)
 {
    TMR2CN  = 0x00;                     // Stop Timer2; Clear TF2;
                                        // Use SYSCLK/12 as timebase
@@ -208,9 +173,40 @@ void  USB_API_TEST_ISR(void) interrupt 17
 
 void Timer2_ISR (void) interrupt 5
 {
-	Led=~Led;
+	//Led=~Led;
 	TF2H = 0; // Clear Timer2 interrupt flag
-	AD7606_Read();
+
+	CS_RD=0;
+
+	if(Flag1==0)
+	{
+		out1[T1]=P3;
+		T1=T1+1;
+		out1[T1]=P1;
+		T1=T1+1;
+		if(T1==N)
+		{
+			Flag1=1;
+			T1=0;
+		}
+	}
+	if(Flag2==0)
+	{
+		out2[T2]=P3;
+		T2=T2+1;
+		out2[T2]=P1;
+		T2=T2+1;
+		if(T2==N)
+		{
+			Flag2=1;
+			T2=0;
+		}
+	}
+
+	CS_RD=1;
+	CONVSTAB=0;	
+
+	CONVSTAB=1;
 }
 
 void Delay (void)
@@ -218,13 +214,4 @@ void Delay (void)
    int x;
    for(x = 0;x < 500;x)
       x++;
-}
-
-void delay_us(unsigned char T)
-{
-	unsigned char xdata i;
-    while(T--)
-	{
-		for(i=6;i>0;i--);	  
-	}
 }

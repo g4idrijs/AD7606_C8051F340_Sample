@@ -141,7 +141,7 @@ namespace USBXpress_TestPanel
                     }
                     fft();
                     CulveDisplay();
-                    //SaveReceivedData();
+                    SaveReceivedData();
                     //textBox1.Text += "读取时间为：" + time_read + Environment.NewLine + "总用时为：" + time_all +
                     //                 Environment.NewLine;
                     T = 0;
@@ -183,7 +183,7 @@ namespace USBXpress_TestPanel
 
         public void SaveReceivedData()
         {
-            var fs = new FileStream("data.txt", FileMode.Append);
+            var fs = new FileStream("data1.txt", FileMode.Append);
             var sw = new StreamWriter(fs);
             var i = 1;
             while (i < N/skip)

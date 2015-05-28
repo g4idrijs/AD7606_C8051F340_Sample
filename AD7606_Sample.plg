@@ -4,27 +4,6 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 G:\AD7606_C8051F340_Sample\AD7606_Sample.uvproj
-Project File Date:  05/23/2015
+Project File Date:  05/28/2015
 
 <h2>Output:</h2>
-Build target 'Target 1'
-assembling SILABS_STARTUP.A51...
-compiling MAIN.c...
-linking...
-*** WARNING L14: INCOMPATIBLE MEMORY MODEL
-    MODULE:  .\USBX_F34X.LIB (USB_API)
-    MODEL:   SMALL
-*** WARNING L14: INCOMPATIBLE MEMORY MODEL
-    MODULE:  .\USBX_F34X.LIB (USB_SUSPEND)
-    MODEL:   SMALL
-*** WARNING L14: INCOMPATIBLE MEMORY MODEL
-    MODULE:  .\USBX_F34X.LIB (USB_INT_ENABLE)
-    MODEL:   SMALL
-*** WARNING L14: INCOMPATIBLE MEMORY MODEL
-    MODULE:  .\USBX_F34X.LIB (USB_CLOCK_RECOVERY)
-    MODEL:   SMALL
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY_US?MAIN
-Program Size: data=9.0 xdata=490 code=3562
-creating hex file from "AD7606_Sample"...
-"AD7606_Sample" - 0 Error(s), 5 Warning(s).

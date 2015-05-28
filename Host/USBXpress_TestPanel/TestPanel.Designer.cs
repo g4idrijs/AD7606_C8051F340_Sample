@@ -52,9 +52,10 @@ namespace USBXpress_TestPanel
             // 
             // btn_Exit
             // 
-            this.btn_Exit.Location = new System.Drawing.Point(69, 718);
+            this.btn_Exit.Location = new System.Drawing.Point(92, 898);
+            this.btn_Exit.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(75, 21);
+            this.btn_Exit.Size = new System.Drawing.Size(100, 26);
             this.btn_Exit.TabIndex = 8;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
@@ -63,42 +64,46 @@ namespace USBXpress_TestPanel
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 750;
+            this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 590);
+            this.label1.Location = new System.Drawing.Point(8, 738);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 13;
             this.label1.Text = "label1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 613);
+            this.label2.Location = new System.Drawing.Point(8, 766);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 14;
             this.label2.Text = "label2";
             // 
             // textBox1
             // 
             this.textBox1.AllowDrop = true;
-            this.textBox1.Location = new System.Drawing.Point(13, 101);
+            this.textBox1.Location = new System.Drawing.Point(17, 126);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(196, 486);
+            this.textBox1.Size = new System.Drawing.Size(260, 606);
             this.textBox1.TabIndex = 9;
             // 
             // btn_Stop
             // 
-            this.btn_Stop.Location = new System.Drawing.Point(69, 661);
+            this.btn_Stop.Location = new System.Drawing.Point(92, 826);
+            this.btn_Stop.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Stop.Name = "btn_Stop";
-            this.btn_Stop.Size = new System.Drawing.Size(75, 23);
+            this.btn_Stop.Size = new System.Drawing.Size(100, 29);
             this.btn_Stop.TabIndex = 10;
             this.btn_Stop.Text = "Stop";
             this.btn_Stop.UseVisualStyleBackColor = true;
@@ -106,9 +111,10 @@ namespace USBXpress_TestPanel
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(69, 632);
+            this.btn_Start.Location = new System.Drawing.Point(92, 790);
+            this.btn_Start.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(75, 23);
+            this.btn_Start.Size = new System.Drawing.Size(100, 29);
             this.btn_Start.TabIndex = 11;
             this.btn_Start.Text = "Start";
             this.btn_Start.UseVisualStyleBackColor = true;
@@ -116,9 +122,10 @@ namespace USBXpress_TestPanel
             // 
             // btn_Clear
             // 
-            this.btn_Clear.Location = new System.Drawing.Point(69, 690);
+            this.btn_Clear.Location = new System.Drawing.Point(92, 862);
+            this.btn_Clear.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_Clear.Size = new System.Drawing.Size(100, 29);
             this.btn_Clear.TabIndex = 12;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.UseVisualStyleBackColor = true;
@@ -126,7 +133,8 @@ namespace USBXpress_TestPanel
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(-3, 0);
+            this.zedGraphControl1.Location = new System.Drawing.Point(-4, 0);
+            this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
             this.zedGraphControl1.ScrollMaxX = 0D;
@@ -135,7 +143,7 @@ namespace USBXpress_TestPanel
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(1142, 383);
+            this.zedGraphControl1.Size = new System.Drawing.Size(1523, 479);
             this.zedGraphControl1.TabIndex = 14;
             // 
             // panel1
@@ -144,13 +152,15 @@ namespace USBXpress_TestPanel
             this.panel1.Controls.Add(this.zedGraphControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1139, 751);
+            this.panel1.Size = new System.Drawing.Size(1519, 939);
             this.panel1.TabIndex = 15;
             // 
             // zedGraphControl2
             // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(-3, 379);
+            this.zedGraphControl2.Location = new System.Drawing.Point(-4, 474);
+            this.zedGraphControl2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.zedGraphControl2.Name = "zedGraphControl2";
             this.zedGraphControl2.ScrollGrace = 0D;
             this.zedGraphControl2.ScrollMaxX = 0D;
@@ -159,7 +169,7 @@ namespace USBXpress_TestPanel
             this.zedGraphControl2.ScrollMinX = 0D;
             this.zedGraphControl2.ScrollMinY = 0D;
             this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(1142, 369);
+            this.zedGraphControl2.Size = new System.Drawing.Size(1523, 461);
             this.zedGraphControl2.TabIndex = 15;
             // 
             // panel2
@@ -177,9 +187,10 @@ namespace USBXpress_TestPanel
             this.panel2.Controls.Add(this.btn_Clear);
             this.panel2.Controls.Add(this.btn_Start);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1139, 0);
+            this.panel2.Location = new System.Drawing.Point(1518, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(221, 751);
+            this.panel2.Size = new System.Drawing.Size(295, 939);
             this.panel2.TabIndex = 16;
             // 
             // label_ConnectState
@@ -188,34 +199,38 @@ namespace USBXpress_TestPanel
             this.label_ConnectState.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label_ConnectState.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_ConnectState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label_ConnectState.Location = new System.Drawing.Point(10, 48);
+            this.label_ConnectState.Location = new System.Drawing.Point(13, 60);
+            this.label_ConnectState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_ConnectState.Name = "label_ConnectState";
-            this.label_ConnectState.Size = new System.Drawing.Size(104, 16);
+            this.label_ConnectState.Size = new System.Drawing.Size(129, 20);
             this.label_ConnectState.TabIndex = 19;
             this.label_ConnectState.Text = "ConnectState";
             // 
             // comboBox_Device
             // 
             this.comboBox_Device.FormattingEnabled = true;
-            this.comboBox_Device.Location = new System.Drawing.Point(69, 12);
+            this.comboBox_Device.Location = new System.Drawing.Point(92, 15);
+            this.comboBox_Device.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Device.Name = "comboBox_Device";
-            this.comboBox_Device.Size = new System.Drawing.Size(140, 20);
+            this.comboBox_Device.Size = new System.Drawing.Size(185, 23);
             this.comboBox_Device.TabIndex = 18;
             // 
             // label_Device
             // 
             this.label_Device.AutoSize = true;
-            this.label_Device.Location = new System.Drawing.Point(6, 15);
+            this.label_Device.Location = new System.Drawing.Point(8, 19);
+            this.label_Device.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Device.Name = "label_Device";
-            this.label_Device.Size = new System.Drawing.Size(65, 12);
+            this.label_Device.Size = new System.Drawing.Size(82, 15);
             this.label_Device.TabIndex = 17;
             this.label_Device.Text = "设备列表：";
             // 
             // button_Disconnect
             // 
-            this.button_Disconnect.Location = new System.Drawing.Point(112, 72);
+            this.button_Disconnect.Location = new System.Drawing.Point(149, 90);
+            this.button_Disconnect.Margin = new System.Windows.Forms.Padding(4);
             this.button_Disconnect.Name = "button_Disconnect";
-            this.button_Disconnect.Size = new System.Drawing.Size(75, 21);
+            this.button_Disconnect.Size = new System.Drawing.Size(100, 26);
             this.button_Disconnect.TabIndex = 16;
             this.button_Disconnect.Text = "断开";
             this.button_Disconnect.UseVisualStyleBackColor = true;
@@ -223,9 +238,10 @@ namespace USBXpress_TestPanel
             // 
             // button_Connect
             // 
-            this.button_Connect.Location = new System.Drawing.Point(31, 72);
+            this.button_Connect.Location = new System.Drawing.Point(41, 90);
+            this.button_Connect.Margin = new System.Windows.Forms.Padding(4);
             this.button_Connect.Name = "button_Connect";
-            this.button_Connect.Size = new System.Drawing.Size(75, 21);
+            this.button_Connect.Size = new System.Drawing.Size(100, 26);
             this.button_Connect.TabIndex = 15;
             this.button_Connect.Text = "连接";
             this.button_Connect.UseVisualStyleBackColor = true;
@@ -233,12 +249,13 @@ namespace USBXpress_TestPanel
             // 
             // TestPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1360, 751);
+            this.ClientSize = new System.Drawing.Size(1813, 939);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TestPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TestPanel";
