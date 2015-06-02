@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  05/28/2015 16:51:16 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  05/31/2015 21:53:12 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -44,7 +44,7 @@ line level    source
   34          
   35          #define SYSCLK 48000000
   36          #define TIMER_PRESCALER 12  // Based on Timer2 CKCON and TMR2CN settings
-  37          #define RATE    120000
+  37          #define RATE    115000
   38          // There are SYSCLK/TIMER_PRESCALER timer ticks per second, so
   39          // SYSCLK/TIMER_PRESCALER timer ticks per second.
   40          #define TIMER_TICKS_PER_S  SYSCLK/TIMER_PRESCALER
@@ -62,7 +62,7 @@ line level    source
   52          U8 Flag2;
   53          U8 i;
   54          /*** [ END ]  [ END ] ***/
-C51 COMPILER V9.01   MAIN                                                                  05/28/2015 16:51:16 PAGE 2   
+C51 COMPILER V9.01   MAIN                                                                  05/31/2015 21:53:12 PAGE 2   
 
   55          
   56          /*** [BEGIN]  [BEGIN] ***/
@@ -126,7 +126,7 @@ line level    source
  113   1      }
  114          
  115          void Oscilitator_Init()
-C51 COMPILER V9.01   MAIN                                                                  05/28/2015 16:51:16 PAGE 3   
+C51 COMPILER V9.01   MAIN                                                                  05/31/2015 21:53:12 PAGE 3   
 
  116          {
  117   1              CLKMUL = 0x80;
@@ -190,7 +190,7 @@ line level    source
  175          {
  176   1              //Led=~Led;
  177   1              TF2H = 0; // Clear Timer2 interrupt flag
-C51 COMPILER V9.01   MAIN                                                                  05/28/2015 16:51:16 PAGE 4   
+C51 COMPILER V9.01   MAIN                                                                  05/31/2015 21:53:12 PAGE 4   
 
  178   1      
  179   1              CS_RD=0;

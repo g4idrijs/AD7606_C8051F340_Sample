@@ -34,7 +34,7 @@ sfr16 TMR2 = 0xcc; // Timer2 counter
 
 #define SYSCLK 48000000
 #define TIMER_PRESCALER	12  // Based on Timer2 CKCON and TMR2CN settings
-#define RATE	120000
+#define RATE	115000
 // There are SYSCLK/TIMER_PRESCALER timer ticks per second, so
 // SYSCLK/TIMER_PRESCALER timer ticks per second.
 #define TIMER_TICKS_PER_S  SYSCLK/TIMER_PRESCALER

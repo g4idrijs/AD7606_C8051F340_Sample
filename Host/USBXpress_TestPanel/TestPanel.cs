@@ -52,8 +52,8 @@ namespace USBXpress_TestPanel
             zedGraphControl1.GraphPane.YAxis.Scale.FontSpec.FontColor = Color.Black;
             zedGraphControl1.GraphPane.YAxis.MajorGrid.IsZeroLine = false;
             zedGraphControl1.GraphPane.YAxis.Scale.Align = AlignP.Inside;
-            zedGraphControl1.GraphPane.YAxis.Scale.Min = -1;
-            zedGraphControl1.GraphPane.YAxis.Scale.Max = 1;
+            //zedGraphControl1.GraphPane.YAxis.Scale.Min = -1;
+            //zedGraphControl1.GraphPane.YAxis.Scale.Max = 1;
             zedGraphControl1.GraphPane.XAxis.Scale.Max = InBufSize / skip / 16;
             zedGraphControl2.GraphPane.Title.Text = "";
             zedGraphControl2.GraphPane.YAxis.Title.Text = "fft";
@@ -150,7 +150,8 @@ namespace USBXpress_TestPanel
                     //stopwatch2.Restart();
                     break;
                 }
-                ReceivedValue1[T++] = (Double) BitConverter.ToInt16(InBuf, skip*i)/32768;
+                ReceivedValue1[T++] = ((Double) BitConverter.ToInt16(InBuf, skip*i)/32768 - 0.3655)*1;
+                //ReceivedValue1[T++] = ((Double)BitConverter.ToInt16(InBuf, skip * i) / 32768) ;
                 //ReceivedValue1[T++] = InBuf[skip*i];
                 //ValueToShow[i] = ReceivedValue1[i];
             }
