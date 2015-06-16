@@ -34,22 +34,28 @@ sfr16 TMR2 = 0xcc; // Timer2 counter
 
 #define SYSCLK 48000000
 #define TIMER_PRESCALER	12  // Based on Timer2 CKCON and TMR2CN settings
-#define RATE	115000
-// There are SYSCLK/TIMER_PRESCALER timer ticks per second, so
-// SYSCLK/TIMER_PRESCALER timer ticks per second.
+//#define RATE	118000   //121200
+//#define RATE	110000   //111100
+//#define RATE	140000   //142600
+//#define RATE	160000   //160000
+//#define RATE	180000 	 //181860
+#define RATE	185000 	 //199980
+// There are SYSCLK/TIMER_PRESCALER timer ticks per second, so SYSCLK/TIMER_PRESCALER timer ticks per second.
 #define TIMER_TICKS_PER_S  SYSCLK/TIMER_PRESCALER
 // NoteRATE*TIMER_TICKS_PERS should not exceed 65535 (0xFFFF)for the 16-bit timer
 #define AUX1 TIMER_TICKS_PER_S/RATE
 /*** [ END ]  [ END ] ***/
 
 /*** [BEGIN]  [BEGIN] ***/
-#define N 16
-U8 out1[N];
-U8 out2[N];
+#define N 64
+U8 idata Buffer1[N];
+U8 idata Buffer2[N];
 U8 T1;
 U8 T2;
 U8 Flag1;
 U8 Flag2;
+U8 Flag1_t;
+U8 Flag2_t;
 U8 i;
 /*** [ END ]  [ END ] ***/
 
@@ -76,29 +82,28 @@ void main(void)
 
 	AD7606_Init();
 	USB_Int_Enable();
-	T1=0;T2=0;Flag1=1;Flag2=0;
+	T1=0;T2=0;Flag1=0;Flag2=1;Flag1_t=1,Flag2_t=0;
 	Timer2_Init(AUX1); 
-	Led=1;
+	//Led=1;
 	EA = 1;
 	IP=0x20;		 
 
 	while (1)
 	{
-		if(Flag1==1)
+		if(Flag1==1&&Flag2_t==1)
 		{
-			Block_Write(out1,N);
-			Flag1=0;
-			Flag2=0;
+			Block_Write(Buffer1,N);
+			Flag1_t=1;
+			Flag2_t=0;
 		}
-		if(Flag2==1)
+		if(Flag2==1&&Flag1_t==1)
 		{
-			Block_Write(out2,N);
-			Flag1=0;
-			Flag2=0;
+			Block_Write(Buffer2,N);
+			Flag1_t=0;
+			Flag2_t=1;
 		}
 	}
 }
-
 
 void AD7606_Init()
 {
@@ -137,7 +142,7 @@ void Timer2_Init(U8 counts)
 void Port_Init(void)
 {
 	P0MDIN |= 0x40;
-	P0MDOUT = 0xcc; 
+	P0MDOUT = 0x83; 
 	P1MDIN |= 0xff; 
 	P1MDOUT = 0x00;
 	P1 |= 0xff;
@@ -173,31 +178,32 @@ void  USB_API_TEST_ISR(void) interrupt 17
 
 void Timer2_ISR (void) interrupt 5
 {
-	//Led=~Led;
 	TF2H = 0; // Clear Timer2 interrupt flag
 
 	CS_RD=0;
 
 	if(Flag1==0)
 	{
-		out1[T1]=P3;
+		Buffer1[T1]=P3;
 		T1=T1+1;
-		out1[T1]=P1;
+		Buffer1[T1]=P1;
 		T1=T1+1;
 		if(T1==N)
 		{
 			Flag1=1;
+			Flag2=0;
 			T1=0;
 		}
 	}
-	if(Flag2==0)
+	else if(Flag2==0)
 	{
-		out2[T2]=P3;
+		Buffer2[T2]=P3;
 		T2=T2+1;
-		out2[T2]=P1;
+		Buffer2[T2]=P1;
 		T2=T2+1;
 		if(T2==N)
 		{
+			Flag1=0;
 			Flag2=1;
 			T2=0;
 		}
@@ -205,7 +211,6 @@ void Timer2_ISR (void) interrupt 5
 
 	CS_RD=1;
 	CONVSTAB=0;	
-
 	CONVSTAB=1;
 }
 
